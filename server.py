@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+import csv
 
 order = []
 price = []
@@ -19,7 +20,6 @@ def removeItem(item):
             del order[index]
             del price[index]
             break
-
 
 @app.route('/')
 def index():
@@ -45,6 +45,16 @@ def statusupdate():
     status = poopybutthole["status"]
     print(poopybutthole)
     return redirect('/')
+
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+@app.route('/logindata')
+def logindata():
+        username = request.args['username']
+        password = request.args['password']
+        return redirect('/')
 
 @app.route('/orderstatus')
 def orderstatus():

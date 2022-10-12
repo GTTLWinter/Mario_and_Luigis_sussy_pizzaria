@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="logindata">
+            <label for="fusername">Username:</label><br>
+            <input type="text" name="username" value="" required><br><br>
+            <label for="fpassword">Password:</label><br>
+            <input type="text" name="password" value="" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
