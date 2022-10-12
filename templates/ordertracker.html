@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Order Tracker</title>
+        <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <button onclick="location.href='/'" type="button">Home</button>
+        <form action="ordertrack">
+            <label for="ordernumber">Insert order number here:</label><br>
+            <input type="text" name="ordernumber" value="" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </body>
+</html>

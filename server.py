@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash
 import csv
+from random import randrange
 
 order = []
 price = []
@@ -14,6 +15,8 @@ timer = 0
 status = 0
 loggedIn = 0
 one = 1
+username = ""
+tracked = []
 
 app = Flask(__name__)
 app.secret_key = b'sussybakalmaohaha'
@@ -44,6 +47,7 @@ def payment():
 
 @app.route('/cart')
 def cart():
+    global total
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
@@ -74,7 +78,7 @@ def logout():
 
 @app.route('/registerdata')
 def registerdata():
-    global loggedIn, usernames, passwords
+    global loggedIn, username, usernames, passwords
     username = request.args['username']
     password = request.args['password']
     for index in range(0, len(usernames)):
@@ -92,7 +96,7 @@ def registerdata():
 
 @app.route('/logindata')
 def logindata():
-    global loggedIn
+    global loggedIn, username
     username = request.args['username']
     password = request.args['password']
     for index in range(0, len(usernames)):
@@ -107,10 +111,38 @@ def logindata():
             flash('No account found with that username')
             return redirect('login')
 
-
 @app.route('/orderstatus')
 def orderstatus():
-    return render_template("status.html")
+    global ordernumber, username
+    ordernumber = randrange(99999999)
+    print(ordernumber)
+    with open("orders.csv", "a")as writeorder:
+        writeorder.write(username + "," + str(ordernumber) + ",")
+        for index in range(0, (len(order) - 1)):
+            writeorder.write(order[index] + ",")
+        writeorder.write(order[-1] + "," + str(total) + "\n")
+    return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
+
+@app.route('/ordertracker')
+def ordertracker():
+    return render_template("ordertracker.html")
+
+@app.route('/ordertrack')
+def ordertrack():
+    global ordernumber
+    tracked = []
+    orderask = request.args['ordernumber']
+    with open("orders.csv") as orders:
+        reader = csv.reader(orders)
+        for row in reader:
+            if orderask == row[1]:
+                for index in range(2, (len(row) - 1)):
+                    tracked.append(row[index])
+                total = row[-1]
+                return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
+        if len(tracked) == 0:
+            flash("No order found.")
+            return redirect('/ordertracker')
 
 @app.route('/margaritha')
 def margaritha():
