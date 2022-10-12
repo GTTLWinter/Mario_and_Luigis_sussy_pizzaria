@@ -5,7 +5,11 @@
     </head>
     <body>
         <h1>Welcome!!</h1>
-        <button class="button" onclick="location.href='/login'" type="button">Login</button>
+        {% if LoggedIn == One %}
+            <button class="button" onclick="location.href='/logout'" type="button">Sign Out</button>
+        {% else %}
+            <button class="button" onclick="location.href='/login'" type="button">Login</button>
+        {% endif %}
         <button class="button" onclick="location.href='/cart'" type="button">Cart</button>
         <br><br>
         <h4>Margaritha, 8</h4> 
