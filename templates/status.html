@@ -2,17 +2,29 @@
     <head>
         <title>Status Updates</title>
         <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
-        {{ turbo() }}
     </head>
     <body>
-        <p>Your order has been confirmed. <br>Order number: {{ Ordernumber }}</p>
-        <button onclick="location.href='/'" type="button">Home</button>
-        {% if Status == 0 %}
-            Pizza is still in the oven for another {{ Timer }}.
-        {% elif Status == 1 %}
-            Pizza is being prepared for pick up.
-        {% else %}
-            Pizza is ready for take off.
-        {% endif %}
+        <div id="divID">
+            <p>Your order has been confirmed. <br>Order number: {{ Ordernumber }}</p>
+            <button onclick="location.href='/'" type="button">Home</button>
+            {% if Status == 0 %}
+                Pizza is still in the oven for another {{ Timer }}.
+            {% elif Status == 1 %}
+                Pizza is being prepared for pick up.
+            {% else %}
+                Pizza is ready for take off.
+            {% endif %}
+        </div>
     </body>
+    <script>
+        let counter = 1;
+        let Status = 0;
+        let Timer = 0;
+        let auto_refresh = setInterval(
+        function () {
+            let newcontent= 'Refresh nr:'+counter;
+            $('#divID').html(newcontent);
+            counter++;
+        }, 1000);
+    </script>
 </html>

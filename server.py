@@ -109,7 +109,7 @@ def logindata():
                 break
         else:
             flash('No account found with that username')
-            return redirect('login')
+    return redirect('login')
 
 @app.route('/orderstatus')
 def orderstatus():
@@ -142,7 +142,7 @@ def ordertrack():
                 return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
         if len(tracked) == 0:
             flash("No order found.")
-            return redirect('/ordertracker')
+    return redirect('/ordertracker')
 
 @app.route('/margaritha')
 def margaritha():
