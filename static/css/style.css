@@ -1,0 +1,7 @@
+#parent {
+    display: flex;
+}
+
+#pizzas {
+    flex: 1;
+}
