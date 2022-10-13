@@ -21,6 +21,7 @@ tracked = []
 app = Flask(__name__)
 app.secret_key = b'sussybakalmaohaha'
 
+#Reads login data
 with open("userinfo.csv") as readdata:
     reader = csv.reader(readdata)
     for row in reader:
@@ -28,6 +29,7 @@ with open("userinfo.csv") as readdata:
         passwords.append(row[1])
         print(usernames)
 
+#Function to remove items from order
 def removeItem(item):
     global order, price
     for index in range(0, len(order)):
@@ -36,23 +38,28 @@ def removeItem(item):
             del price[index]
             break
 
+#Load Main page
 @app.route('/')
 def index():
-    global order
-    return render_template('index.html', Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
+    global order                        
+    return render_template('index.html', Timer = timer, Status = status, LoggedIn = loggedIn, One = one) #Logged in check to see if the user is logged in, and One is a variable for the number one
 
+#Fake payment
 @app.route('/payment')
 def payment():
     return render_template("payment.html")
 
+#Load Cart page
 @app.route('/cart')
 def cart():
+    #Calculates total price
     global total
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
+#Recieves timer and pizza status from "Smart Oven"
 @app.route('/status', methods = ['POST'])
 def statusupdate():
     global timer, status
@@ -62,27 +69,34 @@ def statusupdate():
     print(poopybutthole)
     return redirect('/')
 
+#Loads Login page 
 @app.route('/login')
 def login():
     return render_template("login.html")
 
+#Loads Regster page
 @app.route('/register')
 def register():
     return render_template("register.html")
 
+#Logs User out
 @app.route('/logout')
 def logout():
     global loggedIn
     loggedIn = 0
     return redirect("/")
 
+#The Login process
 @app.route('/registerdata')
 def registerdata():
     global loggedIn, username, usernames, passwords
+    #Takes data from form on register.html
     username = request.args['username']
     password = request.args['password']
+    #Checks in userdata if username exists
     for index in range(0, len(usernames)):
         if username == usernames[index]:
+            #If found, gives register error
             flash('Username already has a account')
             return redirect('/register')
         else:
