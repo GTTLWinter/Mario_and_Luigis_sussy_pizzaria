@@ -52,15 +52,30 @@ def cart():
     for index in range(0, len(price)):
         total = total + int(price[index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/status', methods = ['POST'])
+#DONT TOUCH ANYTHING RN
+@app.route('/status', methods = ['POST', 'GET'])
 def statusupdate():
     global timer, status
-    poopybutthole = request.get_json()
-    timer = poopybutthole["timer"]
-    status = poopybutthole["status"]
-    print(poopybutthole)
-    return redirect('/')
+    if request.method == 'POST':
+        poopybutthole = request.get_json()
+        timer = poopybutthole["timer"]
+        status = poopybutthole["status"]
+        print(poopybutthole)
+    else:
+        timer = timer
+        print(timer)
+
+#def statusupdate():
+#    global timer, status
+#    if request.method == 'POST':
+#        poopybutthole = request.get_json()
+#        timer = poopybutthole["timer"]
+#        status = poopybutthole["status"]
+#        print(poopybutthole)
+#    else:
+#        timer = timer
+#        print(timer)
+    
 
 @app.route('/login')
 def login():
