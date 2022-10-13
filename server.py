@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, flash
 import csv
 from random import randrange
 from turbo_flask import Turbo
-from turbo_flask import Turbo
 
 
 order = []
