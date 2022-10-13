@@ -5,3 +5,11 @@
 #pizzas {
     flex: 1;
 }
+
+#cart {
+    margin-left: 15px;
+}
+
+button {
+    float: right;
+}
