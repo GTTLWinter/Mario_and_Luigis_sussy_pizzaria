@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, flash
 import csv
 from random import randrange
 from turbo_flask import Turbo
+from turbo_flask import Turbo
 
 
 order = []
@@ -16,11 +17,11 @@ total = 0
 timer = 0
 status = 0
 loggedIn = 0
-one = 1
 username = ""
 tracked = []
 
 app = Flask(__name__)
+turbo = Turbo(app)
 app.secret_key = b'sussybakalmaohaha'
 
 #Reads login data
@@ -44,7 +45,7 @@ def removeItem(item):
 @app.route('/')
 def index():
     global order                        
-    return render_template('index.html', Timer = timer, Status = status, LoggedIn = loggedIn, One = one) #Logged in check to see if the user is logged in, and One is a variable for the number one
+    return render_template('index.html', Timer = timer, Status = status, LoggedIn = loggedIn) #Logged in check to see if the user is logged in, and One is a variable for the number one
 
 #Fake payment
 @app.route('/payment')
@@ -70,10 +71,10 @@ def cart():
 @app.route('/status', methods = ['POST'])
 def statusupdate():
     global timer, status
-    poopybutthole = request.get_json()
-    timer = poopybutthole["timer"]
-    status = poopybutthole["status"]
-    print(poopybutthole)
+    list = request.get_json()
+    timer = list["timer"]
+    status = list["status"]
+    print(list)
     return redirect('/')
 
 #Loads Login page 
@@ -133,7 +134,7 @@ def logindata():
 
 @app.route('/orderstatus')
 def orderstatus():
-    global ordernumber, username
+    global ordernumber, username, status, timer
     ordernumber = randrange(99999999)
     print(ordernumber)
     with open("orders.csv", "a")as writeorder:
@@ -141,6 +142,11 @@ def orderstatus():
         for index in range(0, (len(order) - 1)):
             writeorder.write(order[index] + ",")
         writeorder.write(order[-1] + "," + str(total) + "\n")
+    return redirect('/orderupdates') 
+
+@app.route('/orderupdates')
+def updates():
+    global ordernumber, username, status, timer
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 @app.route('/ordertracker')
@@ -163,6 +169,12 @@ def ordertrack():
         if len(tracked) == 0:
             flash("No order found.")
             return redirect('/ordertracker')
+
+@app.route('/orders')
+def showorder():
+    currentorders = []
+    current
+    return render_template('cookorders.html')
 
 @app.route('/margaritha')
 def margaritha():

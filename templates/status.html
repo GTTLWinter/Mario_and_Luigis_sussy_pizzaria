@@ -2,13 +2,14 @@
     <head>
         <title>Status Updates</title>
         <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+        {{ turbo() }}
     </head>
     <body>
         <p>Your order has been confirmed. <br>Order number: {{ Ordernumber }}</p>
         <button onclick="location.href='/'" type="button">Home</button>
-        {% if Status == Zero %}
+        {% if Status == 0 %}
             Pizza is still in the oven for another {{ Timer }}.
-        {% elif Status == One %}
+        {% elif Status == 1 %}
             Pizza is being prepared for pick up.
         {% else %}
             Pizza is ready for take off.
