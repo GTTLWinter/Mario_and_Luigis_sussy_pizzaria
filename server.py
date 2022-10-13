@@ -47,7 +47,12 @@ def index():
 #Fake payment
 @app.route('/payment')
 def payment():
-    return render_template("payment.html")
+    global order
+    if len(order) != 0:
+        return render_template("payment.html")
+    else:
+        flash("Cart empty!")
+        return redirect('/cart')
 
 #Load Cart page
 @app.route('/cart')
@@ -99,18 +104,18 @@ def registerdata():
             #If found, gives register error
             flash('Username already has a account')
             return redirect('/register')
-        else:
-            usernames.append(username)
-            passwords.append(password)
-            with open("userinfo.csv", "a") as writedata:
-                writedata.write("\n" + username + "," + password)
-            loggedIn = 1
-            return redirect('/')
+    usernames.append(username)
+    passwords.append(password)
+    print(usernames)
+    with open("userinfo.csv", "a") as writedata:
+        writedata.write("\n" + username + "," + password)
+    loggedIn = 1
+    return redirect('/')
 
 
 @app.route('/logindata')
 def logindata():
-    global loggedIn, username
+    global loggedIn, username, usernames, passwords
     username = request.args['username']
     password = request.args['password']
     for index in range(0, len(usernames)):
@@ -119,11 +124,10 @@ def logindata():
                 loggedIn = 1
                 return redirect('/')
             else:
-                return redirect('login')
-                break
-        else:
-            flash('No account found with that username')
-            return redirect('login')
+                flash('Incorrect Password')
+                return redirect('/login')
+    flash('No account found with that username')
+    return redirect('/login')
 
 @app.route('/orderstatus')
 def orderstatus():
