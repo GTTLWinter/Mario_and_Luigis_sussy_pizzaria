@@ -3,7 +3,10 @@
         <title>Mario's Pizzaria</title>
         <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
     </head>
+    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
     <body>
+        <div id="parent">
+        <div id="pizzas">
         <h1>Welcome!!</h1>
         {% if LoggedIn == One %}
             <button class="button" onclick="location.href='/logout'" type="button">Sign Out</button>
@@ -14,13 +17,18 @@
         <button class="button" onclick="location.href='/ordertracker'" type="button">Track Order</button>
         <br><br>
         <h4>Margaritha, 8</h4> 
-        <button class="button" onclick="location.href='/rmargaritha'" type="button">Delete</button>
-        <button class="button" onclick="location.href='/margaritha'" type="button">Add</button>
+        <button class="button" hx-get="/rmargaritha" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
+        <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
         <h4>Pepperoni, 10</h4> 
-        <button class="button" onclick="location.href='/rPep'" type="button">Delete</button>
-        <button class="button" onclick="location.href='/Pep'" type="button">Add</button>
+        <button class="button" hx-get="/rPep" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
+        <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
         <h4>Barbeque Chicken, 12</h4> 
-        <button class="button" onclick="location.href='/rBBQC'" type="button">Delete</button>
-        <button class="button" onclick="location.href='/BBQC'" type="button">Add</button>
+        <button class="button" hx-get="/rBBQC" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
+        <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+        </div>
+        <div id="cart">
+            cart
+        </div>
+    </div>
     </body>
 </html>

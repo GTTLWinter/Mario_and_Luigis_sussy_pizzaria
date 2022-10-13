@@ -53,18 +53,18 @@ def cart():
         total = total + int(price[index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 #DONT TOUCH ANYTHING RN
-@app.route('/status', methods = ['POST', 'GET'])
+@app.route('/status', methods = ['POST'])
 def statusupdate():
     global timer, status
-    if request.method == 'POST':
-        poopybutthole = request.get_json()
-        timer = poopybutthole["timer"]
-        status = poopybutthole["status"]
-        print(poopybutthole)
-    else:
-        timer = timer
-        print(timer)
+    poopybutthole = request.get_json()
+    timer = poopybutthole["timer"]
+    status = poopybutthole["status"]
+    print(poopybutthole)
+    return redirect("/")
 
+@app.route('/timerupdate', methods = ['GET'])
+def timerupdate():
+    return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 #def statusupdate():
 #    global timer, status
 #    if request.method == 'POST':
@@ -159,38 +159,62 @@ def ordertrack():
             flash("No order found.")
     return redirect('/ordertracker')
 
-@app.route('/margaritha')
+@app.route('/margaritha', methods = ['GET'])
 def margaritha():
     order.append("margaritha")
     price.append(8)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
-@app.route('/Pep')
+@app.route('/Pep', methods = ['GET'])
 def pepperoni():
     order.append("pepperoni")
     price.append(10)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
-@app.route('/BBQC')
+@app.route('/BBQC', methods = ['GET'])
 def BBQC():
     order.append("BBQC")
     price.append(12)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
-@app.route('/rmargaritha')
+@app.route('/rmargaritha', methods = ['GET'])
 def rmar():
     item = "margaritha"
     removeItem(item)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
-@app.route('/rPep')
+@app.route('/rPep', methods = ['GET'])
 def rpep():
     item = "pepperoni"
     removeItem(item)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
-@app.route('/rBBQC')
+@app.route('/rBBQC', methods = ['GET'])
 def rbbqc():
     item = "BBQC"
     removeItem(item)
-    return redirect('/')
+    global total
+    total = 0
+    for index in range(0, len(price)):
+        total = total + int(price[index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
