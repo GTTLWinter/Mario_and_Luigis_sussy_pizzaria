@@ -1,33 +1,38 @@
 <html>
-    <head>
-        <title>Mario's Pizzaria</title>
-        <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
-    </head>
-    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
-    <body>
-        <div id="parent">
+
+<head>
+    <title>Mario's Pizzaria</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+</head>
+<script src="https://unpkg.com/htmx.org@1.8.2"></script>
+
+<body>
+    <div id="parent">
         <div id="pizzas">
-        <h1>Welcome!!</h1>
-        {% if LoggedIn == One %}
+            <h1>Welcome!!</h1>
+            {% if LoggedIn == One %}
             <button class="button" onclick="location.href='/logout'" type="button">Sign Out</button>
-        {% else %}
+            {% else %}
             <button class="button" onclick="location.href='/login'" type="button">Login</button>
-        {% endif %}
-        <button class="button" onclick="location.href='/cart'" type="button">Cart</button>
-        <button class="button" onclick="location.href='/ordertracker'" type="button">Track Order</button>
-        <br><br>
-        <h4>Margaritha, 8</h4> 
-        <button class="button" hx-get="/rmargaritha" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
-        <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
-        <h4>Pepperoni, 10</h4> 
-        <button class="button" hx-get="/rPep" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
-        <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
-        <h4>Barbeque Chicken, 12</h4> 
-        <button class="button" hx-get="/rBBQC" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
-        <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+            {% endif %}
+            <button class="button" onclick="location.href='/cart'" type="button">Cart</button>
+            <button class="button" onclick="location.href='/ordertracker'" type="button">Track Order</button>
+            <br><br>
+            <h4>Margaritha, 8</h4>
+            <button class="button" hx-get="/rmargaritha" hx-trigger="click" hx-target="#cart"
+                type="button">Delete</button>
+            <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
+            <h4>Pepperoni, 10</h4>
+            <button class="button" hx-get="/rPep" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
+            <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+            <h4>Barbeque Chicken, 12</h4>
+            <button class="button" hx-get="/rBBQC" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
+            <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart" type="button">Add</button>
         </div>
+        
         <div id="cart">
         </div>
     </div>
-    </body>
+</body>
+
 </html>
