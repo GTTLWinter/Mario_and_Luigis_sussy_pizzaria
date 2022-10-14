@@ -39,7 +39,7 @@ def removeItem(item):
 @app.route('/')
 def index():
     global order
-    return render_template('index.html', Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
+    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
 @app.route('/payment')
 def payment():
