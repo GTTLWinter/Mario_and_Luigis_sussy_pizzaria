@@ -1,7 +1,8 @@
 <html>
+    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
     <body>
-        <div> #id="here" hx-get="/timerupdate" hx-target="body" hx-trigger="every 1s">
-            {% if Orders == [] %}
+        <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
+            {% if AllOrders == [] %}
             <h1>No orders at the moment!</h1>
             {% else %}
             <table>
@@ -11,20 +12,13 @@
                 <th>ingredients</th>
                 <th>Time elapsed</th>
             </tr>
-            <tr>
-                <th>{{ ON }}</th>
-                <th>
-                    {% for index in range(0, Length) %}
-                        {{ Order[index] }}<br>
-                    {% endfor %}
-                </th>
-                <th>
-                    {% for index in range(0, Length) %}
-                        {{ Dicktionary[Order[index]][2] }}<br>
-                    {% endfor %}
-                </th>
-            </tr>
+            {% for order in AllOrders %}
+                <tr>
+                    <th>{{ AllOrders[order][0] }}</th>
+                    
+                </tr>
             </table>
+            {% endfor %}
             {% endif %}
         </div>
     </body>
