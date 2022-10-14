@@ -30,7 +30,7 @@
             <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart" type="button">Add</button>
         </div>
         
-        <div id="cart">
+        <div id="cart" hx-trigger="load" hx-get="/cart" hx-target="#cart">
         </div>
     </div>
 </body>
