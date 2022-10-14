@@ -51,7 +51,7 @@ def cart():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, loggedIn = loggedIn)
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
@@ -207,3 +207,7 @@ def rbbqc():
     for index in range(0, len(price)):
         total = total + int(price[index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/cookorders')
+def cook():
+    return render_template('cookorder.html', Order = order)
