@@ -52,7 +52,7 @@ def cart():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, loggedIn = loggedIn, One = one)
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
@@ -67,6 +67,10 @@ def statusupdate():
 def timerupdate():
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
+@app.route('/indexupdate')
+def indexupdates():
+    time.sleep(0.1)
+    return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
 @app.route('/login')
 def login():
@@ -158,7 +162,7 @@ def margaritha():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/Pep', methods = ['GET'])
 def pepperoni():
@@ -168,7 +172,7 @@ def pepperoni():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/BBQC', methods = ['GET'])
 def BBQC():
@@ -178,7 +182,7 @@ def BBQC():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rmargaritha', methods = ['GET'])
 def rmar():
@@ -188,7 +192,7 @@ def rmar():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rPep', methods = ['GET'])
 def rpep():
@@ -198,7 +202,7 @@ def rpep():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rBBQC', methods = ['GET'])
 def rbbqc():
@@ -208,10 +212,10 @@ def rbbqc():
     total = 0
     for index in range(0, len(price)):
         total = total + int(price[index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/cookorders')
 def cook():
     global order
     print(order)
-    return render_template('cookorders.html', Order = order)
+    return render_template('cookorders.html', Length = len(order), Order = order, Dicktionary = dicktionary, ON = ordernumber)

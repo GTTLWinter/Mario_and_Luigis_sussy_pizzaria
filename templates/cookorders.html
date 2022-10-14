@@ -1,15 +1,31 @@
 <html>
     <body>
-        
-        <h1>No orders at the moment!</h1>
-    
-        <table>
-        {%for s in Order%}
+        <div> #id="here" hx-get="/timerupdate" hx-target="body" hx-trigger="every 1s">
+            {% if Orders == [] %}
+            <h1>No orders at the moment!</h1>
+            {% else %}
+            <table>
             <tr>
-                <th>{{ Order[s] }}</th>
+                <th>Order</th>
+                <th>Pizzas</th>
+                <th>ingredients</th>
+                <th>Time elapsed</th>
             </tr>
-        {% endfor %}
-        </table>
-       
+            <tr>
+                <th>{{ ON }}</th>
+                <th>
+                    {% for index in range(0, Length) %}
+                        {{ Order[index] }}<br>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for index in range(0, Length) %}
+                        {{ Dicktionary[Order[index]][2] }}<br>
+                    {% endfor %}
+                </th>
+            </tr>
+            </table>
+            {% endif %}
+        </div>
     </body>
 </html>
