@@ -10,8 +10,24 @@ body {
     flex: 1;
 }
 
+#cart {
+  flex: 0;
+}
+
+#cart2 {
+  margin-left: 15px;
+  margin-top: 50px;
+}
+
 button {
     float: right;
+}
+
+#navbar {
+  flex: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 ul {

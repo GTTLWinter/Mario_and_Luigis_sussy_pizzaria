@@ -13,7 +13,6 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/cart">Cart</a></li>
                 <li><a href="/ordertracker">Order search</a></li>
-                {% if Order == [] %}
                 <div id="rightli">
                     {% if LoggedIn == One %}
                     <li class="login"><a href="/account">Account</a></li>
@@ -22,7 +21,6 @@
                     <li class="login"><a href="/login">Login</a></li>
                     {% endif %}
                 </div>
-                {% endif %}
             </ul><br>
             <h1>Welcome!!</h1><br><br>
             <h4>Margaritha, 8</h4>
@@ -32,10 +30,9 @@
             <button class="button" hx-get="/rPep" hx-trigger="click" hx-target="#cart" type="button">Delete</button>
             <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
             <h4>Barbeque Chicken, 12</h4>
-            <button class="button" hx-get="/indexupdate" hx-trigger="click" hx-target="body" type="button"><a hx-get="/rBBQC" hx-trigger="click" hx-target="#cart">Delete</a></button>
-            <button class="button" hx-get="/indexupdate" hx-trigger="click" hx-target="body" type="button"><a hx-get="/BBQC" hx-trigger="click" hx-target="#cart">Add</a></button>
+            <button class="button" hx-get="/rBBQC" hx-trigger="click" hx-target="#cart">Delete</button>
+            <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart">Add</button>
         </div>
-        
         <div id="cart" hx-trigger="load" hx-get="/cart" hx-target="#cart">
         </div>
     </div>
