@@ -4,6 +4,7 @@
     <title>Mario's Pizzaria</title>
     <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
 </head>
+<!--Script used for AJAX(dynamic) refresh-->
 <script src="https://unpkg.com/htmx.org@1.8.2"></script>
 
 <body>
@@ -24,15 +25,17 @@
             </ul><br>
             <h1>Welcome!!</h1><br><br>
             <h4>Margaritha, 8</h4>
-            
+            <!--Every button here does the same thing - adding pizza to the cart, done through ajax in order to not refresh the whole page
+            hx-get sends a 'GET' request to our server, hx-trigger is what triggers that, and hx-target targets where the changes should happen using css targeting
+               in our case we send it to /margaritha |  in our case that is the button being clicked  |  in our case that is the div with id #cart-->
             <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
             <h4>Pepperoni, 10</h4>
-            
             <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
             <h4>Barbeque Chicken, 12</h4>
-            
             <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart">Add</button>
         </div>
+        <!--hx-trigger load means that it triggers the first time the html file loads, 
+            this is how we get the cart to appear if there is already stuff in it-->
         <div id="cart" hx-trigger="load" hx-get="/cart" hx-target="#cart">
         </div>
     </div>

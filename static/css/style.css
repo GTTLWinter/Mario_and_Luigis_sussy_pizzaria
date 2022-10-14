@@ -15,8 +15,14 @@ body {
 }
 
 #cart2 {
-  margin-left: 50px;
+  margin-left: 25px;
   margin-top: 50px;
+  width: 75%;
+  float: right;
+}
+
+.payment {
+  margin-right: 60%;
 }
 
 button {

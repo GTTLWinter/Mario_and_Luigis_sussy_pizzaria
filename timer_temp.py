@@ -51,12 +51,12 @@ def loop():
             print("Timer has begun!")
             
             while orderstarted:
-                array = {'status': 0, 'timer': orderstarted}
                 board.displayShow(orderstarted)
                 time.sleep(1)
                 print(str(round(temperature)) + "C")
                 orderstarted -= 1
                 orderdone = False
+                array = {'status': 0, 'timer': orderstarted}
                 response = requests.post('http://145.93.104.206:5000/status', json = array)
             print("Timer has ended!")
             array["status"] = 1
