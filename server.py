@@ -66,6 +66,10 @@ def statusupdate():
 def timerupdate():
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
+@app.route('/indexupdate')
+def indexupdates():
+    return render_template("index.html")
+
 @app.route('/login')
 def login():
     return render_template("login.html")
@@ -210,4 +214,5 @@ def rbbqc():
 
 @app.route('/cookorders')
 def cook():
+    global order
     return render_template('cookorders.html', Order = order)
