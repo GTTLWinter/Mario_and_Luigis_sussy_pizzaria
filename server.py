@@ -138,6 +138,7 @@ def orderstatus():
         writeorder.write(globals()[ordernumber][-1] + "," + str(total) + "\n")
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
+
 @app.route('/ordertracker')
 def ordertracker():
     return render_template("ordertracker.html")
