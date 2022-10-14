@@ -68,7 +68,7 @@ def timerupdate():
 
 @app.route('/indexupdate')
 def indexupdates():
-    return render_template("index.html")
+    return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
 @app.route('/login')
 def login():
