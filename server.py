@@ -1,3 +1,4 @@
+import time
 from flask import Flask, render_template, request, redirect, flash
 import csv
 from random import randrange
@@ -68,6 +69,7 @@ def timerupdate():
 
 @app.route('/indexupdate')
 def indexupdates():
+    time.sleep(0.1)
     return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
 @app.route('/login')
@@ -215,4 +217,5 @@ def rbbqc():
 @app.route('/cookorders')
 def cook():
     global order
+    print(order)
     return render_template('cookorders.html', Order = order)
