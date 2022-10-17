@@ -2,7 +2,44 @@
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
     <body>
         <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
-            
+            <table>
+                <tr>
+                    <th>Ordered By:</th>
+                    <th>Ordernumber</th>
+                    <th>Pizzas</th>
+                    <th>Ingredients</th>
+                    <th>Time left</th>
+                </tr>
+                {% for order in AllOrders %}
+                    <tr>
+                        <th>{{ order[0] }}</th>
+                        <th>{{ order[1] }}</th>
+                        <th>
+                            {% for item in Pizzas %}
+                                {% if item[0] == order[1] %}
+                                    {% for thing in item %}
+                                        {% if thing != order[1] %}
+                                            {{ thing }}<br>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </th>
+                        <th>
+                            {% for item in Pizzas %}
+                                {% if item[0] == order[1] %}
+                                    {% for thing in item %}
+                                        {% if thing != order[1] %}
+                                            {{ Dicktionary[thing][2] }}<br>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </th>
+
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
     </body>
 </html>

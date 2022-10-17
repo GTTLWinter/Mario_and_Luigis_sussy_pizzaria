@@ -7,6 +7,7 @@ order = []
 price = []
 usernames = []
 passwords = []
+pizzas = []
 margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]
 pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]
 bbqc = ["Barbeque Chicken", 12, "Pizza Sauce, Cheese, Chicken"]
@@ -15,6 +16,7 @@ total = 0
 timer = 0
 status = 0
 loggedIn = 0
+ordernumber = 0
 one = 1
 username = ""
 tracked = []
@@ -128,9 +130,9 @@ def orderstatus():
     print(ordernumber)
     with open("orders.csv", "a")as writeorder:
         writeorder.write(username + "," + str(ordernumber) + ",")
-        for index in range(0, (len(order) - 1)):
+        for index in range(0, len(order)):
             writeorder.write(order[index] + ",")
-        writeorder.write(order[-1] + "," + str(total) + "\n")
+        writeorder.write(str(total) + "," + "\n")
     order = []
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
@@ -218,6 +220,18 @@ def rbbqc():
 
 @app.route('/cookorders')
 def cook():
-    global order
-    print(order)
-    return render_template('cookorders.html', Length = len(order), Order = order, Dicktionary = dicktionary, ON = ordernumber)
+    global order, allOrders, pizzas, pizzas2
+    pizzas = []
+    allOrders = []
+    with open("orders.csv") as orders:
+        reader = csv.reader(orders)
+        for row in reader:
+            if row[-1] != "Done":
+                pizzas2 = []
+                allOrders.append(row)
+                for index in range(1, (len(row) - 2)):
+                    pizzas2.append(row[index])
+                pizzas.append(pizzas2)
+        print(allOrders)
+        print(pizzas)
+    return render_template('cookorders.html', Length = len(order), AllOrders = allOrders ,Order = order, Dicktionary = dicktionary, ON = ordernumber, Pizzas = pizzas)
