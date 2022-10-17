@@ -7,7 +7,6 @@ order = []
 price = []
 usernames = []
 passwords = []
-allOrders = []
 margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]
 pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]
 bbqc = ["Barbeque Chicken", 12, "Pizza Sauce, Cheese, Chicken"]
@@ -71,7 +70,7 @@ def timerupdate():
 @app.route('/indexupdate')
 def indexupdates():
     time.sleep(0.1)
-    return render_template("index.html", Order = globals()[ordernumber], Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
+    return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
 @app.route('/login')
 def login():
@@ -124,18 +123,15 @@ def logindata():
 
 @app.route('/orderstatus')
 def orderstatus():
-    global ordernumber, username, order
+    global ordernumber, username, order, total
     ordernumber = randrange(99999999)
     print(ordernumber)
-    globals()[ordernumber] = order
-    allOrders.append(globals()[ordernumber])
-    print(globals()[ordernumber])
-    order = []
     with open("orders.csv", "a")as writeorder:
         writeorder.write(username + "," + str(ordernumber) + ",")
-        for index in range(0, (len(globals()[ordernumber]) - 1)):
-            writeorder.write(globals()[ordernumber][index] + ",")
-        writeorder.write(globals()[ordernumber][-1] + "," + str(total) + "\n")
+        for index in range(0, (len(order) - 1)):
+            writeorder.write(order[index] + ",")
+        writeorder.write(order[-1] + "," + str(total) + "\n")
+    order = []
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 
@@ -222,5 +218,6 @@ def rbbqc():
 
 @app.route('/cookorders')
 def cook():
-    global ordernumber
-    return render_template('cookorders.html', Length = len(globals()[ordernumber]), AllOrders = allOrders, Dicktionary = dicktionary, ON = ordernumber)
+    global order
+    print(order)
+    return render_template('cookorders.html', Length = len(order), Order = order, Dicktionary = dicktionary, ON = ordernumber)
