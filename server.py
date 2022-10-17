@@ -1,6 +1,7 @@
 import time
 from flask import Flask, render_template, request, redirect, flash
 import csv
+import pandas as pd
 from random import randrange
 
 order = []
@@ -18,6 +19,7 @@ status = 0
 loggedIn = 0
 ordernumber = 0
 one = 1
+counter = 0
 username = ""
 tracked = []
 
@@ -125,15 +127,16 @@ def logindata():
 
 @app.route('/orderstatus')
 def orderstatus():
-    global ordernumber, username, order, total
+    global ordernumber, username, order, total, price
     ordernumber = randrange(99999999)
     print(ordernumber)
     with open("orders.csv", "a")as writeorder:
-        writeorder.write(username + "," + str(ordernumber) + ",")
+        writeorder.write("," + username + "," + str(ordernumber) + ",")
         for index in range(0, len(order)):
             writeorder.write(order[index] + ",")
         writeorder.write(str(total) + "," + "\n")
     order = []
+    price = []
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 
@@ -226,12 +229,32 @@ def cook():
     with open("orders.csv") as orders:
         reader = csv.reader(orders)
         for row in reader:
-            if row[-1] != "Done":
+            if row[0] != "Done":
                 pizzas2 = []
                 allOrders.append(row)
-                for index in range(1, (len(row) - 2)):
-                    pizzas2.append(row[index])
+                for index in range(2, len(row)):
+                    if row[index] != "":
+                        pizzas2.append(row[index])
                 pizzas.append(pizzas2)
+        for index in range(0, len(pizzas)):
+            pizzas[index].pop()
         print(allOrders)
         print(pizzas)
-    return render_template('cookorders.html', Length = len(order), AllOrders = allOrders ,Order = order, Dicktionary = dicktionary, ON = ordernumber, Pizzas = pizzas)
+
+    return render_template('cookorders.html', Length = len(order), AllOrders = allOrders, Order = order, Dicktionary = dicktionary, Pizzas = pizzas)
+
+@app.route('/testing')
+def testing():
+    global counter
+    counter = 0
+    df = pd.read_csv("orders.csv")
+    tempordernumber = request.args['ON']
+    print(tempordernumber)
+    with open("orders.csv", "r") as datafile:
+        reader = csv.reader(datafile)
+        for row in reader:
+            if row[2] == tempordernumber:
+                df.loc[(counter - 1), 'Done'] = "Done"
+                df.to_csv("orders.csv", index=False)
+            counter += 1
+    return redirect('cookorders')
