@@ -162,9 +162,10 @@ def ordertrack():
     with open("orders.csv") as orders:
         reader = csv.reader(orders)
         for row in reader:
-            if orderask == row[1]:
-                for index in range(2, (len(row) - 1)):
+            if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
+                for index in range(3, (len(row) - 2)):
                     tracked.append(row[index])
+                    print(tracked)
                 total = row[-1]
                 return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
         if len(tracked) == 0:
