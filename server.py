@@ -1,6 +1,5 @@
-from glob import glob
 import time
-from flask import Flask, render_template, request, redirect, flash, session
+from flask import Flask, render_template, request, redirect, flash, session, Response
 import csv
 import pandas as pd
 from random import randrange
@@ -28,7 +27,6 @@ user = 0
 anon = 0
 
 app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 Flask.secret_key = 'lmaosus'
@@ -231,7 +229,7 @@ def cook():
         print(allOrders)
         print(pizzas)
 
-    return render_template('cookorders.html', Length = len(order), AllOrders = allOrders, Order = order, Dicktionary = dicktionary, Pizzas = pizzas)
+    return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, Order = order, Dicktionary = dicktionary, Pizzas = pizzas)
 
 @app.route('/cooking')
 def testing():
