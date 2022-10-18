@@ -14,11 +14,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/cart">Cart</a></li>
                 <li><a href="/ordertracker">Order search</a></li>
+                <li>{{username}}</li>
                 <div id="rightli">
-                    {% if LoggedIn == One %}
+                    {% if username %}
                     <li class="login"><a href="/account">Account</a></li>
                     <li class="login"><a href="/logout">Sign out</a></li>
                     {% else %}
+                    <a hx-trigger="load" hx-get="/cart"></a>
                     <li class="login"><a href="/login">Login</a></li>
                     {% endif %}
                 </div>

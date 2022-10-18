@@ -1,7 +1,8 @@
 import time
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 import csv
 from random import randrange
+from flask_session import Session
 
 order = []
 price = []
@@ -19,9 +20,14 @@ loggedIn = 0
 one = 1
 username = ""
 tracked = []
+user = 0
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 app.secret_key = b'sussybakalmaohaha'
+Flask.secret_key = 'lmaosus'
 
 with open("userinfo.csv") as readdata:
     reader = csv.reader(readdata)
@@ -40,8 +46,8 @@ def removeItem(item):
 
 @app.route('/')
 def index():
-    global order
-    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
+    global order, session
+    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one, username = username)
 
 @app.route('/payment')
 def payment():
@@ -84,19 +90,22 @@ def register():
 @app.route('/logout')
 def logout():
     global loggedIn
+    session["username"] = None
     loggedIn = 0
     return redirect("/")
 
-@app.route('/registerdata')
+@app.route('/registerdata', methods = ['POST'])
 def registerdata():
     global loggedIn, username, usernames, passwords
-    username = request.args['username']
-    password = request.args['password']
+    if request.method == "POST":
+        username = request.args['username']
+        password = request.args['password']
     for index in range(0, len(usernames)):
         if username == usernames[index]:
             flash('Username already has a account')
             return redirect('/register')
         else:
+            session["username"] = request.form.get("username")
             usernames.append(username)
             passwords.append(password)
             with open("userinfo.csv", "a") as writedata:
@@ -107,13 +116,14 @@ def registerdata():
 
 @app.route('/logindata')
 def logindata():
-    global loggedIn, username
+    global loggedIn, username, session
     username = request.args['username']
     password = request.args['password']
     for index in range(0, len(usernames)):
         if username == usernames[index]:
             if password == passwords[index]:
                 loggedIn = 1
+                session["username"] = request.form.get("username")
                 return redirect('/')
             else:
                 return redirect('login')
@@ -224,3 +234,8 @@ def rbbqc():
 def cook():
     global ordernumber
     return render_template('cookorders.html', Length = len(globals()[ordernumber]), AllOrders = allOrders, Dicktionary = dicktionary, ON = ordernumber)
+
+@app.route('/anon', methods = ['GET'])
+def anon():
+    global user
+    return user
