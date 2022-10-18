@@ -3,22 +3,51 @@
     <body>
         <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
             {% if AllOrders == [] %}
-            <h1>No orders at the moment!</h1>
+                <h1>No orders at the moment</h1>
             {% else %}
-            <table>
-            <tr>
-                <th>Order</th>
-                <th>Pizzas</th>
-                <th>ingredients</th>
-                <th>Time elapsed</th>
-            </tr>
-            {% for order in AllOrders %}
-                <tr>
-                    <th>{{ AllOrders[order][0] }}</th>
-                    
-                </tr>
-            </table>
-            {% endfor %}
+                <table>
+                    <tr>
+                        <th>Ordered By:</th>
+                        <th>Ordernumber</th>
+                        <th>Pizzas</th>
+                        <th>Ingredients</th>
+                        <th>Time left</th>
+                    </tr>
+                    {% for order in AllOrders %}
+                        <tr>
+                            <th>{{ order[1] }}</th>
+                            <th>{{ order[2] }}</th>
+                            <th>
+                                {% for item in Pizzas %}
+                                    {% if item[0] == order[2] %}
+                                        {% for thing in item %}
+                                            {% if thing != order[2] %}
+                                                {{ thing }}<br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            </th>
+                            <th>
+                                {% for item in Pizzas %}
+                                    {% if item[0] == order[2] %}
+                                        {% for thing in item %}
+                                            {% if thing != order[2] %}
+                                                {{ Dicktionary[thing][2] }}<br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            </th>
+                            <th>
+                                <form action="/testing">
+                                    <input type="text" name="ON" value={{ order[2] }}>
+                                    <input type="submit" value="Done">
+                                </form>
+                            </th>
+                        </tr>
+                    {% endfor %}
+                </table>
             {% endif %}
         </div>
     </body>
