@@ -230,7 +230,7 @@ def cook():
 
     return render_template('cookorders.html', Length = len(order), AllOrders = allOrders, Order = order, Dicktionary = dicktionary, Pizzas = pizzas)
 
-@app.route('/testing')
+@app.route('/cooking')
 def testing():
     global counter
     counter = 0
