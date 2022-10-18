@@ -124,6 +124,41 @@ body{
     color: black;
     margin-left:15px;
     
-
 }
 
+#Noorders{
+ 
+    position: relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+    color: black;
+    margin-left:15px;
+}
+
+#Dontdisplay{
+    color: transparent;
+}
+
+.Hide{
+
+    color: transparent;
+}
+
+.PizzasInOven{
+    position: relative;
+    bottom: 415px;
+    left: 825px;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 470px;
+    width: 350px;
+}
+
+#OvenPizzaStatus{
+    position:relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    color:black;
+    margin-right: 40px;
+    margin-left: 120px;
+    margin-top: 10px;
+}
