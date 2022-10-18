@@ -6,7 +6,7 @@
     <body>
         <script src="https://unpkg.com/htmx.org@1.8.2"></script>
         <div id="divID">
-            <p>Your order has been confirmed. <br>Order number: {{ Ordernumber }}</p>
+            <p>Your order has been confirmed. <br>Order number: {{ Ordernumber[session.name] }}</p>
             <button onclick="location.href='/'" type="button">Home</button>
             <div id="here" hx-get="/timerupdate" hx-target="body" hx-trigger="every 1s">
             {% if Status == 0 %}

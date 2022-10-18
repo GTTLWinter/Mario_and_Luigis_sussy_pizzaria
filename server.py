@@ -7,7 +7,7 @@ from random import randrange
 from flask_session import Session
 
 order = {}
-price = []
+price = {}
 usernames = []
 passwords = []
 pizzas = []
@@ -19,7 +19,7 @@ total = 0
 timer = 0
 status = 0
 loggedIn = 0
-ordernumber = 0
+ordernumber = {}
 one = 1
 counter = 0
 username = ""
@@ -45,7 +45,7 @@ def removeItem(item):
     for index in range(0, len(order[session["name"]])):
         if order[session["name"]][index] == item:
             del order[session["name"]][index]
-            del price[index]
+            del price[session["name"]][index]
             break
 
 @app.route('/')
@@ -55,6 +55,7 @@ def index():
         session["name"] = randrange(350)
         anon = 1
         order[session["name"]] = []
+        price[session["name"]] = []
         print(order)
     return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one, anon = anon)
 
@@ -66,8 +67,8 @@ def payment():
 def cart():
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, loggedIn = loggedIn, One = one)
 
 @app.route('/status', methods = ['POST'])
@@ -113,15 +114,17 @@ def logout():
 @app.route('/orderstatus')
 def orderstatus():
     global ordernumber, username, order, total, price
-    ordernumber = randrange(99999999)
+    print(order)
+    username = session["name"]
+    ordernumber[session["name"]] = randrange(99999999)
     print(ordernumber)
     with open("orders.csv", "a")as writeorder:
-        writeorder.write("," + username + "," + str(ordernumber) + ",")
-        for index in range(0, len(order)):
-            writeorder.write(order[index] + ",")
+        writeorder.write("," + str(username) + "," + str(ordernumber[session["name"]]) + ",")
+        for index in range(0, len(order[session["name"]])):
+            writeorder.write(order[session["name"]][index] + ",")
         writeorder.write(str(total) + "," + "\n")
-    order = []
-    price = []
+    order[session["name"]] = []
+    price[session["name"]] = []
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 
@@ -150,32 +153,32 @@ def ordertrack():
 @app.route('/margaritha', methods = ['GET'])
 def margaritha():
     order[session["name"]].append("margaritha")
-    price.append(8)
+    price[session["name"]].append(8)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/Pep', methods = ['GET'])
 def pepperoni():
     order[session["name"]].append("pepperoni")
-    price.append(10)
+    price[session["name"]].append(10)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/BBQC', methods = ['GET'])
 def BBQC():
     order[session["name"]].append("BBQC")
     print(order)
-    price.append(12)
+    price[session["name"]].append(12)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rmargaritha', methods = ['GET'])
@@ -184,8 +187,8 @@ def rmar():
     removeItem(item)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rPep', methods = ['GET'])
@@ -194,8 +197,8 @@ def rpep():
     removeItem(item)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/rBBQC', methods = ['GET'])
@@ -204,8 +207,8 @@ def rbbqc():
     removeItem(item)
     global total
     total = 0
-    for index in range(0, len(price)):
-        total = total + int(price[index])
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
 
 @app.route('/cookorders')
