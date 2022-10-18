@@ -30,9 +30,7 @@
                 <button id="orders"> ORDERS</button>
             </a>
 
-        <div class="Greenbar">
-
-        </div>    
+        <div class="Greenbar"></div>    
 
 
         <!--This is the set of code that diplays the orders-->
@@ -52,10 +50,10 @@
                     <div class="Orderlist">
                         <p id="Ordertext">
                             Ordered By:</br>
-                            Ordernumber</br>
-                            Pizzas</br>
-                            Ingredients</br>
-                            Time left</br>
+                            Ordernumber: </br>
+                            Pizzas: </br>
+                            Ingredients: </br>
+                            Time left: </br>
                         </p>
                     </div>
 
@@ -89,10 +87,7 @@
                                 {% endfor %}
                             </th>
                             <th>
-                                <form action="/cooking">
-                                    <input type="text" name="ON" value={{ order[2] }}>
-                                    <input type="submit" value="Done">
-                                </form>
+
                             </th>
                         </tr>
                  <div id="Dontdisplay">     
@@ -101,9 +96,20 @@
 
                 </table>
 
+                <div class="FinishButton">
+                    <form action="/cooking">
+                        <input type="text" name="ON" value={{ order[2] }}>
+                        <input type="submit" value="Done">
+                    </form>
+                </div>
+
                 <div id="Dontdisplay">    
                  {% endif %}
                  </div>
+        </div>
+        
+        <div class="DividingLine">
+
         </div>
 
         <div class="PizzasInOven">
