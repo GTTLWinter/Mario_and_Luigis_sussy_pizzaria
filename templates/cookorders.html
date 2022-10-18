@@ -1,17 +1,63 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="../static/css/cookorder.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <h1> <div class="Mariologo"> MARIO </div> <div class="andsymbol"> & </div> <div class= "Luigilogo"> LUIGI'S </div> PIZZERIA </h1>
+
+    </head>
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
+
     <body>
+
+        <!---login button that links to login page-->
+        <div class="Loginbutton">
+
+            <a href="https://www.google.com"> <!--replace this link with a link to login page-->
+                <button id="login"> LOGIN </button>
+            </a>
+
+        </div>
+
+        <div class="Menubar">
+
+            <a href="https://www.google.com">
+                <button id="takeorder"> TAKE ORDERS</button>
+            </a>
+
+            <a href="https://www.google.com">
+                <button id="orders"> ORDERS</button>
+            </a>
+
+        <div class="Greenbar">
+
+        </div>    
+
+
+
         <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
             {% if AllOrders == [] %}
-            <h1>No orders at the moment!</h1>
+            
+            <div class="NoOrders">
+            <p>No orders at the moment!</p>
+            </div>
+
             {% else %}
-            <table>
-            <tr>
-                <th>Order</th>
-                <th>Pizzas</th>
-                <th>ingredients</th>
-                <th>Time elapsed</th>
-            </tr>
+            
+            <div class="Orderlist">
+                <p id="Ordertext">
+                
+                </br>   
+                Order: </br>
+                Pizza: </br> 
+                Ingredients: </br>
+                Time: </br>
+                </br>
+
+
+                </p>
+            </div>
+
             {% for order in AllOrders %}
                 <tr>
                     <th>{{ AllOrders[order][0] }}</th>
