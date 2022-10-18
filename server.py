@@ -1,3 +1,4 @@
+from glob import glob
 import time
 from flask import Flask, render_template, request, redirect, flash, session
 import csv
@@ -5,15 +6,15 @@ import pandas as pd
 from random import randrange
 from flask_session import Session
 
-order = []
+order = {}
 price = []
 usernames = []
 passwords = []
 pizzas = []
-margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]
-pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]
+margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]  # type: ignore
+pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]  # type: ignore
 bbqc = ["Barbeque Chicken", 12, "Pizza Sauce, Cheese, Chicken"]
-dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc}
+dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc}  # type: ignore
 total = 0
 timer = 0
 status = 0
@@ -24,12 +25,12 @@ counter = 0
 username = ""
 tracked = []
 user = 0
+anon = 0
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-app.secret_key = b'sussybakalmaohaha'
 Flask.secret_key = 'lmaosus'
 
 with open("userinfo.csv") as readdata:
@@ -41,16 +42,21 @@ with open("userinfo.csv") as readdata:
 
 def removeItem(item):
     global order, price
-    for index in range(0, len(order)):
-        if order[index] == item:
-            del order[index]
+    for index in range(0, len(order[session["name"]])):
+        if order[session["name"]][index] == item:
+            del order[session["name"]][index]
             del price[index]
             break
 
 @app.route('/')
 def index():
-    global order, session
-    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one, username = username)
+    global order, anon
+    if not session.get("name"):
+        session["name"] = randrange(350)
+        anon = 1
+        order[session["name"]] = []
+        print(order)
+    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one, anon = anon)
 
 @app.route('/payment')
 def payment():
@@ -82,58 +88,27 @@ def indexupdates():
     time.sleep(0.1)
     return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
-@app.route('/login')
-def login():
-    return render_template("login.html")
-
 @app.route('/register')
 def register():
     return render_template("register.html")
 
-@app.route('/logout')
-def logout():
-    global loggedIn
-    session["username"] = None
-    loggedIn = 0
-    return redirect("/")
-
-@app.route('/registerdata', methods = ['POST'])
-def registerdata():
-    global loggedIn, username, usernames, passwords
+@app.route("/login", methods=["POST", "GET"])
+def login(): 
+    global anon
+  # if form is submited
     if request.method == "POST":
-        username = request.args['username']
-        password = request.args['password']
-    for index in range(0, len(usernames)):
-        if username == usernames[index]:
-            flash('Username already has a account')
-            return redirect('/register')
-        else:
-            session["username"] = request.form.get("username")
-            usernames.append(username)
-            passwords.append(password)
-            with open("userinfo.csv", "a") as writedata:
-                writedata.write("\n" + username + "," + password)
-            loggedIn = 1
-            return redirect('/')
+        # record the user name
+        session["name"] = request.form.get("name")
+        # redirect to the main page
+        anon = 0
+        order[session["name"]] = []
+        return redirect("/")
+    return render_template("login.html")
 
-
-@app.route('/logindata')
-def logindata():
-    global loggedIn, username, session
-    username = request.args['username']
-    password = request.args['password']
-    for index in range(0, len(usernames)):
-        if username == usernames[index]:
-            if password == passwords[index]:
-                loggedIn = 1
-                session["username"] = request.form.get("username")
-                return redirect('/')
-            else:
-                return redirect('login')
-                break
-        else:
-            flash('No account found with that username')
-    return redirect('login')
+@app.route("/logout")
+def logout():
+    session["name"] = None
+    return redirect("/")
 
 @app.route('/orderstatus')
 def orderstatus():
@@ -174,7 +149,7 @@ def ordertrack():
 
 @app.route('/margaritha', methods = ['GET'])
 def margaritha():
-    order.append("margaritha")
+    order[session["name"]].append("margaritha")
     price.append(8)
     global total
     total = 0
@@ -184,7 +159,7 @@ def margaritha():
 
 @app.route('/Pep', methods = ['GET'])
 def pepperoni():
-    order.append("pepperoni")
+    order[session["name"]].append("pepperoni")
     price.append(10)
     global total
     total = 0
@@ -194,7 +169,8 @@ def pepperoni():
 
 @app.route('/BBQC', methods = ['GET'])
 def BBQC():
-    order.append("BBQC")
+    order[session["name"]].append("BBQC")
+    print(order)
     price.append(12)
     global total
     total = 0

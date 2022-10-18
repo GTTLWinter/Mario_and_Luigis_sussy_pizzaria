@@ -14,14 +14,17 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/cart">Cart</a></li>
                 <li><a href="/ordertracker">Order search</a></li>
-                <li>{{username}}</li>
+                <li> {{ session.name }}</li>
                 <div id="rightli">
-                    {% if username %}
+                    {% if anon == 1 %}
+                    <li class="login"><a href="/login">Login</a></li>
+                    {% else %}
+                    {% if session.name %}
                     <li class="login"><a href="/account">Account</a></li>
                     <li class="login"><a href="/logout">Sign out</a></li>
                     {% else %}
-                    <a hx-trigger="load" hx-get="/cart"></a>
                     <li class="login"><a href="/login">Login</a></li>
+                    {% endif %}
                     {% endif %}
                 </div>
             </ul><br>
