@@ -57,17 +57,17 @@ def loop():
                 orderstarted -= 1
                 orderdone = False
                 array = {'status': 0, 'timer': orderstarted}
-                response = requests.post('http://145.93.104.206:5000/status', json = array)
+                response = requests.post('http://127.0.0.1:5000/status', json = array)
             print("Timer has ended!")
             array["status"] = 1
-            response = requests.post('http://145.93.104.206:5000/status', json = array)
+            response = requests.post('http://127.0.0.1:5000/status', json = array)
         while orderdone == False:
             level2, time_stamp2 = board.digital_read(BUTTON2PIN)
             if level2 == 0:
                 orderdone = True
                 print("Order is ready!")
                 array["status"] = 2
-                response = requests.post('http://145.93.104.206:5000/status', json = array)
+                response = requests.post('http://127.0.0.1:5000/status', json = array)
                 time.sleep(0.2)
     t += 1
                 

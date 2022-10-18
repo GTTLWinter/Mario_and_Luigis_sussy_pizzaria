@@ -4,7 +4,7 @@
         <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <form action="registerdata">
+        <form action="registerdata" method="POST">
             <label for="fusername">Username:</label><br>
             <input type="text" name="username" value="" required><br><br>
             <label for="fpassword">Password:</label><br>
