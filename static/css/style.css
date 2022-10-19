@@ -16,7 +16,7 @@ body {
 }
 
 #cart {
-  /* flex: 1; */
+  flex: 1;
 }
 
 #cart2 {
