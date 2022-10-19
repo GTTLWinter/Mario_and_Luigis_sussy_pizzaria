@@ -4,6 +4,7 @@ body {
 
 .main {
   top: 88.4px;
+  position: relative;
 }
 
 #parent {
