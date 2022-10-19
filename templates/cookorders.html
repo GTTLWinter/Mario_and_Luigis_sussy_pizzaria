@@ -48,13 +48,15 @@
 
                 <table>
                     <div class="Orderlist">
-                        <p id="Ordertext">
-                            Ordered By:</br>
-                            Ordernumber: </br>
-                            Pizzas: </br>
-                            Ingredients: </br>
-                            Time left: </br>
-                        </p>
+                        <div class="Ordertext">
+                           <p id="OrderContent">     
+                                Ordered By:</br>
+                                 Ordernumber: </br>
+                                 Pizzas: </br>
+                                 Ingredients: </br>
+                                 Time left: </br>
+                            </p>
+                        </div>
                     </div>
 
                     <div id="Dontdisplay">
@@ -98,8 +100,10 @@
 
                 <div class="FinishButton">
                     <form action="/cooking">
-                        <input type="text" name="ON" value={{ order[2] }}>
-                        <input type="submit" value="Done">
+                        <div class="InputTextColor">
+                            <input type="text" name="ON" value= {{ order[2] }}>
+                        </div>
+                        <input type="submit" value="Done">   
                     </form>
                 </div>
 
@@ -114,12 +118,22 @@
 
         <div class="PizzasInOven">
             <p id="OvenPizzaStatus">
-                Pizza Number: </br>
-                Time left: </br>
-                Temperature: </br>
+                <p id="StatusTitle">Order Status: </> </br></br>
 
+                <div class="StatusContent">
+                    <p id="part1StatusContent">
+                        Order number: </br>
+                    </p>
+
+                    <p id="part2StatusContent">
+                        Insert order number ........................ mins
+                    </p>
+                        
+                </div>
             </p>
         </div>
+
+        
 
     </body>
 </html>
