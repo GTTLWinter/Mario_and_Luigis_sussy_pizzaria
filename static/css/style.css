@@ -11,17 +11,18 @@ body {
 }
 
 #pizzas {
-  flex: 1;
+  position: relative;
+  width: 75%;
 }
 
 #cart {
-  flex: 1;
+  /* flex: 1; */
 }
 
 #cart2 {
   margin-left: 25px;
   margin-top: 88.4px;
-  width: 50%;
+  width: 25%;
   float: right;
 }
 
