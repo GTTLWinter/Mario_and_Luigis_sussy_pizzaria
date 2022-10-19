@@ -2,3 +2,4 @@ __pycache__
 venv
 flask_session
 venv/Lib/site-packages/pandas/_libs
+venv/Scripts/flask.exe
