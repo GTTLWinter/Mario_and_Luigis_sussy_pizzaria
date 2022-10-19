@@ -10,10 +10,10 @@ price = {}
 usernames = []
 passwords = []
 pizzas = []
-margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]  # type: ignore
-pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]  # type: ignore
+margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]
+pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]
 bbqc = ["Barbeque Chicken", 12, "Pizza Sauce, Cheese, Chicken"]
-dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc}  # type: ignore
+dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc}
 total = 0
 timer = 0
 status = 0
@@ -229,7 +229,7 @@ def cook():
         print(allOrders)
         print(pizzas)
 
-    return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, Order = order, Dicktionary = dicktionary, Pizzas = pizzas)
+    return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, order = order[session["name"]], Dicktionary = dicktionary, Pizzas = pizzas)
 
 @app.route('/cooking')
 def testing():
