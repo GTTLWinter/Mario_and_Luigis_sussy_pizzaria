@@ -1,20 +1,67 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="../static/css/cookorders.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <h1> <div class="Mariologo"> MARIO </div> <div class="andsymbol"> & </div> <div class= "Luigilogo"> LUIGI'S </div> PIZZERIA </h1>
+
+    </head>
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
+
     <body>
+
+        <!---login button that links to login page-->
+        <div class="Loginbutton">
+
+            <a href="https://www.google.com"> <!--replace this link with a link to login page-->
+                <button id="login"> LOGIN </button>
+            </a>
+
+        </div>
+
+        <div class="Menubar">
+            
+            <!--link to take order page-->
+            <a href="https://www.google.com">
+                <button id="takeorder"> TAKE ORDERS</button>
+            </a>
+            <!--link to order page-->
+            <a href="https://www.google.com">
+                <button id="orders"> ORDERS</button>
+            </a>
+
+        <div class="Greenbar"></div>    
+
+
+        <!--This is the set of code that diplays the orders-->
         <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
-            {% if AllOrders == [] %}
-                <h1>No orders at the moment</h1>
-            {% else %}
+
+           <div id="Dontdisplay">
+             {% if AllOrders == [] %}
+            </div>
+
+            <p id="Noorders">No orders at the moment</p>
+
+            <div id="Dontdisplay">
+                {% else %}
+            </div> 
+
                 <table>
-                    <tr>
-                        <th>Ordered By:</th>
-                        <th>Ordernumber</th>
-                        <th>Pizzas</th>
-                        <th>Ingredients</th>
-                        <th>Time left</th>
-                    </tr>
-                    {% for order in AllOrders %}
-                        <tr>
+                    <div class="Orderlist">
+                        <p id="Ordertext">
+                            Ordered By:</br>
+                            Ordernumber: </br>
+                            Pizzas: </br>
+                            Ingredients: </br>
+                            Time left: </br>
+                        </p>
+                    </div>
+
+                    <div id="Dontdisplay">
+                        {% for order in AllOrders %}
+                    </div>    
+                    
+                        <tr class="Hide">
                             <th>{{ order[1] }}</th>
                             <th>{{ order[2] }}</th>
                             <th>
@@ -40,15 +87,39 @@
                                 {% endfor %}
                             </th>
                             <th>
-                                <form action="/cooking">
-                                    <input type="text" name="ON" value={{ order[2] }}>
-                                    <input type="submit" value="Done">
-                                </form>
+
                             </th>
                         </tr>
+                 <div id="Dontdisplay">     
                     {% endfor %}
+                </div>    
+
                 </table>
-            {% endif %}
+
+                <div class="FinishButton">
+                    <form action="/cooking">
+                        <input type="text" name="ON" value={{ order[2] }}>
+                        <input type="submit" value="Done">
+                    </form>
+                </div>
+
+                <div id="Dontdisplay">    
+                 {% endif %}
+                 </div>
         </div>
+        
+        <div class="DividingLine">
+
+        </div>
+
+        <div class="PizzasInOven">
+            <p id="OvenPizzaStatus">
+                Pizza Number: </br>
+                Time left: </br>
+                Temperature: </br>
+
+            </p>
+        </div>
+
     </body>
 </html>

@@ -1,0 +1,182 @@
+h1{
+    /* MARIO & LUIGI’S PIZZERIA */
+
+position: relative;
+width: 438px;
+height: 59px;
+
+font-family: 'Chela One';
+font-style: normal;
+font-size: 25px;
+line-height: 42px;
+letter-spacing:1px;
+
+color: black;
+}
+
+html{
+    height:100%
+}
+
+body{
+    min-height: 100%;
+    width: 100%;
+}
+
+.Mariologo{
+    color: rgba(248, 87, 87, 1);
+    float: left;
+    clear: none;
+    margin-left: 10px;
+}
+.andsymbol{
+    float: left;
+    clear: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.Luigilogo{
+    color: rgba(114, 191, 107, 1);
+    float: left;
+    clear: none;
+    margin-right: 10px;
+}
+
+/* Logint/logout button*/
+
+.Loginbutton{
+    position: relative;
+    left: 1160px;
+    bottom: 70px;
+    color:white;
+
+}
+
+#login{
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 20px;
+}
+
+.Menubar{
+    position: relative;
+    bottom: 50px;
+    background-color: rgba(248, 87, 87, 1);
+    width: 100%;
+    height: 30px;
+    border: none;
+    
+}
+
+#takeorder{
+
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+#orders{
+
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+.Greenbar{
+    
+    position: relative;
+    bottom: -1px;
+    background-color:rgba(114, 191, 107, 1);
+    width: 100%;
+    height: 27px;
+    border: none;
+}
+
+.Orderlist{
+
+    /*Order blocks*/
+    position: relative;
+    bottom: 80px;
+    left: 30px;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 200px;
+    width: 200px;
+
+}
+
+#Ordertext{
+
+    position: relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+    color: black;
+    margin-left:15px;
+    
+}
+
+#Noorders{
+ 
+    position: relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+    color: black;
+    margin-left:50px;
+}
+
+#Dontdisplay{
+    color: transparent;
+}
+
+.Hide{
+
+    color: transparent;
+}
+
+.PizzasInOven{
+    /*Pizza status block*/
+    position: relative;
+    bottom: 450px;
+    left: 825px;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 420px;
+    width: 350px;
+}
+
+#OvenPizzaStatus{
+    position:relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    color:black;
+    margin-right: 40px;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+.DividingLine{
+position: absolute;
+width: 1px;
+height: 400px;
+left: 767px;
+top: 110px;
+background: #000000;
+
+}
+
+.FinishButton{
+    position: relative;
+    left: 500px;
+    top: 60px;
+}
