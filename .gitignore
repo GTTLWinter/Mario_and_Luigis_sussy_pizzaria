@@ -1,5 +1,2 @@
 __pycache__
 venv
-flask_session
-venv/Lib/site-packages
-venv/Scripts
