@@ -117,15 +117,16 @@ body{
 
 }
 
-#Ordertext{
+.Ordertext{
 
     position: relative;
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 17px;
     color: black;
     margin-left:15px;
-    
+    margin-top: 10px;
 }
+
 
 #Noorders{
  
@@ -148,7 +149,7 @@ body{
 .PizzasInOven{
     /*Pizza status block*/
     position: relative;
-    bottom: 450px;
+    bottom: 460px;
     left: 825px;
     background-color: rgba(255, 243, 200, 1);
     border-radius: 10px;;
@@ -168,7 +169,7 @@ body{
 .DividingLine{
 position: absolute;
 width: 1px;
-height: 400px;
+height: 440px;
 left: 767px;
 top: 110px;
 background: #000000;
@@ -177,6 +178,62 @@ background: #000000;
 
 .FinishButton{
     position: relative;
-    left: 500px;
-    top: 60px;
+    left: 420px;
+    top: 40px;
+    
 }
+
+input[type=text], select {
+    position:relative;
+    top: 9px;
+    left: 10px;
+    width: 89%;
+}
+
+.InputTextColor{
+    position: relative;
+    background-color: rgba(255, 243, 200, 1);
+    border: none;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+
+input[type=submit] {
+    position: relative;
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+}   
+
+
+#StatusTitle{
+    position:relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 22px;
+    color:black;
+    margin-right: 40px;
+    margin-left: 120px;
+    margin-top: 0px;
+}
+
+.StatusContent{
+
+    position:relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    color:black;
+    margin-right: 40px;
+    margin-top: -40px;
+}
+
+#part1StatusContent{
+    margin-left: 120px;
+}
+
+#part2StatusContent{
+    margin-left: 50px;
+}
+
