@@ -127,6 +127,12 @@ body{
     margin-top: 10px;
 }
 
+#OrderContent{
+    position: relative;
+    top: 20px;
+
+}
+
 
 #Noorders{
  
@@ -166,6 +172,16 @@ body{
     margin-top: 10px;
 }
 
+#StatusTitle{
+    position:relative;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 22px;
+    color:black;
+    margin-right: 40px;
+    margin-left: 120px;
+    top: 10px;
+}
+
 .DividingLine{
 position: absolute;
 width: 1px;
@@ -184,7 +200,7 @@ background: #000000;
 }
 
 input[type=text], select {
-    position:relative;
+    position: relative;
     top: 9px;
     left: 10px;
     width: 89%;
@@ -202,23 +218,15 @@ input[type=text], select {
 
 input[type=submit] {
     position: relative;
+    bottom: 35px;
+    left: 220px;
+    height: 30px;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: 'Chau Philomene One', sans-serif;
 }   
-
-
-#StatusTitle{
-    position:relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 22px;
-    color:black;
-    margin-right: 40px;
-    margin-left: 120px;
-    margin-top: 0px;
-}
 
 .StatusContent{
 
@@ -236,4 +244,3 @@ input[type=submit] {
 #part2StatusContent{
     margin-left: 50px;
 }
-
