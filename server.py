@@ -49,8 +49,15 @@ def removeItem(item):
 @app.route('/')
 def index():
     global order, anon
+    if session["name"] in usernames:
+        anon = 0
+        order[session["name"]] = []
+        price[session["name"]] = []
+        print(order)
+    else:
+        session["name"] = None
     if not session.get("name"):
-        session["name"] = randrange(350)
+        session["name"] = randrange(1000)
         anon = 1
         order[session["name"]] = []
         price[session["name"]] = []
@@ -87,21 +94,51 @@ def indexupdates():
     time.sleep(0.1)
     return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
 
-@app.route('/register')
+@app.route('/register', methods=["POST", "GET"])
 def register():
-    return render_template("register.html")
+    global anon
+    logn = 1
+    if request.method == "POST":
+        username = request.form.get("name")
+        password = request.form.get("pass")
+        if username in usernames:
+            flash("This username has already been taken")
+            return redirect('/register')
+        else:
+            session["name"] = username
+            userpass = [str(username), str(password)]
+            print(userpass)
+            anon = 0
+            order[session["name"]] = []
+            price[session["name"]] = []
+            with open('userinfo.csv', 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(userpass)
+            return redirect('/')
+    return render_template("login.html", logn = logn)
 
 @app.route("/login", methods=["POST", "GET"])
 def login(): 
     global anon
+    logn = 0
     if request.method == "POST":  
-        session["name"] = request.form.get("name")
-        anon = 0
-        order[session["name"]] = []
-        price[session["name"]] = []
-        print(order)
-        return redirect("/")
-    return render_template("login.html")
+        username = request.form.get("name")
+        password = request.form.get("pass")
+        if username in usernames:
+            if password == passwords[usernames.index(username)]:
+                session["name"] = request.form.get("name")
+                anon = 0
+                order[session["name"]] = []
+                price[session["name"]] = []
+                print(order)
+                return redirect('/')
+            else:
+                flash("Wrong password!")
+                return redirect("/login")
+        else:
+            flash("No such user exists!")
+            return redirect("/login")
+    return render_template("login.html", logn = logn)
 
 @app.route("/logout")
 def logout():
