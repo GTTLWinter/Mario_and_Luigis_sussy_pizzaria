@@ -94,13 +94,12 @@ def register():
 @app.route("/login", methods=["POST", "GET"])
 def login(): 
     global anon
-  # if form is submited
-    if request.method == "POST":
-        # record the user name
+    if request.method == "POST":  
         session["name"] = request.form.get("name")
-        # redirect to the main page
         anon = 0
         order[session["name"]] = []
+        price[session["name"]] = []
+        print(order)
         return redirect("/")
     return render_template("login.html")
 
