@@ -30,7 +30,7 @@
                 <a class="login" href="/login">Login</a>
                 {% else %}
                 {% if session.name %}
-                <a class="login" href="/account">Account</a>
+                <a class="login" hx-get="/account" hx-trigger="click" hx-target="#cart">Account</a>
                 <a class="login" href="/logout">Sign out</a>
                 {% else %}
                 <a class="login" href="/login">Login</a>
@@ -58,8 +58,8 @@
             <h4>
                 <img src="../static/2_hawaii.jpg">
                 <br>
-                Hawaii: &euro;10,-
-                <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+                Hawaii: &euro;11,-
+                <button class="button" hx-get="/hawaii" hx-trigger="click" hx-target="#cart" type="button">Add</button>
             </h4>
             <h4>
                 <img src="../static/3_pepperoni.jpg">
@@ -72,20 +72,20 @@
             <h4>
                 <img src="../static/4_gluten.jpg">
                 <br>
-                Gluten free: &euro;8,-
+                Gluten free: &euro;9,-
                 <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
             </h4>
             <h4>
                 <img src="../static/5_vegan.jpg">
                 <br>
-                Vegan: &euro;10,-
-                <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+                Vegan: &euro;15,-
+                <button class="button" hx-get="/vegan" hx-trigger="click" hx-target="#cart" type="button">Add</button>
             </h4>
             <h4>
                 <img src="../static/6_veggie.png">
                 <br>
-                Vegetarian: &euro;12,-
-                <button class="button" hx-get="/BBQC" hx-trigger="click" hx-target="#cart">Add</button>
+                Vegetarian: &euro;13,-
+                <button class="button" hx-get="/veggie" hx-trigger="click" hx-target="#cart">Add</button>
             </h4>
         </div>
     </div>

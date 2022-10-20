@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    </head>
+    <body>
+        <div id="cart2">
+        {% if anon == 1 %}
+        No account homie
+        {% else %}
+        {{session.name}}
+        {% endif %}
+    </div>
+    </body>
+</html>

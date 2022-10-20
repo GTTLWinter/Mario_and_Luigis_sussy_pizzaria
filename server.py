@@ -10,10 +10,14 @@ price = {}
 usernames = []
 passwords = []
 pizzas = []
-margaritha = ["Margaritha", 8, "Pizza Sauce, Cheese"]
-pepperoni = ["Pepperoni", 10, "Pizza Sauce, Cheese, Pepperoni"]
-bbqc = ["Barbeque Chicken", 12, "Pizza Sauce, Cheese, Chicken"]
-dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc}
+margaritha = ["Margaritha", 8, "Tomato sauce, Mozzarella"]
+pepperoni = ["Pepperoni", 10, "Tomato sauce, Mozzarella, Pepperoni"]
+bbqc = ["Barbeque Chicken", 12, "Tomato sauce, Mozzarella, Chicken"]
+hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple"]
+glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella"]
+vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese"]
+veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk"]
+dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 'vegan' : vegan, 'veggie' : veggie}
 total = 0
 timer = 0
 status = 0
@@ -31,12 +35,14 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 Flask.secret_key = 'lmaosus'
 
-with open("userinfo.csv") as readdata:
-    reader = csv.reader(readdata)
-    for row in reader:
-        usernames.append(row[0])
-        passwords.append(row[1])
-        print(usernames)
+def readinfo():
+    with open("userinfo.csv") as readdata:
+        reader = csv.reader(readdata)
+        for row in reader:
+            usernames.append(row[0])
+            passwords.append(row[1])
+            print(usernames)
+            print(passwords)
 
 def removeItem(item):
     global order, price
@@ -46,23 +52,30 @@ def removeItem(item):
             del price[session["name"]][index]
             break
 
+readinfo()
+
 @app.route('/')
 def index():
     global order, anon
-    if session["name"] in usernames:
-        anon = 0
-        order[session["name"]] = []
-        price[session["name"]] = []
-        print(order)
-    else:
-        session["name"] = None
     if not session.get("name"):
         session["name"] = randrange(1000)
         anon = 1
         order[session["name"]] = []
         price[session["name"]] = []
         print(order)
-    return render_template('index.html', Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one, anon = anon)
+    elif session["name"] in usernames:
+        anon = 0
+        order[session["name"]] = []
+        price[session["name"]] = []
+        print(order)
+    else:
+        session["name"] = randrange(1000)
+        anon = 1
+        order[session["name"]] = []
+        price[session["name"]] = []
+        print(order)
+    
+    return render_template('index.html', Order = order, Timer = timer, Status = status, anon = anon)
 
 @app.route('/payment')
 def payment():
@@ -74,7 +87,7 @@ def cart():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, loggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
@@ -92,7 +105,7 @@ def timerupdate():
 @app.route('/indexupdate')
 def indexupdates():
     time.sleep(0.1)
-    return render_template("index.html", Order = order, Timer = timer, Status = status, LoggedIn = loggedIn, One = one)
+    return render_template("index.html", Order = order, Timer = timer, Status = status)
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
@@ -114,6 +127,7 @@ def register():
             with open('userinfo.csv', 'a', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow(userpass)
+            readinfo()
             return redirect('/')
     return render_template("login.html", logn = logn)
 
@@ -192,7 +206,7 @@ def margaritha():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/Pep', methods = ['GET'])
 def pepperoni():
@@ -202,18 +216,47 @@ def pepperoni():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/BBQC', methods = ['GET'])
 def BBQC():
     order[session["name"]].append("BBQC")
-    print(order)
     price[session["name"]].append(12)
     global total
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/hawaii', methods = ['GET'])
+def hawaii():
+    order[session["name"]].append("hawaii")
+    price[session["name"]].append(11)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/vegan', methods = ['GET'])
+def vegann():
+    order[session["name"]].append("vegan")
+    price[session["name"]].append(15)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/veggie', methods = ['GET'])
+def veggiee():
+    order[session["name"]].append("veggie")
+    price[session["name"]].append(13)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/rmargaritha', methods = ['GET'])
 def rmar():
@@ -223,7 +266,7 @@ def rmar():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/rPep', methods = ['GET'])
 def rpep():
@@ -233,7 +276,7 @@ def rpep():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
 
 @app.route('/rBBQC', methods = ['GET'])
 def rbbqc():
@@ -243,7 +286,38 @@ def rbbqc():
     total = 0
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary, LoggedIn = loggedIn, One = one)
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/rhawaii', methods = ['GET'])
+def rhawaii():
+    item = "hawaii"
+    removeItem(item)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/rvegan', methods = ['GET'])
+def rvegan():
+    item = "vegan"
+    removeItem(item)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/rveggie', methods = ['GET'])
+def rVeggie():
+    item = "veggie"
+    removeItem(item)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
 
 @app.route('/cookorders')
 def cook():
@@ -282,3 +356,7 @@ def testing():
                 df.to_csv("orders.csv", index=False)
             counter += 1
     return redirect('cookorders')
+
+@app.route('/account', methods=['GET'])
+def acc():
+    return render_template('account.html', anon = anon)
