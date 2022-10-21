@@ -1,3 +1,5 @@
+/*hgjhkkkgjg*/
+
 h1{
     /* MARIO & LUIGI’S PIZZERIA */
 
@@ -200,7 +202,7 @@ background: #000000;
 }
 
 input[type=text], select {
-    position: relative;
+    position:relative;
     top: 9px;
     left: 10px;
     width: 89%;
@@ -218,13 +220,10 @@ input[type=text], select {
 
 input[type=submit] {
     position: relative;
-    bottom: 35px;
-    left: 220px;
-    height: 30px;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
 }   
 
@@ -244,3 +243,4 @@ input[type=submit] {
 #part2StatusContent{
     margin-left: 50px;
 }
+
