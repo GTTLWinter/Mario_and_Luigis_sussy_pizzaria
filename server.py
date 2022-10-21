@@ -29,6 +29,7 @@ username = ""
 tracked = []
 user = 0
 anon = 0
+ft = {}
 
 app = Flask(__name__)
 app.config["SESSION_TYPE"] = "filesystem"
@@ -56,17 +57,22 @@ readinfo()
 
 @app.route('/')
 def index():
-    global order, anon
+    global order, anon, ft
     if not session.get("name"):
         session["name"] = randrange(1000)
         anon = 1
         order[session["name"]] = []
         price[session["name"]] = []
+        if session["name"] not in ft:
+            ft[session["name"]] = 0
+        ft[session["name"]] = 0
         print(order)
     elif session["name"] in usernames:
         anon = 0
         order[session["name"]] = []
         price[session["name"]] = []
+        if session["name"] not in ft:
+            ft[session["name"]] = 0
         print(order)
     else:
         session["name"] = randrange(1000)
@@ -75,7 +81,7 @@ def index():
         price[session["name"]] = []
         print(order)
     
-    return render_template('index.html', Order = order, Timer = timer, Status = status, anon = anon)
+    return render_template('index.html', Order = order, Timer = timer, Status = status, anon = anon, ft = ft)
 
 @app.route('/payment')
 def payment():
@@ -381,3 +387,9 @@ def testing():
 @app.route('/account', methods=['GET'])
 def acc():
     return render_template('account.html', anon = anon)
+
+@app.route('/hpage', methods=['GET'])
+def homepage():
+    global ft
+    ft[session["name"]] = 1
+    return render_template('homepage.html')

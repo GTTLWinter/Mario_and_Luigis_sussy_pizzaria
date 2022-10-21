@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+{% if ft[session.name] == 0 %}
+<div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
+{% endif %}
 <head>
     <title>Mario's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
