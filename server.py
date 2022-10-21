@@ -17,7 +17,7 @@ hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple"]
 glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella"]
 vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese"]
 veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk"]
-dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 'vegan' : vegan, 'veggie' : veggie}
+dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 'vegan' : vegan, 'veggie' : veggie, 'glutenf' : glutenf}
 total = 0
 timer = 0
 status = 0
@@ -257,6 +257,17 @@ def veggiee():
     for index in range(0, len(price[session["name"]])):
         total = total + int(price[session["name"]][index])
     return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    
+@app.route('/glutenF', methods = ['GET'])
+def Glutenf():
+    order[session["name"]].append("glutenf")
+    price[session["name"]].append(9)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
 
 @app.route('/rmargaritha', methods = ['GET'])
 def rmar():
@@ -311,6 +322,16 @@ def rvegan():
 @app.route('/rveggie', methods = ['GET'])
 def rVeggie():
     item = "veggie"
+    removeItem(item)
+    global total
+    total = 0
+    for index in range(0, len(price[session["name"]])):
+        total = total + int(price[session["name"]][index])
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+
+@app.route('/rglutenF', methods = ['GET'])
+def rglutenf():
+    item = "glutenf"
     removeItem(item)
     global total
     total = 0

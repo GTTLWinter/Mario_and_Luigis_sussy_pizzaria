@@ -35,6 +35,8 @@
                 <th><button type="button" hx-trigger="click" hx-get="/rvegan" hx-target="#cart">Delete</button></th>
                 {% elif Dicktionary[s][1] == 13 %}
                 <th><button type="button" hx-trigger="click" hx-get="/rveggie" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][1] == 9 %}
+                <th><button type="button" hx-trigger="click" hx-get="/rglutenf" hx-target="#cart">Delete</button></th>
                 {% endif %}
             </tr>
             {% endfor %}
