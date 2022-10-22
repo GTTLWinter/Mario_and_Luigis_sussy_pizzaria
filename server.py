@@ -10,13 +10,13 @@ price = {}
 usernames = []
 passwords = []
 pizzas = []
-margaritha = ["Margaritha", 8, "Tomato sauce, Mozzarella"]
-pepperoni = ["Pepperoni", 10, "Tomato sauce, Mozzarella, Pepperoni"]
-bbqc = ["Barbeque Chicken", 12, "Tomato sauce, Mozzarella, Chicken"]
-hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple"]
-glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella"]
-vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese"]
-veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk"]
+margaritha = ["Margaritha", 8, "Tomato sauce, Mozzarella", 1]
+pepperoni = ["Pepperoni", 10, "Tomato sauce, Mozzarella, Pepperoni", 2]
+bbqc = ["Barbeque Chicken", 12, "Tomato sauce, Mozzarella, Chicken", 3]
+hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple", 4]
+glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella", 5]
+vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese", 6]
+veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk", 7]
 dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 'vegan' : vegan, 'veggie' : veggie, 'glutenf' : glutenf}
 total = 0
 timer = 0
@@ -46,12 +46,28 @@ def readinfo():
             print(passwords)
 
 def removeItem(item):
-    global order, price
+    global order, price, total
     for index in range(0, len(order[session["name"]])):
         if order[session["name"]][index] == item:
             del order[session["name"]][index]
             del price[session["name"]][index]
+            total = 0
+            for index in range(0, len(price[session["name"]])):
+                total = total + int(price[session["name"]][index])
             break
+
+def adddelItem():
+    global order, price, total
+    if request.method == 'POST':
+        pizza = str(request.args.keys()).replace("dict_keys(['", "").replace("'])", "")
+        if '2' in pizza:
+            removeItem(pizza.replace("2",""))
+        else:
+            order[session["name"]].append(pizza)
+            price[session["name"]].append(dicktionary[pizza][1])
+            total = 0
+            for index in range(0, len(price[session["name"]])):
+                total = total + int(price[session["name"]][index])
 
 readinfo()
 
@@ -204,148 +220,6 @@ def ordertrack():
             flash("No order found.")
     return redirect('/ordertracker')
 
-@app.route('/margaritha', methods = ['GET'])
-def margaritha():
-    order[session["name"]].append("margaritha")
-    price[session["name"]].append(8)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/Pep', methods = ['GET'])
-def pepperoni():
-    order[session["name"]].append("pepperoni")
-    price[session["name"]].append(10)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/BBQC', methods = ['GET'])
-def BBQC():
-    order[session["name"]].append("BBQC")
-    price[session["name"]].append(12)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/hawaii', methods = ['GET'])
-def hawaii():
-    order[session["name"]].append("hawaii")
-    price[session["name"]].append(11)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/vegan', methods = ['GET'])
-def vegann():
-    order[session["name"]].append("vegan")
-    price[session["name"]].append(15)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/veggie', methods = ['GET'])
-def veggiee():
-    order[session["name"]].append("veggie")
-    price[session["name"]].append(13)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-    
-@app.route('/glutenF', methods = ['GET'])
-def Glutenf():
-    order[session["name"]].append("glutenf")
-    price[session["name"]].append(9)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-
-@app.route('/rmargaritha', methods = ['GET'])
-def rmar():
-    item = "margaritha"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rPep', methods = ['GET'])
-def rpep():
-    item = "pepperoni"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rBBQC', methods = ['GET'])
-def rbbqc():
-    item = "BBQC"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rhawaii', methods = ['GET'])
-def rhawaii():
-    item = "hawaii"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rvegan', methods = ['GET'])
-def rvegan():
-    item = "vegan"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rveggie', methods = ['GET'])
-def rVeggie():
-    item = "veggie"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-@app.route('/rglutenF', methods = ['GET'])
-def rglutenf():
-    item = "glutenf"
-    removeItem(item)
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
-
-
 @app.route('/cookorders')
 def cook():
     global order, allOrders, pizzas, pizzas2
@@ -393,3 +267,8 @@ def homepage():
     global ft
     ft[session["name"]] = 1
     return render_template('homepage.html')
+
+@app.route('/pizza', methods=['POST'])
+def Pizza():
+    adddelItem()
+    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
