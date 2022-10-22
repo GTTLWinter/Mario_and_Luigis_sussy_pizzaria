@@ -46,56 +46,52 @@ def readinfo():
             print(passwords)
 
 def removeItem(item):
-    global order, price, total
+    global order, price
     for index in range(0, len(order[session["name"]])):
         if order[session["name"]][index] == item:
-            del order[session["name"]][index]
-            del price[session["name"]][index]
-            total = 0
-            for index in range(0, len(price[session["name"]])):
-                total = total + int(price[session["name"]][index])
+            del order[session["name"]][index]  
             break
 
 def adddelItem():
-    global order, price, total
+    global order, price
     if request.method == 'POST':
         pizza = str(request.args.keys()).replace("dict_keys(['", "").replace("'])", "")
         if '2' in pizza:
-            removeItem(pizza.replace("2",""))
+            delpizza = pizza.replace("2","")
+            removeItem(delpizza)
+            price[session["name"]] -= dicktionary[delpizza][1]
         else:
             order[session["name"]].append(pizza)
-            price[session["name"]].append(dicktionary[pizza][1])
-            total = 0
-            for index in range(0, len(price[session["name"]])):
-                total = total + int(price[session["name"]][index])
+            price[session["name"]] += dicktionary[pizza][1]
+            print(price)
 
 readinfo()
 
 @app.route('/')
 def index():
     global order, anon, ft
-    if not session.get("name"):
-        session["name"] = randrange(1000)
-        anon = 1
-        order[session["name"]] = []
-        price[session["name"]] = []
-        if session["name"] not in ft:
+    if anon == 0:
+        if not session.get("name"):
+            session["name"] = randrange(1000)
+            anon = 1
+            order[session["name"]] = []
+            price[session["name"]] = 0
+            if session["name"] not in ft:
+                ft[session["name"]] = 0
             ft[session["name"]] = 0
-        ft[session["name"]] = 0
-        print(order)
-    elif session["name"] in usernames:
-        anon = 0
-        order[session["name"]] = []
-        price[session["name"]] = []
-        if session["name"] not in ft:
-            ft[session["name"]] = 0
-        print(order)
-    else:
-        session["name"] = randrange(1000)
-        anon = 1
-        order[session["name"]] = []
-        price[session["name"]] = []
-        print(order)
+            print(order)
+        elif session["name"] in usernames:
+            anon = 2
+            order[session["name"]] = []
+            price[session["name"]] = 0
+            if session["name"] not in ft:
+                ft[session["name"]] = 0
+            print(order)
+        elif session.get("name"):
+            anon = 1
+            order[session["name"]] = []
+            price[session["name"]] = 0
+            print(order)
     
     return render_template('index.html', Order = order, Timer = timer, Status = status, anon = anon, ft = ft)
 
@@ -105,11 +101,7 @@ def payment():
 
 @app.route('/cart')
 def cart():
-    global total
-    total = 0
-    for index in range(0, len(price[session["name"]])):
-        total = total + int(price[session["name"]][index])
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return render_template('cart.html', Order = order, Price = price[session["name"]], Dicktionary = dicktionary)
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
@@ -178,12 +170,14 @@ def login():
 
 @app.route("/logout")
 def logout():
+    global anon
     session["name"] = None
+    anon = 0
     return redirect("/")
 
 @app.route('/orderstatus')
 def orderstatus():
-    global ordernumber, username, order, total, price
+    global ordernumber, username, order, price
     print(order)
     username = session["name"]
     ordernumber[session["name"]] = randrange(99999999)
@@ -192,7 +186,7 @@ def orderstatus():
         writeorder.write("," + str(username) + "," + str(ordernumber[session["name"]]) + ",")
         for index in range(0, len(order[session["name"]])):
             writeorder.write(order[session["name"]][index] + ",")
-        writeorder.write(str(total) + "," + "\n")
+        writeorder.write(str(price[session["name"]]) + "," + "\n")
     order[session["name"]] = []
     price[session["name"]] = []
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
@@ -271,4 +265,4 @@ def homepage():
 @app.route('/pizza', methods=['POST'])
 def Pizza():
     adddelItem()
-    return render_template('cart.html', Order = order, Price = total, Dicktionary = dicktionary)
+    return redirect('/cart')
