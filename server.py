@@ -266,3 +266,11 @@ def homepage():
 def Pizza():
     adddelItem()
     return redirect('/cart')
+
+@app.route('/drinks', methods=['GET', 'POST'])
+def Drinks():
+    return render_template('drinks.html')
+
+@app.route('/pizzas')
+def Pizzas():
+    return render_template('pizzas.html')
