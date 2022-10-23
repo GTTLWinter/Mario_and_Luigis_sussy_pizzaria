@@ -207,8 +207,8 @@ def ordertrack():
             if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
                 for index in range(3, (len(row) - 2)):
                     tracked.append(row[index])
-                    print(tracked)
-                total = row[-1]
+                print(tracked)
+                total = row[len(row)-2]
                 return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
         if len(tracked) == 0:
             flash("No order found.")
@@ -262,15 +262,13 @@ def homepage():
     ft[session["name"]] = 1
     return render_template('homepage.html')
 
-@app.route('/pizza', methods=['POST'])
+@app.route('/pizza', methods=['POST', 'GET'])
 def Pizza():
-    adddelItem()
-    return redirect('/cart')
-
+    if request.method == "POST":
+        adddelItem()
+        return redirect('/cart')
+    return render_template('pizzas.html')
+    
 @app.route('/drinks', methods=['GET', 'POST'])
 def Drinks():
     return render_template('drinks.html')
-
-@app.route('/pizzas')
-def Pizzas():
-    return render_template('pizzas.html')
