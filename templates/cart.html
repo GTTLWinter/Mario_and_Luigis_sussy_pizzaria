@@ -17,12 +17,15 @@
                 <th>Item</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th></th>
             </tr>
             {% for s in Order[session.name] %}
             <tr>
-                {% if s == "Custom" %}
+                {% if "Custom" in s %}
                 <th>Custom</th>
-                <th></th>
+                <th>{{s[2]}}, {{s[3]}}, {{s[4]}}</th>
+                <th class="price">{{ s[5] }}</th>
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?{{s}}" hx-target="#cart">Delete</button></th>
                 {% else %}
                 <th>{{ Dicktionary[s][0] }}</th>
                 <th>{{ Dicktionary[s][2] }}</th>
