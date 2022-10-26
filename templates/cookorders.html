@@ -47,17 +47,19 @@
             </div> 
 
                 <table>
-                    <div class="Orderlist">
-                        <div class="Ordertext">
-                           <p id="OrderContent">     
-                                Ordered By:</br>
-                                 Ordernumber: </br>
-                                 Pizzas: </br>
-                                 Ingredients: </br>
-                                 Time left: </br>
-                            </p>
+                    <div class="Ordergrid">
+                        <div class="Orderlist">
+                            <div class="Ordertext">
+                            <p id="OrderContent">     
+                                    Ordered By:</br>
+                                    Ordernumber: </br>
+                                    Pizzas: </br>
+                                    Ingredients: </br>
+                                    Time left: </br>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </div>    
 
                     <div id="Dontdisplay">
                         {% for order in AllOrders %}
