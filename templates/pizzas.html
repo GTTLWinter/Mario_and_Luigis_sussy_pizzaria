@@ -6,44 +6,50 @@
         hx-get sends a 'GET' request to our server, hx-trigger is what triggers that, and hx-target targets where the changes should happen using css targeting
         in our case we send it to /margaritha |  in our case that is the button being clicked  |  in our case that is the div with id #cart-->
         <div class="row">
-            <h4>
+            <div class="pizzaItem">
                 <img src="../static/1_margherita.jpg">
-                <br>
-                Margaritha: &euro;8,-
-                <button class="button" type="button" hx-post="/pizza?margaritha" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-            <h4>
+                <h4>
+                    Margaritha: &euro;8,-
+                    <button class="button" type="button" hx-post="/pizza?margaritha" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
                 <img src="../static/2_hawaii.jpg">
-                <br>
-                Hawaii: &euro;11,-
-                <button class="button" hx-post="/pizza?hawaii" hx-trigger="click" hx-target="#cart" type="button">Add</button>
-            </h4>
-            <h4>
+                <h4>
+                    Hawaii: &euro;11,-
+                    <button class="button" hx-post="/pizza?hawaii" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
                 <img src="../static/3_pepperoni.jpg">
-                <br>
-                Pepperoni: &euro;12,-
-                <button class="button" hx-post="/pizza?pepperoni" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
+                <h4>
+                    Pepperoni: &euro;12,-
+                    <button class="button" hx-post="/pizza?pepperoni" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
         </div>
         <div class="row">
-            <h4>
+            <div class="pizzaItem">
                 <img src="../static/4_gluten.jpg">
-                <br>
-                Gluten free: &euro;9,-
-                <button class="button" type="button" hx-post="/pizza?glutenf" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-            <h4>
+                <h4>
+                    Gluten free: &euro;9,-
+                    <button class="button" type="button" hx-post="/pizza?glutenf" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
                 <img src="../static/5_vegan.jpg">
-                <br>
-                Vegan: &euro;15,-
-                <button class="button" hx-post="/pizza?vegan" hx-trigger="click" hx-target="#cart" type="button">Add</button>
-            </h4>
-            <h4>
+                <h4>
+                    Vegan: &euro;15,-
+                    <button class="button" hx-post="/pizza?vegan" hx-trigger="click" hx-target="#cart" type="button">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
                 <img src="../static/6_veggie.png">
-                <br>
-                Vegetarian: &euro;13,-
-                <button class="button" hx-post="/pizza?veggie" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
+                <h4>
+                    Vegetarian: &euro;13,-
+                    <button class="button" hx-post="/pizza?veggie" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
         </div>
     </div>
 </html>

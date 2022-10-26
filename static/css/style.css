@@ -1,9 +1,13 @@
+* {
+  font-family: 'Chau Philomene One';
+}
+
 body {
   margin: 0px;
 }
 
 .main {
-  top: 134.8px;
+  top: 152.4px;
   position: relative;
 }
 
@@ -23,7 +27,7 @@ body {
   /* margin-left: 25px; */
   width: 30%;
   float: right;
-  top: 134.8px;
+  top: 152.4px;
 }
 
 .payment {
@@ -69,6 +73,7 @@ a {
   float: left;
   clear: none;
   margin-left: 10px;
+  font-family: 'Chela One';
 }
 
 .andsymbol {
@@ -76,6 +81,7 @@ a {
   clear: none;
   margin-left: 10px;
   margin-right: 10px;
+  font-family: 'Chela One';
 }
 
 .Luigilogo {
@@ -83,6 +89,7 @@ a {
   float: left;
   clear: none;
   margin-right: 10px;
+  font-family: 'Chela One';
 }
 
 .space_between {
@@ -106,6 +113,7 @@ a {
   padding: 14px 16px;
   text-decoration: none;
   background-color: rgb(255, 52, 52);
+  font-size: 20px;
 }
 
 /* Change the link color to #111 (black) on hover */
@@ -122,7 +130,7 @@ a {
 .menuBar {
   position: absolute;
   width: 100%;
-  top: 88.4px;
+  top: 97.2px;
   background-color: rgb(80, 192, 69);
   /* box-shadow: 2px 2px 4px 0px #00000099 */
   /* z-index: 1; */
@@ -135,6 +143,7 @@ a {
   padding: 14px 16px;
   text-decoration: none;
   background-color: rgb(80, 192, 69);
+  font-size: 20px;
   cursor: pointer;
   /* float: left; */
 }
@@ -151,5 +160,20 @@ a {
 img {
   width: 200px;
   height: 200px;
-  overflow: cover;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.pizzaItem {
+  background-color: #ffe585;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
