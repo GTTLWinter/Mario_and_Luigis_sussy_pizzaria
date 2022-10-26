@@ -1,5 +1,6 @@
 /*hgjhkkkgjg*/
 
+
 h1{
     /* MARIO & LUIGI’S PIZZERIA */
 
@@ -106,17 +107,22 @@ body{
     border: none;
 }
 
-.Orderlist{
+/***********************************/
 
+.Ordergrid{
+    display: flex;
+    flex-direction: column;
+    
+}
+.Orderlist{
     /*Order blocks*/
-    position: relative;
-    bottom: 80px;
-    left: 30px;
+    display:flex;
+    flex-direction: row;
+    flex:auto;
     background-color: rgba(255, 243, 200, 1);
     border-radius: 10px;;
     height: 200px;
     width: 200px;
-
 }
 
 .Ordertext{
@@ -244,3 +250,4 @@ input[type=submit] {
     margin-left: 50px;
 }
 
+/****/

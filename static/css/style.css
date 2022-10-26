@@ -140,6 +140,7 @@ a {
   text-decoration: none;
   background-color: rgb(80, 192, 69);
   font-size: 20px;
+  cursor: pointer;
   /* float: left; */
 }
 
