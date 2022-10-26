@@ -36,10 +36,12 @@ body {
 
 button {
   float: right;
+  cursor: pointer;
 }
 
 a {
   float: left;
+  cursor: pointer;
 }
 
 #rightli {
@@ -92,12 +94,6 @@ a {
   font-family: 'Chela One';
 }
 
-.space_between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .linkBar {
   position: fixed;
   top: 42px;
@@ -124,7 +120,7 @@ a {
 .space_between {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .menuBar {
@@ -173,6 +169,24 @@ h4 {
   background-color: #ffe585;
   border-radius: 20px;
   padding: 10px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 20px;
+}
+
+.registerButton {
+  float: none;
+  margin-left: 10px;
+}
+
+.loginMain {
+  top: 98px;
+  position: relative;
+  margin: 20px;
+}
+
+h1 {
+  margin: 0px;
+}
+
+.dessertImg {
+  object-fit: contain;
 }

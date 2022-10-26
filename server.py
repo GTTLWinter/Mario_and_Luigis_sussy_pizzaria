@@ -272,3 +272,7 @@ def Pizza():
 @app.route('/drinks', methods=['GET', 'POST'])
 def Drinks():
     return render_template('drinks.html')
+
+@app.route('/desserts', methods=['GET', 'POST'])
+def Desserts():
+    return render_template('desserts.html')

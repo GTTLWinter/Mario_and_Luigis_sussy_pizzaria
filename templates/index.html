@@ -4,9 +4,10 @@
 <div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
 {% endif %}
 <head>
-    <title>Mario's Pizzeria</title>
+    <title>Mario & Luigi's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../static/mario-icon-28.jpg">
 </head>
 <!--Script used for AJAX(dynamic) refresh-->
 <script src="https://unpkg.com/htmx.org@1.8.2"></script>
@@ -41,7 +42,7 @@
     <div class="menuBar">
         <a hx-trigger="click" hx-get="/pizza" hx-target=".main" hx-swap="outerHTML">Pizzas</a>
         <a hx-trigger="click" hx-get="/drinks" hx-target=".main" hx-swap="outerHTML">Drinks</a>
-        <a href="/desserts">Desserts</a>
+        <a hx-trigger="click" hx-get="/desserts" hx-target=".main" hx-swap="outerHTML">Desserts</a>
     </div>
 
     <div class="main" hx-trigger="load" hx-get="/pizza" hx-target=".main" hx-swap="outerHTML"></div>
