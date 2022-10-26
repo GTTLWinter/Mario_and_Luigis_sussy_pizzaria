@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+    <div class="main" id="pizzas">
+    <h1>Make you own pizza!</h1>
+    <table>
+        <tr><th>Dough/Crust</th> <th>Sauce</th></tr>
+    <form>
+        <tr>
+            <td>
+        <select name="stuff" hx-target=".price" hx-post="/custpizza" id="crust">
+            <option selected value="0">Normal</option>
+            <option value="1">Italian(+2.19)</option>
+            <option value="2">Philadelphia filled crust(+3.49)</option>
+        </select>
+            </td>
+            <td>
+        <select id="sauce" hx-target=".price" hx-post="/custpizza" name="stuff">
+            <option selected value="3">Tomato sauce</option>
+            <option value="4">Pesto(+1.19)</option>
+            <option value="5">White Garlic Sauce(+2.49)</option>
+            <option value="6">Marinara Sauce(+3.49)</option>
+        </select>
+            </td>
+        </tr>
+        <tr><th>Toppings</th></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?7">Pepperoni</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?8">Ham</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?9">Mushrooms</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?10">Pineapple</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?11">Olives</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?12">Onions</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?13">Corn</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?14">Sausage</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?15">Bacon</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?16">Chicken</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?17">Spinach</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?18">Basel</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?19">Beef</td></tr>
+        <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?20">Pork</td></tr>
+    </form>
+    <button type="button" hx-trigger="click" hx-post="/custpizza?21">Add to cart</button>
+    </table>
+    <div class="price">{{Price}}</div>
+    <div>
+
+    <div id="cart"></div>
+</html>

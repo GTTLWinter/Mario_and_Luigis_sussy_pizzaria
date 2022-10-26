@@ -30,6 +30,12 @@ tracked = []
 user = 0
 anon = 0
 ft = {}
+ingredients = ["Normal", "Italian", "Philladelphia", "Tomato sauce", "Pesto", "White Garlic", "Marinara Sauce", 
+    "Pepperoni", "Ham", "Mushrooms", "Pineapple", "Olives", "Onions", "Corn", "Sausage", "Bacon", "Chicken", 
+    "Spinach", "Basel", "Beef", "Pork"]
+prices = [2, 4.19, 5.49, 2, 3.19, 4.49, 5.49, 1.10, 1.20, 1.30, 1.15, 1.15, 1.3, 1.2, 1.9, 2, 2, 0.89, 0.89, 3, 2.85]
+custompizza = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
+CustomPizza = {}
 
 app = Flask(__name__)
 app.config["SESSION_TYPE"] = "filesystem"
@@ -76,6 +82,7 @@ def index():
             anon = 1
             order[session["name"]] = []
             price[session["name"]] = 0
+            CustomPizza[session["name"]] = custompizza
             if session["name"] not in ft:
                 ft[session["name"]] = 0
             ft[session["name"]] = 0
@@ -84,6 +91,7 @@ def index():
             anon = 2
             order[session["name"]] = []
             price[session["name"]] = 0
+            CustomPizza[session["name"]] = custompizza
             if session["name"] not in ft:
                 ft[session["name"]] = 0
             print(order)
@@ -91,8 +99,8 @@ def index():
             anon = 1
             order[session["name"]] = []
             price[session["name"]] = 0
+            CustomPizza[session["name"]] = custompizza
             print(order)
-    
     return render_template('index.html', Order = order, Timer = timer, Status = status, anon = anon, ft = ft)
 
 @app.route('/payment')
@@ -272,3 +280,43 @@ def Pizza():
 @app.route('/drinks', methods=['GET', 'POST'])
 def Drinks():
     return render_template('drinks.html')
+
+@app.route('/custpizza', methods=['GET', 'POST'])
+def Custpizza():
+    global CustomPizza, ingredients, prices, price, order
+    
+    if request.method == "POST":
+        if request.args.keys():
+            ingr = int(str(request.args.keys()).replace("dict_keys(['", "").replace("'])", ""))
+        else:
+            ingr = int(request.form.get('stuff'))
+        print(ingr)
+        if ingr <= 2: 
+            CustomPizza[session["name"]]["price"] -= prices[ingredients.index(CustomPizza[session["name"]]["crust"])]
+            CustomPizza[session["name"]]["crust"] = ingredients[ingr]
+            CustomPizza[session["name"]]["price"] += prices[ingr]
+            print(CustomPizza[session["name"]])
+            return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+        elif ingr == 21:
+            Custom = ["Custom", 3 + len(CustomPizza[session["name"]]["toppings"]), CustomPizza[session["name"]]["crust"], CustomPizza[session["name"]]["sauce"], CustomPizza[session["name"]]["toppings"], CustomPizza[session["name"]]["price"]]
+            order[session["name"]].append(Custom)
+            price[session["name"]] += Custom[len(Custom) - 1]
+            print(Custom)
+            return redirect('/')
+        elif ingr > 6:
+            if ingredients[ingr] in CustomPizza[session["name"]]["toppings"]:
+                CustomPizza[session["name"]]["toppings"].remove(ingredients[ingr])
+                CustomPizza[session["name"]]["price"] -= prices[ingr]
+                return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+            else:
+                CustomPizza[session["name"]]["toppings"].append(ingredients[ingr])
+                CustomPizza[session["name"]]["price"] += prices[ingr]
+                print(CustomPizza)
+                return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+        elif ingr > 2:
+            CustomPizza[session["name"]]["price"] -= prices[ingredients.index(CustomPizza[session["name"]]["sauce"])]
+            CustomPizza[session["name"]]["sauce"] = ingredients[ingr]
+            CustomPizza[session["name"]]["price"] += prices[ingr]
+            print(CustomPizza[session["name"]])
+            return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+    return render_template('custpizza.html', Price = CustomPizza[session["name"]]["price"])

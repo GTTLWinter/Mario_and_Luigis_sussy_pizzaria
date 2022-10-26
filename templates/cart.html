@@ -20,6 +20,10 @@
             </tr>
             {% for s in Order[session.name] %}
             <tr>
+                {% if s == "Custom" %}
+                <th>Custom</th>
+                <th></th>
+                {% else %}
                 <th>{{ Dicktionary[s][0] }}</th>
                 <th>{{ Dicktionary[s][2] }}</th>
                 <th class="price">{{ Dicktionary[s][1] }}</th>
@@ -37,6 +41,7 @@
                 <th><button type="button" hx-trigger="click" hx-post="/pizza?veggie2" hx-target="#cart">Delete</button></th>
                 {% elif Dicktionary[s][3] == 5 %}
                 <th><button type="button" hx-trigger="click" hx-post="/pizza?glutenf2" hx-target="#cart">Delete</button></th>
+                {% endif %}
                 {% endif %}
             </tr>
             {% endfor %}
