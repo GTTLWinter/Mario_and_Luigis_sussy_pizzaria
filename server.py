@@ -286,6 +286,10 @@ def Pizza():
 def Drinks():
     return render_template('drinks.html')
 
+@app.route('/desserts', methods=['GET', 'POST'])
+def Desserts():
+    return render_template('desserts.html')
+
 @app.route('/custpizza', methods=['GET', 'POST'])
 def Custpizza():
     global CustomPizza, ingredients, prices, price, order
