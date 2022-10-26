@@ -109,7 +109,8 @@ def payment():
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html', Order = order, Price = price[session["name"]], Dicktionary = dicktionary)
+    ds = len(order[session["name"]])
+    return render_template('cart.html', ds = ds, Order = order, Price = price[session["name"]], Dicktionary = dicktionary)
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
@@ -273,7 +274,11 @@ def homepage():
 @app.route('/pizza', methods=['POST', 'GET'])
 def Pizza():
     if request.method == "POST":
-        adddelItem()
+        k = str(request.args.keys()).replace("dict_keys(['", "").replace("'])", "")
+        if "Custom" in k:
+            del order[session["name"]][order[session["name"]].index(k)]
+        else:    
+            adddelItem()
         return redirect('/cart')
     return render_template('pizzas.html')
     
