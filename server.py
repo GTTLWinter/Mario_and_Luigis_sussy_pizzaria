@@ -12,11 +12,11 @@ passwords = []
 pizzas = []
 margaritha = ["Margaritha", 8, "Tomato sauce, Mozzarella", 1]
 pepperoni = ["Pepperoni", 10, "Tomato sauce, Mozzarella, Pepperoni", 2]
-bbqc = ["Barbeque Chicken", 12, "Tomato sauce, Mozzarella, Chicken", 3]
+bbqc = ["Barbeque Chicken", 12, "Tomato sauce, BBQ sauce, Mozzarella, Chicken", 3]
 hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple", 4]
 glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella", 5]
-vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese", 6]
-veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk", 7]
+vegan = ["Vegan", 15, "Vegan dough, Tomato sauce, Vegan cheese", 6]
+funghi = ["Funghi", 13, "Tomato sauce, Mozzarella, Mushrooms, Olives", 7]
 forange = ["Drink", 2, "Fanta Orange", 8]
 ccola = ["Drink", 1.9, "Coca Cola", 9]
 grit = ["Drink", 1.7, "Green Ice Tea", 10]
@@ -30,7 +30,7 @@ vccake = ["Dessert", 6, "Vanilla Cupcake", 17]
 icream = ["Dessert", 3, "Ice Cream", 18]
 tsu = ["Dessert", 4, "Tiramisu", 19]
 dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 
-'vegan' : vegan, 'veggie' : veggie, 'glutenf' : glutenf, 'forange' : forange, 'ccola' : ccola,
+'vegan' : vegan, 'funghi' : funghi, 'glutenf' : glutenf, 'forange' : forange, 'ccola' : ccola,
 'grit' : grit, 'chcola' : chcola, 'petea' : petea, 'fcasis' : fcasis, 'chcake' : chcake, 'ckie' : ckie,
 'brownie' : brownie, 'vccake' : vccake, 'icream' : icream, 'tsu' : tsu}
 total = 0
