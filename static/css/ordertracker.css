@@ -66,6 +66,8 @@ h1{
 .Menubar{
     display: flex;
     flex-direction: column;
+    position: relative;
+    top: -1.5em
 }
 
 .Redbar{
@@ -108,4 +110,40 @@ h1{
     border: none;
     background-color: transparent;
 }
+
+/******************************************************************************************************/
+/*********************************************ORDER TRACKING*******************************************/
+/******************************************************************************************************/
+
+.Trackingblock{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
     
+}    
+
+.centerpositioning{
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 300px;
+    width: 700px;
+
+}
+
+input[type=submit]{
+
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+}
+
+input[type=text]{
+    
+} 
+
+#OrderNumb{
+    font-family: 'Chau Philomene One', sans-serif;
+    color:black;
+}
