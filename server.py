@@ -17,7 +17,22 @@ hawaii = ["Hawaii", 11, "Tomato sauce, Mozzarella, Ham, Pineapple", 4]
 glutenf = ["Gluten Free", 9, "Gluten free dough, Tomato sauce, Mozzarella", 5]
 vegan = ["Vegan", 15, "Tomato sauce, Vegan cheese", 6]
 veggie = ["Vegeterian", 13, "Tomato sauce, Mozzarella, Other healthy shit idk", 7]
-dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 'vegan' : vegan, 'veggie' : veggie, 'glutenf' : glutenf}
+forange = ["Drink", 2, "Fanta Orange", 8]
+ccola = ["Drink", 1.9, "Coca Cola", 9]
+grit = ["Drink", 1.7, "Green Ice Tea", 10]
+chcola = ["Drink", 1.9, "Coca Cola Cherry", 11]
+petea = ["Drink", 1.8, "Peach Ice Tea", 12]
+fcasis = ["Drink", 2, "Fanta Cassis", 13]
+chcake = ["Dessert", 5, "Cheesecake", 14]
+ckie = ["Dessert", 3.5, "Chocolate Cookie", 15]
+brownie = ["Dessert", 3.5, "Brownie", 16]
+vccake = ["Dessert", 6, "Vanilla Cupcake", 17]
+icream = ["Dessert", 3, "Ice Cream", 18]
+tsu = ["Dessert", 4, "Tiramisu", 19]
+dicktionary = {'margaritha': margaritha, 'pepperoni': pepperoni, 'BBQC': bbqc, 'hawaii' : hawaii, 
+'vegan' : vegan, 'veggie' : veggie, 'glutenf' : glutenf, 'forange' : forange, 'ccola' : ccola,
+'grit' : grit, 'chcola' : chcola, 'petea' : petea, 'fcasis' : fcasis, 'chcake' : chcake, 'ckie' : ckie,
+'brownie' : brownie, 'vccake' : vccake, 'icream' : icream, 'tsu' : tsu}
 total = 0
 timer = 0
 status = 0

@@ -26,6 +26,40 @@
                 <th>{{s[2]}}, {{s[3]}}, {{s[4]}}</th>
                 <th class="price">{{ s[5] }}</th>
                 <th><button type="button" hx-trigger="click" hx-post="/pizza?{{s}}" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][0] == "Drink" %}
+                <th>{{ Dicktionary[s][2] }}</th>
+                <th></th>
+                <th class="price">{{ Dicktionary[s][1] }}</th>
+                {% if Dicktionary[s][3] == 8 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?forange2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 9 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?ccola2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 10 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?grit2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 11 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?chcola2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 12 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?petea2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 13 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?fcasis2" hx-target="#cart">Delete</button></th>
+                {% endif %}
+                {% elif Dicktionary[s][0] == "Dessert" %}
+                <th>{{ Dicktionary[s][2] }}</th>
+                <th></th>
+                <th class="price">{{ Dicktionary[s][1] }}</th>
+                {% if Dicktionary[s][3] == 14 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?chcake2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 15 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?ckie2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 16 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?brownie2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 17 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?vccake2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 18 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?icream2" hx-target="#cart">Delete</button></th>
+                {% elif Dicktionary[s][3] == 19 %}
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?tsu2" hx-target="#cart">Delete</button></th>
+                {% endif %}
                 {% else %}
                 <th>{{ Dicktionary[s][0] }}</th>
                 <th>{{ Dicktionary[s][2] }}</th>
