@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="main" id="pizzas">
+        <div class="row">
+            <div class="pizzaItem dessertImg">
+                <img src="../static/13_cheesecake.jpg">
+                <h4>
+                    Cheesecake: &euro;5,-
+                    <button class="button" type="button" hx-post="/pizza?chcake" hx-trigger="click"
+                        hx-target="#cart">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem dessertImg">
+                <img src="../static/14_cookie.png">
+                <h4>
+                    Chocolate Cookie: &euro;3.5,-
+                    <button class="button" hx-post="/pizza?ckie" hx-trigger="click" hx-target="#cart"
+                        type="button">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem dessertImg">
+                <img src="../static/15_brownie.jpg">
+                <h4>
+                    Brownie: &euro;3.5,-
+                    <button class="button" hx-post="/pizza?brownie" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pizzaItem dessertImg">
+                <img src="../static/16_cupcake.jpg">
+                <h4>
+                    Vanilla Cupcake: &euro;6,-
+                    <button class="button" type="button" hx-post="/pizza?vccake" hx-trigger="click"
+                        hx-target="#cart">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem dessertImg">
+                <img src="../static/17_icecream.jpg">
+                <h4>
+                    Ice Cream: &euro;3,-
+                    <button class="button" hx-post="/pizza?icream" hx-trigger="click" hx-target="#cart"
+                        type="button">Add</button>
+                </h4>
+            </div>
+            <div class="pizzaItem dessertImg">
+                <img src="../static/18_tiramisu.jpg">
+                <h4>
+                    Tiramisu: &euro;4,-
+                    <button class="button" hx-post="/pizza?tsu" hx-trigger="click" hx-target="#cart">Add</button>
+                </h4>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
