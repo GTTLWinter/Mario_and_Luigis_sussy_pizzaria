@@ -1,16 +1,62 @@
 <html>
     <head>
         <title>Mario's Pizzeria - Order Tracker</title>
-        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="../static/css/ordertracker.css">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="main">
-        <button onclick="location.href='/'" type="button">Home</button>
+
+        <div class="LogoandLogin">
+            <div class="LogoContainer">
+                <h1> 
+                    <div class="Mariologo"> MARIO </div> 
+                    <div class="andsymbol"> & </div> 
+                    <div class= "Luigilogo"> LUIGI'S </div> 
+                    PIZZERIA 
+                
+                </h1>
+            </div>
+
+            <div class="Loginbutton">
+                <a href="login.html"> 
+                    <button id="login"> LOGIN </button>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="Menubar">
+            <div class="Redbar">
+
+                <a href="homepage.html">
+                    <button id="HOME"onclick="location.href='/'" type="button">HOME</button>
+                </a>
+                <!--link to SMT page-->
+                <a href="https://www.google.com">
+                    <button id="Check"> INSERT SOMETHING</button>
+                </a>
+
+            </div>
+            <div class="Greenbar"></div>
+        </div>
+
+
+     <div class="Trackingblock">
         <form action="ordertrack">
             <label for="ordernumber">Insert order number here:</label><br>
             <input type="text" name="ordernumber" value="" required><br><br>
             <input type="submit" value="Submit">
         </form>
+     </div>
+
+        
+        <div class="Bottomlines">
+            <div id="bottombar1"></div>
+            <div id="bottombar2"></div>
         </div>
+
+
+
+        
     </body>
 </html>
