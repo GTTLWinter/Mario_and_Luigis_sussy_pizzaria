@@ -20,19 +20,19 @@ body {
   justify-content: space-around;
 }
 
-/* #cart {
-  flex: 1;
-} */
-
-#cart2 {
-  width: 40%;
+#cart {
   float: right;
-  top: 172.4px;
-  padding-bottom: 24px;
+  width: 37%;
 }
 
-.payment {
-  margin-right: 50%;
+#cart2 {
+  float: right;
+  top: 172.4px;
+  margin-bottom: 24px;
+  margin: 24px;
+  background-color: #ffe585;
+  border-radius: 10px;
+  width: 90%;
 }
 
 button {
@@ -40,14 +40,25 @@ button {
   cursor: pointer;
   background-color: rgb(80, 192, 69);
   color: white;
-  border: solid rgb(35, 118, 28) 1px;
+  border: outset rgb(35, 118, 28) 2px;
   border-radius: 5px;
 }
 
 .button {
-  font-size: 30px;
-  width: 1em;
-  height: 1em;
+  font-size: 40px;
+  width: 0.8em;
+  height: 0.8em;
+  line-height: 0.8em;
+}
+
+.deleteButton {
+  margin: 5px;
+}
+
+.payButton {
+  float: right;
+  margin: 30px;
+  font-size: large;
 }
 
 a {
@@ -170,6 +181,10 @@ img {
   border-radius: 10px;
 }
 
+h1 {
+  margin-left: 20%;
+}
+
 h4 {
   font-size: 18px;
   font-weight: normal;
@@ -200,10 +215,6 @@ h4 {
   margin: 20px;
 }
 
-h1 {
-  margin: 0px;
-}
-
 .dessertImg {
   object-fit: contain;
 }
@@ -222,4 +233,29 @@ h1 {
   height: 12px;
   background-color: rgb(80, 192, 69);
   width: 100%;
+}
+
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price {
+  text-align: right;
+  /* min-width: 80px; */
+}
+
+.totalPrice {
+  font-size: larger;
+}
+
+th {
+  text-align: left;
+}
+
+.cartHeader {
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: larger;
 }
