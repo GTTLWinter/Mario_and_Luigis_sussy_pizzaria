@@ -26,7 +26,7 @@
                 <a hx-trigger="click" hx-target=".main" hx-swap="outerHTML" hx-get="/ordertracker">Order search</a>
             </div>
             <div>
-                {% if anon == 1 %}
+                {% if anon[session.name] == 1 %}
                 <a class="login" href="/login">Login</a>
                 {% else %}
                 {% if session.name %}
