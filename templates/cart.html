@@ -25,7 +25,7 @@
                 <th>Custom</th>
                 <th>{{s[2]}}, {{s[3]}}, {{s[4]}}</th>
                 <th class="price">{{ s[5] }}</th>
-                <th><button type="button" hx-trigger="click" hx-post="/pizza?{{s}}" hx-target="#cart">Delete</button></th>
+                <th><button type="button" hx-trigger="click" hx-post="/pizza?cu{{Order[session.name].index(s)}}" hx-target="#cart">Delete</button></th>
                 {% elif Dicktionary[s][0] == "Drink" %}
                 <th>{{ Dicktionary[s][2] }}</th>
                 <th></th>

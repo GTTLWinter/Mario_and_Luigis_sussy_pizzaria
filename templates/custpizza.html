@@ -41,10 +41,9 @@
         <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?19">Beef</td></tr>
         <tr><td><input type="checkbox" hx-trigger="click" hx-target=".price" hx-post="/custpizza?20">Pork</td></tr>
     </form>
-    <button type="button" hx-trigger="click" hx-post="/custpizza?21">Add to cart</button>
+    <tr><td><button type="button" hx-trigger="click" hx-post="/custpizza?21" hx-target=".main" hx-swap="outerHTML">Add to cart</button></td></tr>
     </table>
     <div class="price">{{Price}}</div>
-    <div>
-
-    <div id="cart"></div>
+    </div>
+    <a hx-trigger="load" hx-get="/cart" hx-target="#cart"></a>
 </html>
