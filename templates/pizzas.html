@@ -18,23 +18,32 @@
                 <img src="../static/1_margherita.jpg">
                 <h4>
                     Margaritha: &euro;8,-
-                    <button class="button" type="button" hx-post="/pizza?margaritha" hx-trigger="click"
-                        hx-target="#cart">Add</button>
+                    <button class="button add" type="button" hx-post="/pizza?margaritha" hx-trigger="click"
+                        hx-target="#cart">+</button>
+                    <div class="ingredients">
+                        Tomato sauce, Mozzarella
+                    </div>
                 </h4>
             </div>
             <div class="pizzaItem">
                 <img src="../static/2_hawaii.jpg">
                 <h4>
                     Hawaii: &euro;11,-
-                    <button class="button" hx-post="/pizza?hawaii" hx-trigger="click" hx-target="#cart"
-                        type="button">Add</button>
+                    <button class="button add" hx-post="/pizza?hawaii" hx-trigger="click" hx-target="#cart"
+                        type="button">+</button>
+                    <div class="ingredients">
+                        Tomato sauce, Mozzarella, Ham, Pineapple
+                    </div>
                 </h4>
             </div>
             <div class="pizzaItem">
                 <img src="../static/3_pepperoni.jpg">
                 <h4>
                     Pepperoni: &euro;12,-
-                    <button class="button" hx-post="/pizza?pepperoni" hx-trigger="click" hx-target="#cart">Add</button>
+                    <button class="button add" hx-post="/pizza?pepperoni" hx-trigger="click" hx-target="#cart">+</button>
+                    <div class="ingredients">
+                        Tomato sauce, Mozzarella, Pepperoni
+                    </div>
                 </h4>
             </div>
         </div>
@@ -43,23 +52,32 @@
                 <img src="../static/4_gluten.jpg">
                 <h4>
                     Gluten free: &euro;9,-
-                    <button class="button" type="button" hx-post="/pizza?glutenf" hx-trigger="click"
-                        hx-target="#cart">Add</button>
+                    <button class="button add" type="button" hx-post="/pizza?glutenf" hx-trigger="click"
+                        hx-target="#cart">+</button>
+                    <div class="ingredients">
+                        Gluten free dough, Tomato sauce, Mozzarella
+                    </div>
                 </h4>
             </div>
             <div class="pizzaItem">
                 <img src="../static/5_vegan.jpg">
                 <h4>
                     Vegan: &euro;15,-
-                    <button class="button" hx-post="/pizza?vegan" hx-trigger="click" hx-target="#cart"
-                        type="button">Add</button>
+                    <button class="button add" hx-post="/pizza?vegan" hx-trigger="click" hx-target="#cart"
+                        type="button">+</button>
+                    <div class="ingredients">
+                        Vegan dough, Tomato sauce, Vegan cheese
+                    </div>
                 </h4>
             </div>
             <div class="pizzaItem">
-                <img src="../static/6_veggie.png">
+                <img src="../static/6_funghi.png">
                 <h4>
-                    Vegetarian: &euro;13,-
-                    <button class="button" hx-post="/pizza?veggie" hx-trigger="click" hx-target="#cart">Add</button>
+                    Funghi: &euro;13,-
+                    <button class="button add" hx-post="/pizza?funghi" hx-trigger="click" hx-target="#cart">+</button>
+                    <div class="ingredients">
+                        Tomato sauce, Mozzarella, Mushrooms, Olives
+                    </div>
                 </h4>
             </div>
         </div>

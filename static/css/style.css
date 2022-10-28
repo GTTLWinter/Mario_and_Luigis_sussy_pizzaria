@@ -7,27 +7,28 @@ body {
 }
 
 .main {
-  top: 152.4px;
+  top: 172.4px;
   position: relative;
+  padding-bottom: 24px;
 }
 
 #pizzas {
   position: absolute;
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-#cart {
+/* #cart {
   flex: 1;
-}
+} */
 
 #cart2 {
-  /* margin-left: 25px; */
-  width: 30%;
+  width: 40%;
   float: right;
-  top: 152.4px;
+  top: 172.4px;
+  padding-bottom: 24px;
 }
 
 .payment {
@@ -37,6 +38,16 @@ body {
 button {
   float: right;
   cursor: pointer;
+  background-color: rgb(80, 192, 69);
+  color: white;
+  border: solid rgb(35, 118, 28) 1px;
+  border-radius: 5px;
+}
+
+.button {
+  font-size: 30px;
+  width: 1em;
+  height: 1em;
 }
 
 a {
@@ -61,17 +72,18 @@ a {
   width: 100%;
   height: 42px;
   font-family: 'Chela One';
-  font-size: 25px;
+  font-size: 35px;
   line-height: 42px;
   letter-spacing: 1px;
   color: black;
-  background-color: lightgray;
+  background-color: rgb(232, 232, 232);
   z-index: 2;
   box-shadow: 2px 2px 4px 0px #00000099;
+  padding: 10px;
 }
 
 .Mariologo {
-  color: rgb(248, 87, 87);
+  color: rgb(255, 52, 52);
   float: left;
   clear: none;
   margin-left: 10px;
@@ -87,7 +99,7 @@ a {
 }
 
 .Luigilogo {
-  color: rgb(114, 191, 107);
+  color: rgb(80, 192, 69);
   float: left;
   clear: none;
   margin-right: 10px;
@@ -96,7 +108,7 @@ a {
 
 .linkBar {
   position: fixed;
-  top: 42px;
+  top: 62px;
   width: 100%;
   background-color: rgb(255, 52, 52);
   box-shadow: 2px 2px 4px 0px #00000099
@@ -112,7 +124,6 @@ a {
   font-size: 20px;
 }
 
-/* Change the link color to #111 (black) on hover */
 .linkBar a:hover {
   background-color: rgb(140, 14, 14);
 }
@@ -126,7 +137,7 @@ a {
 .menuBar {
   position: absolute;
   width: 100%;
-  top: 97.2px;
+  top: 117.2px;
   background-color: rgb(80, 192, 69);
   /* box-shadow: 2px 2px 4px 0px #00000099 */
   /* z-index: 1; */
@@ -141,7 +152,6 @@ a {
   background-color: rgb(80, 192, 69);
   font-size: 20px;
   cursor: pointer;
-  /* float: left; */
 }
 
 .menuBar a:hover {
@@ -164,6 +174,12 @@ h4 {
   font-size: 18px;
   font-weight: normal;
   margin: 0px;
+}
+
+.ingredients {
+  font-size: 15px;
+  max-width: 200px;
+  color: rgb(54, 54, 54);
 }
 
 .pizzaItem {
@@ -190,4 +206,20 @@ h1 {
 
 .dessertImg {
   object-fit: contain;
+}
+
+.redBottomBar {
+  position: fixed;
+  bottom: 12px;
+  height: 12px;
+  background-color: rgb(255, 52, 52);
+  width: 100%;
+}
+
+.greenBottomBar {
+  position: fixed;
+  bottom: 0px;
+  height: 12px;
+  background-color: rgb(80, 192, 69);
+  width: 100%;
 }
