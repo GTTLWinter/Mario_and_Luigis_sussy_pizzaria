@@ -43,7 +43,7 @@ counter = 0
 username = ""
 tracked = []
 user = 0
-anon = 0
+anon = {}
 ft = {}
 ingredients = ["Normal", "Italian", "Philladelphia", "Tomato sauce", "Pesto", "White Garlic", "Marinara Sauce", 
     "Pepperoni", "Ham", "Mushrooms", "Pineapple", "Olives", "Onions", "Corn", "Sausage", "Bacon", "Chicken", 
@@ -90,27 +90,31 @@ readinfo()
 @app.route('/')
 def index():
     global order, anon, ft
-    if anon == 0:
-        if not session.get("name"):
-            session["name"] = randrange(1000)
-            anon = 1
-            order[session["name"]] = []
-            price[session["name"]] = 0
-            CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
-            if session["name"] not in ft:
-                ft[session["name"]] = 0
+    if not session.get("name"):
+        session["name"] = randrange(1000)
+        order[session["name"]] = []
+        price[session["name"]] = 0
+        CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
+        if session["name"] not in ft:
             ft[session["name"]] = 0
-            print(order)
-        elif session["name"] in usernames:
-            anon = 2
+        ft[session["name"]] = 0
+        print(order)
+    elif session["name"] in usernames:
+        if session["name"] in order:
+            None
+        else:
+            anon[session["name"]] = 1
             order[session["name"]] = []
             price[session["name"]] = 0
             CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
             if session["name"] not in ft:
                 ft[session["name"]] = 0
             print(order)
-        elif session.get("name"):
-            anon = 1
+    elif session.get("name"):
+        if session["name"] in order:
+            None
+        else:
+            anon[session["name"]] = 1
             order[session["name"]] = []
             price[session["name"]] = 0
             CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
