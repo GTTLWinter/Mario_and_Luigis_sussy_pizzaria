@@ -47,7 +47,7 @@
     </div>
 
     <div class="main" hx-trigger="load" hx-get="/pizza" hx-target=".main" hx-swap="outerHTML"></div>
-    
+
     <!--hx-trigger load means that it triggers the first time the html file loads, 
                 this is how we get the cart to appear if there is already stuff in it-->
     <div class="main" id="cart" hx-trigger="load" hx-get="/cart" hx-target="#cart">
