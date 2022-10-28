@@ -81,7 +81,7 @@ h1{
     order: 1;
     background-color: rgba(248, 87, 87, 1);
     width: 100%;
-    height: 35px;
+    height: 30px;
     border: none;
 
     display:flex;
@@ -92,10 +92,17 @@ h1{
 
 .Greenbar{
     order:2;
-    background-color:rgba(114, 191, 107, 1);
+    order: 2;
+    background-color: rgba(114, 191, 107, 1);
     width: 100%;
     height: 30px;
     border: none;
+
+
+    display:flex;
+    flex: row;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #HOME{
@@ -106,6 +113,7 @@ h1{
     color: white;
     border: none;
     background-color: transparent;
+    padding-left: 10px;
 }
 
 #Check{
@@ -116,6 +124,7 @@ h1{
     color: white;
     border: none;
     background-color: transparent;
+    padding-left: 30px;
 }
 
 /******************************************************************************************************/
