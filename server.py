@@ -197,7 +197,6 @@ def login():
 def logout():
     global anon
     session["name"] = None
-    anon = 0
     return redirect("/")
 
 @app.route('/orderstatus')
