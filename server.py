@@ -323,9 +323,9 @@ def Custpizza():
             CustomPizza[session["name"]]["crust"] = ingredients[ingr]
             CustomPizza[session["name"]]["price"] += prices[ingr]
             print(CustomPizza[session["name"]])
-            return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+            return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
         elif ingr == 21:
-            Custom = ["Custom", 3 + len(CustomPizza[session["name"]]["toppings"]), CustomPizza[session["name"]]["crust"], CustomPizza[session["name"]]["sauce"], str(CustomPizza[session["name"]]["toppings"]).replace("[", "").replace("]", "").replace("'",""), CustomPizza[session["name"]]["price"]]
+            Custom = ["Custom", 3 + len(CustomPizza[session["name"]]["toppings"]), CustomPizza[session["name"]]["crust"], CustomPizza[session["name"]]["sauce"], str(CustomPizza[session["name"]]["toppings"]).replace("[", "").replace("]", "").replace("'",""), round(float(CustomPizza[session["name"]]["price"]), 2)]
             order[session["name"]].append(Custom)
             price[session["name"]] += Custom[len(Custom) - 1]
             print(Custom)
@@ -337,17 +337,17 @@ def Custpizza():
                 CustomPizza[session["name"]]["toppings"].remove(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] -= prices[ingr]
 
-                return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+                return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
             else:
                 CustomPizza[session["name"]]["toppings"].append(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] += prices[ingr]
 
                 
-                return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
+                return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
         elif ingr > 2:
             CustomPizza[session["name"]]["price"] -= prices[ingredients.index(CustomPizza[session["name"]]["sauce"])]
             CustomPizza[session["name"]]["sauce"] = ingredients[ingr]
             CustomPizza[session["name"]]["price"] += prices[ingr]
             return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
     CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
-    return render_template('custpizza.html', Price = CustomPizza[session["name"]]["price"])
+    return render_template('custpizza.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
