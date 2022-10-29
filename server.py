@@ -92,6 +92,7 @@ def index():
     global order, anon, ft
     if not session.get("name"):
         session["name"] = randrange(1000)
+        anon[session["name"]] = 1
         order[session["name"]] = []
         price[session["name"]] = 0
         CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
@@ -103,7 +104,7 @@ def index():
         if session["name"] in order:
             None
         else:
-            anon[session["name"]] = 1
+            anon[session["name"]] = 2
             order[session["name"]] = []
             price[session["name"]] = 0
             CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
@@ -150,7 +151,6 @@ def indexupdates():
 @app.route('/register', methods=["POST", "GET"])
 def register():
     global anon
-    logn = 1
     if request.method == "POST":
         username = request.form.get("name")
         password = request.form.get("pass")
@@ -169,12 +169,11 @@ def register():
                 writer.writerow(userpass)
             readinfo()
             return redirect('/')
-    return render_template("login.html", logn = logn)
+    return render_template("register.html")
 
 @app.route("/login", methods=["POST", "GET"])
 def login(): 
     global anon
-    logn = 0
     if request.method == "POST":  
         username = request.form.get("name")
         password = request.form.get("pass")
@@ -192,7 +191,7 @@ def login():
         else:
             flash("No such user exists!")
             return redirect("/login")
-    return render_template("login.html", logn = logn)
+    return render_template("login.html")
 
 @app.route("/logout")
 def logout():
@@ -211,7 +210,11 @@ def orderstatus():
     with open("orders.csv", "a")as writeorder:
         writeorder.write("," + str(username) + "," + str(ordernumber[session["name"]]) + ",")
         for index in range(0, len(order[session["name"]])):
-            writeorder.write(order[session["name"]][index] + ",")
+            if order[session["name"]][index][0] == "Custom":
+                for item in order[session["name"]][index]:
+                    writeorder.write(str(item).replace(" ","") + ",")
+            else:
+                writeorder.write(order[session["name"]][index] + ",")
         writeorder.write(str(price[session["name"]]) + "," + "\n")
     order[session["name"]] = []
     price[session["name"]] = []
@@ -331,6 +334,7 @@ def Custpizza():
             print(Custom)
             CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
             print(CustomPizza)
+            print(order)
             return redirect('/custpizza')
         elif ingr > 6:
             if ingredients[ingr] in CustomPizza[session["name"]]["toppings"]:

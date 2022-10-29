@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mario & Luigi's Pizzeria</title>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link
+       href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
+       rel="stylesheet">
+ </head>
+ <script src="https://unpkg.com/htmx.org@1.8.2"></script>
+
+ <body>
+    <div class="navbar">
+       <div class="logo">
+          <div class="Mariologo">MARIO</div>
+          <div class="andsymbol">&</div>
+          <div class="Luigilogo">LUIGI'S</div>
+          PIZZERIA
+       </div>
+       <div class="linkBar">
+          <div>
+             <a href="/">Home</a>
+             <a href="/cart">Cart</a>
+             <a href="/ordertracker">Order search</a>
+          </div>
+       </div>
+    </div>
+<div class="loginMain">
+    <h1> REGISTER </h1>
+    <form action="/register" method="POST">
+       <input placeholder="Userame" autocomplete="off" type="text" name="name">
+       <input placeholder="Password" autocomplete="off" type="password" name="pass">
+       <input type="submit" hx-target=".main" name="Register">
+       <p>Already have an account?<button class="registerButton" type="button" onclick="location.href='/login'">Login</button></p>
+       {% with messages = get_flashed_messages() %}
+       {% if messages %}
+       {% for message in messages %}
+       <p>{{ message }}</p>
+       {% endfor %}
+       {% endif %}
+       {% endwith %}
+    </form>
+ </div>
+ </body>
+ </html>

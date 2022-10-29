@@ -26,14 +26,13 @@
          </div>
       </div>
    </div>
-   {% if logn == 0 %}
    <div class="loginMain">
       <h1>Login</h1>
       <form action="/login" method="POST">
          <input placeholder="Userame" autocomplete="off" type="text" name="name">
          <input placeholder="Password" autocomplete="off" type="password" name="pass">
          <input type="submit" hx-target=".main" name="Login">
-         <p>Don't have an account?<button class="registerButton" type="button" hx-get="/register" hx-trigger="click"hx-target=".main">Register</button></p>
+         <p>Don't have an account?<button class="registerButton" type="button" onclick="location.href='/register'">Register</button></p>
          {% with messages = get_flashed_messages() %}
          {% if messages %}
          {% for message in messages %}
@@ -42,22 +41,6 @@
          {% endif %}
          {% endwith %}
       </form>
-      {% else %}
-      <h1> REGISTER </h1>
-      <form action="/register" method="POST">
-         <input placeholder="Userame" autocomplete="off" type="text" name="name">
-         <input placeholder="Password" autocomplete="off" type="password" name="pass">
-         <input type="submit" hx-target=".main" name="Register">
-         {% with messages = get_flashed_messages() %}
-         {% if messages %}
-         {% for message in messages %}
-         <p>{{ message }}</p>
-         {% endfor %}
-         {% endif %}
-         {% endwith %}
-      </form>
-
-      {% endif %}
    </div>
 </body>
 
