@@ -161,7 +161,7 @@ def register():
             session["name"] = username
             userpass = [str(username), str(password)]
             print(userpass)
-            anon = 0
+            anon[session["name"]] = 0
             order[session["name"]] = []
             price[session["name"]] = []
             with open('userinfo.csv', 'a', newline='') as f:
@@ -180,9 +180,9 @@ def login():
         if username in usernames:
             if password == passwords[usernames.index(username)]:
                 session["name"] = request.form.get("name")
-                anon = 0
+                anon[session["name"]] = 0
                 order[session["name"]] = []
-                price[session["name"]] = []
+                price[session["name"]] = 0
                 print(order)
                 return redirect('/')
             else:
