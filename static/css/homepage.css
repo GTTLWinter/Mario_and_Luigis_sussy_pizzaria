@@ -131,11 +131,55 @@ h1{
 /**********************************************PROMO DEALS*********************************************/
 /******************************************************************************************************/
 
-.promo{
-    width: 100%;
-    height: 50px;
+.Choice{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    
 }
 
+.Positioning{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;
+    height: 300px;
+    width: 700px;
+
+}
+
+.orderform{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#Deliver{
+    order: 1;
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+}
+
+
+#Instore{
+    order: 2;
+    background-color: rgba(248, 87, 87, 1);
+    color: white;
+    border:none;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+
+}
 
 /******************************************************************************************************/
 /*******************************************BARS AT THE BOTTOM*****************************************/

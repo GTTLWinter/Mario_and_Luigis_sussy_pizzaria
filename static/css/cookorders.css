@@ -127,7 +127,9 @@ h1{
     padding-left: 30px;
 }
 
-/*********************************************************/
+/****************************************************************************************************/
+/************************************************ORDER PAGE*******************************************/
+/******************************************************************************************************/
 
 .Ordergrid{
     display: flex;
@@ -180,45 +182,6 @@ h1{
     color: transparent;
 }
 
-.PizzasInOven{
-    /*Pizza status block*/
-    position: relative;
-    bottom: 460px;
-    left: 825px;
-    background-color: rgba(255, 243, 200, 1);
-    border-radius: 10px;;
-    height: 420px;
-    width: 350px;
-}
-
-#OvenPizzaStatus{
-    position:relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    color:black;
-    margin-right: 40px;
-    margin-left: 120px;
-    margin-top: 10px;
-}
-
-#StatusTitle{
-    position:relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 22px;
-    color:black;
-    margin-right: 40px;
-    margin-left: 120px;
-    top: 10px;
-}
-
-.DividingLine{
-position: absolute;
-width: 1px;
-height: 440px;
-left: 767px;
-top: 110px;
-background: #000000;
-
-}
 
 .FinishButton{
     position: relative;
@@ -253,22 +216,5 @@ input[type=submit] {
     font-family: 'Chau Philomene One', sans-serif;
 }   
 
-.StatusContent{
-
-    position:relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    color:black;
-    margin-right: 40px;
-    margin-top: -40px;
-}
-
-#part1StatusContent{
-    margin-left: 120px;
-}
-
-#part2StatusContent{
-    margin-left: 50px;
-}
 
 
-/****/
