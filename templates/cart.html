@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Mario's Pizzeria</title>
+    <title>Mario & Luigi's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <script src="https://unpkg.com/htmx.org@1.8.2"></script>
@@ -11,42 +11,82 @@
         {% if Order[session.name] == [] %}
         {% else %}
         <h1>Cart</h1>
-        <br><br>
         <table>
             <tr>
-                <th>Item</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th class="cartHeader">Item</th>
+                <th class="cartHeader">Description</th>
+                <th class="cartHeader">Price</th>
             </tr>
             {% for s in Order[session.name] %}
             <tr>
-                <th>{{ Dicktionary[s][0] }}</th>
+                {% if "Custom" in s %}
+                <th>Custom</th>
+                <td>{{s[2]}}, {{s[3]}}, {{s[4]}}</td>
+                <td class="price">{{ s[5] }}</td>
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?cu{{Order[session.name].index(s)}}" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][0] == "Drink" %}
                 <th>{{ Dicktionary[s][2] }}</th>
-                <th class="price">{{ Dicktionary[s][1] }}</th>
-                {% if Dicktionary[s][1] == 8 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rmargaritha" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 10 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rPep" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 12 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rBBQC" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 11 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rhawaii" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 15 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rvegan" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 13 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rveggie" hx-target="#cart">Delete</button></th>
-                {% elif Dicktionary[s][1] == 9 %}
-                <th><button type="button" hx-trigger="click" hx-get="/rglutenf" hx-target="#cart">Delete</button></th>
+                <td></td>
+                <td class="price">{{ Dicktionary[s][1] }}</td>
+                {% if Dicktionary[s][3] == 8 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?forange2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 9 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?ccola2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 10 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?grit2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 11 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?chcola2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 12 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?petea2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 13 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?fcasis2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% endif %}
+                {% elif Dicktionary[s][0] == "Dessert" %}
+                <th>{{ Dicktionary[s][2] }}</th>
+                <td></td>
+                <td class="price">{{ Dicktionary[s][1] }}</td>
+                {% if Dicktionary[s][3] == 14 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?chcake2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 15 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?ckie2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 16 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?brownie2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 17 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?vccake2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 18 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?icream2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 19 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?tsu2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% endif %}
+                {% else %}
+                <th>{{ Dicktionary[s][0] }}</th>
+                <td>{{ Dicktionary[s][2] }}</td>
+                <td class="price">{{ Dicktionary[s][1] }}</td>
+                {% if Dicktionary[s][3] == 1 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?margaritha2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 2 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?pepperoni2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 3 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?BBQC2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 4 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?hawaii2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 6 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?vegan2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 7 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?funghi2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% elif Dicktionary[s][3] == 5 %}
+                <td><button type="button" hx-trigger="click" hx-post="/pizza?glutenf2" hx-target="#cart" class="deleteButton">Delete</button></td>
+                {% endif %}
                 {% endif %}
             </tr>
             {% endfor %}
             <tr>
                 <th></th>
-                <th></th>
-                <th>Total: {{ Price }}</th>
+                <td></td>
+                <td class="price totalPrice">Total: {{ Price }}</td>
             </tr>
         </table>
-        <button class="payment" onclick="location.href='/payment'" type="button">Payment</button>
+        <button class="payButton" onclick="location.href='/payment'" type="button">Pay</button>
         {% endif %}
     </div>
 </body>

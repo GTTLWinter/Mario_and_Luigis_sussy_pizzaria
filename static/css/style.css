@@ -1,41 +1,69 @@
+* {
+  font-family: 'Chau Philomene One';
+}
+
 body {
   margin: 0px;
 }
 
 .main {
-  top: 134.8px;
+  top: 172.4px;
   position: relative;
+  padding-bottom: 24px;
 }
 
 #pizzas {
   position: absolute;
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 #cart {
-  flex: 1;
+  float: right;
+  width: 37%;
 }
 
 #cart2 {
-  /* margin-left: 25px; */
-  width: 30%;
   float: right;
-  top: 134.8px;
-}
-
-.payment {
-  margin-right: 50%;
+  top: 172.4px;
+  margin-bottom: 24px;
+  margin: 24px;
+  background-color: #ffe585;
+  border-radius: 10px;
+  width: 90%;
 }
 
 button {
   float: right;
+  cursor: pointer;
+  background-color: rgb(80, 192, 69);
+  color: white;
+  border: outset rgb(35, 118, 28) 2px;
+  border-radius: 5px;
+}
+
+.button {
+  font-size: 40px;
+  width: 0.8em;
+  height: 0.8em;
+  line-height: 0.8em;
+}
+
+.deleteButton {
+  margin: 5px;
+}
+
+.payButton {
+  float: right;
+  margin: 30px;
+  font-size: large;
 }
 
 a {
   float: left;
+  cursor: pointer;
 }
 
 #rightli {
@@ -55,20 +83,22 @@ a {
   width: 100%;
   height: 42px;
   font-family: 'Chela One';
-  font-size: 25px;
+  font-size: 35px;
   line-height: 42px;
   letter-spacing: 1px;
   color: black;
-  background-color: lightgray;
+  background-color: rgb(232, 232, 232);
   z-index: 2;
   box-shadow: 2px 2px 4px 0px #00000099;
+  padding: 10px;
 }
 
 .Mariologo {
-  color: rgb(248, 87, 87);
+  color: rgb(255, 52, 52);
   float: left;
   clear: none;
   margin-left: 10px;
+  font-family: 'Chela One';
 }
 
 .andsymbol {
@@ -76,24 +106,20 @@ a {
   clear: none;
   margin-left: 10px;
   margin-right: 10px;
+  font-family: 'Chela One';
 }
 
 .Luigilogo {
-  color: rgb(114, 191, 107);
+  color: rgb(80, 192, 69);
   float: left;
   clear: none;
   margin-right: 10px;
-}
-
-.space_between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-family: 'Chela One';
 }
 
 .linkBar {
   position: fixed;
-  top: 42px;
+  top: 62px;
   width: 100%;
   background-color: rgb(255, 52, 52);
   box-shadow: 2px 2px 4px 0px #00000099
@@ -106,9 +132,9 @@ a {
   padding: 14px 16px;
   text-decoration: none;
   background-color: rgb(255, 52, 52);
+  font-size: 20px;
 }
 
-/* Change the link color to #111 (black) on hover */
 .linkBar a:hover {
   background-color: rgb(140, 14, 14);
 }
@@ -116,13 +142,13 @@ a {
 .space_between {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .menuBar {
   position: absolute;
   width: 100%;
-  top: 88.4px;
+  top: 117.2px;
   background-color: rgb(80, 192, 69);
   /* box-shadow: 2px 2px 4px 0px #00000099 */
   /* z-index: 1; */
@@ -135,7 +161,8 @@ a {
   padding: 14px 16px;
   text-decoration: none;
   background-color: rgb(80, 192, 69);
-  /* float: left; */
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .menuBar a:hover {
@@ -150,5 +177,85 @@ a {
 img {
   width: 200px;
   height: 200px;
-  overflow: cover;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+h1 {
+  margin-left: 20%;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.ingredients {
+  font-size: 15px;
+  max-width: 200px;
+  color: rgb(54, 54, 54);
+}
+
+.pizzaItem {
+  background-color: #ffe585;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.registerButton {
+  float: none;
+  margin-left: 10px;
+}
+
+.loginMain {
+  top: 98px;
+  position: relative;
+  margin: 20px;
+}
+
+.dessertImg {
+  object-fit: contain;
+}
+
+.redBottomBar {
+  position: fixed;
+  bottom: 12px;
+  height: 12px;
+  background-color: rgb(255, 52, 52);
+  width: 100%;
+}
+
+.greenBottomBar {
+  position: fixed;
+  bottom: 0px;
+  height: 12px;
+  background-color: rgb(80, 192, 69);
+  width: 100%;
+}
+
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price {
+  text-align: right;
+  /* min-width: 80px; */
+}
+
+.totalPrice {
+  font-size: larger;
+}
+
+th {
+  text-align: left;
+}
+
+.cartHeader {
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: larger;
 }

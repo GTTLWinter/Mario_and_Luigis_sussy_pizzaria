@@ -4,11 +4,10 @@
 <div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
 {% endif %}
 <head>
-    <title>Mario's Pizzeria</title>
+    <title>Mario & Luigi's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../static/mario-icon-28.jpg">
 </head>
 <!--Script used for AJAX(dynamic) refresh-->
 <script src="https://unpkg.com/htmx.org@1.8.2"></script>
@@ -24,11 +23,10 @@
         <div class="linkBar space_between">
             <div>
                 <a href="/">Home</a>
-                <a href="/cart">Cart</a>
-                <a href="/ordertracker">Order search</a>
+                <a hx-trigger="click" hx-target=".main" hx-swap="outerHTML" hx-get="/ordertracker">Order search</a>
             </div>
             <div>
-                {% if anon == 1 %}
+                {% if anon[session.name] == 1 %}
                 <a class="login" href="/login">Login</a>
                 {% else %}
                 {% if session.name %}
@@ -42,59 +40,20 @@
         </div>
     </div>
     <div class="menuBar">
-        <a href="/">Pizzas</a>
-        <a href="/drinks">Drinks</a>
-        <a href="/desserts">Desserts</a>
+        <a hx-trigger="click" hx-get="/pizza" hx-target=".main" hx-swap="outerHTML">Pizzas</a>
+        <a hx-trigger="click" hx-get="/drinks" hx-target=".main" hx-swap="outerHTML">Drinks</a>
+        <a hx-trigger="click" hx-get="/desserts" hx-target=".main" hx-swap="outerHTML">Desserts</a>
+        <a hx-trigger="click" hx-get="/custpizza" hx-target=".main" hx-swap="outerHTML">Make your own Pizza</a>
     </div>
-    <div class="main" id="pizzas">
-        <!--Every button here does the same thing - adding pizza to the cart, done through ajax in order to not refresh the whole page
-        hx-get sends a 'GET' request to our server, hx-trigger is what triggers that, and hx-target targets where the changes should happen using css targeting
-        in our case we send it to /margaritha |  in our case that is the button being clicked  |  in our case that is the div with id #cart-->
-        <div class="row">
-            <h4>
-                <img src="../static/1_margherita.jpg">
-                <br>
-                Margaritha: &euro;8,-
-                <button class="button" type="button" hx-get="/margaritha" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-            <h4>
-                <img src="../static/2_hawaii.jpg">
-                <br>
-                Hawaii: &euro;11,-
-                <button class="button" hx-get="/hawaii" hx-trigger="click" hx-target="#cart" type="button">Add</button>
-            </h4>
-            <h4>
-                <img src="../static/3_pepperoni.jpg">
-                <br>
-                Pepperoni: &euro;12,-
-                <button class="button" hx-get="/Pep" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-        </div>
-        <div class="row">
-            <h4>
-                <img src="../static/4_gluten.jpg">
-                <br>
-                Gluten free: &euro;9,-
-                <button class="button" type="button" hx-get="/glutenF" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-            <h4>
-                <img src="../static/5_vegan.jpg">
-                <br>
-                Vegan: &euro;15,-
-                <button class="button" hx-get="/vegan" hx-trigger="click" hx-target="#cart" type="button">Add</button>
-            </h4>
-            <h4>
-                <img src="../static/6_veggie.png">
-                <br>
-                Vegetarian: &euro;13,-
-                <button class="button" hx-get="/veggie" hx-trigger="click" hx-target="#cart">Add</button>
-            </h4>
-        </div>
-    </div>
+
+    <div class="main" hx-trigger="load" hx-get="/pizza" hx-target=".main" hx-swap="outerHTML"></div>
+
     <!--hx-trigger load means that it triggers the first time the html file loads, 
                 this is how we get the cart to appear if there is already stuff in it-->
     <div class="main" id="cart" hx-trigger="load" hx-get="/cart" hx-target="#cart">
     </div>
+    <div class="redBottomBar"></div>
+    <div class="greenBottomBar"></div>
 </body>
 
 </html>

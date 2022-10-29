@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="main" id="pizzas">
+        <div class="row">
+            <div class="pizzaItem">
+                <img src="../static/7_fanta.jpg">
+                <h4>
+                    Fanta Orange: &euro;2,-
+                    <button class="button add" type="button" hx-post="/pizza?forange" hx-trigger="click"
+                        hx-target="#cart">+</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
+                <img src="../static/8_cola.jpg">
+                <h4>
+                    Coca Cola: &euro;1.9,-
+                    <button class="button add" hx-post="/pizza?ccola" hx-trigger="click" hx-target="#cart"
+                        type="button">+</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
+                <img src="../static/9_greentea.jpg">
+                <h4>
+                    Green Ice Tea: &euro;1.7,-
+                    <button class="button add" hx-post="/pizza?grit" hx-trigger="click" hx-target="#cart">+</button>
+                </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pizzaItem">
+                <img src="../static/10_cherrycola.jpg">
+                <h4>
+                    Coca Cola Cherry: &euro;1.9,-
+                    <button class="button add" type="button" hx-post="/pizza?chcola" hx-trigger="click"
+                        hx-target="#cart">+</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
+                <img src="../static/11_peachtea.jpg">
+                <h4>
+                    Peach Ice Tea: &euro;1.8,-
+                    <button class="button add" hx-post="/pizza?petea" hx-trigger="click" hx-target="#cart"
+                        type="button">+</button>
+                </h4>
+            </div>
+            <div class="pizzaItem">
+                <img src="../static/12_cassis.jpg">
+                <h4>
+                    Fanta Cassis: &euro;2,-
+                    <button class="button add" hx-post="/pizza?fcasis" hx-trigger="click" hx-target="#cart">+</button>
+                </h4>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

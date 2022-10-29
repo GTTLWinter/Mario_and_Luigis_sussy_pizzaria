@@ -1,5 +1,4 @@
-/*HOME PAGE*/
-
+/*Order tracker CSS*/
 body{
     margin: 0;
     padding: 0;
@@ -81,7 +80,7 @@ h1{
     order: 1;
     background-color: rgba(248, 87, 87, 1);
     width: 100%;
-    height: 30px;
+    height: 35px;
     border: none;
 
     display:flex;
@@ -92,17 +91,10 @@ h1{
 
 .Greenbar{
     order:2;
-    order: 2;
-    background-color: rgba(114, 191, 107, 1);
+    background-color:rgba(114, 191, 107, 1);
     width: 100%;
     height: 30px;
     border: none;
-
-
-    display:flex;
-    flex: row;
-    text-align: center;
-    vertical-align: middle;
 }
 
 #HOME{
@@ -113,7 +105,6 @@ h1{
     color: white;
     border: none;
     background-color: transparent;
-    padding-left: 10px;
 }
 
 #Check{
@@ -124,97 +115,91 @@ h1{
     color: white;
     border: none;
     background-color: transparent;
-    padding-left: 30px;
 }
 
-/****************************************************************************************************/
-/************************************************ORDER PAGE*******************************************/
+/******************************************************************************************************/
+/*********************************************ORDER TRACKING*******************************************/
 /******************************************************************************************************/
 
-.Ordergrid{
+.Trackingblock{
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
+    justify-content: center;
+    padding-top: 70px;
     
-}
-.Orderlist{
-    /*Order blocks*/
-    display:flex;
-    flex-direction: row;
-    flex:auto;
+}    
+
+.centerpositioning{
+    display: flex;
     background-color: rgba(255, 243, 200, 1);
     border-radius: 10px;;
-    height: 200px;
-    width: 200px;
-}
-
-.Ordertext{
-
-    position: relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:15px;
-    margin-top: 10px;
-}
-
-#OrderContent{
-    position: relative;
-    top: 20px;
-
-}
-
-
-#Noorders{
- 
-    position: relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:50px;
-}
-
-#Dontdisplay{
-    color: transparent;
-}
-
-.Hide{
-
-    color: transparent;
-}
-
-
-.FinishButton{
-    position: relative;
-    left: 420px;
-    top: 40px;
+    height: 300px;
+    width: 700px;
+    flex-direction:column;
+    justify-content: center;
     
 }
 
-input[type=text], select {
-    position:relative;
-    top: 9px;
-    left: 10px;
-    width: 89%;
+#form{
+    order: 1;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    
 }
 
-.InputTextColor{
-    position: relative;
-    background-color: rgba(255, 243, 200, 1);
-    border: none;
-    height: 40px;
-    width: 200px;
-    border-radius: 10px;
-}
+input[type=text], select{
+    order: 2;
+    height: 30px;
 
+   }
 
-input[type=submit] {
-    position: relative;
-    background-color: rgba(114, 191, 107, 1);
-    color: white;
-    border:none;
-    border-radius: 10px;
-    font-family: 'Chau Philomene One', sans-serif;
+#OrderNumb{
+    order: 1;
+    text-align:center;
+
 }   
 
 
+input[type=submit]{
+    order: 3;
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    height: 30px;
+    width: 70px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
+}
 
+#OrderNumb{
+    font-family: 'Chau Philomene One', sans-serif;
+    color:black;
+    text-align: center;
+}
+
+/******************************************************************************************************/
+/*******************************************BARS AT THE BOTTOM*****************************************/
+/******************************************************************************************************/
+
+.Bottomlines{
+    display: flex;
+    flex-direction: column;
+    padding-top: 135px;
+    
+}
+
+#bottombar1{
+    order: 1;
+    width: 100%;
+    height: 17px;
+    background-color: #FA5F5F;
+}
+
+#bottombar2{
+    order: 2;
+    width: 100%;
+    height: 17px;
+    background-color: #72BF6B;
+}

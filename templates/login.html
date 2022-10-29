@@ -2,7 +2,7 @@
 <html>
 
 <head>
-   <title>Mario's Pizzeria</title>
+   <title>Mario & Luigi's Pizzeria</title>
    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
    <link
       href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
@@ -27,38 +27,38 @@
       </div>
    </div>
    {% if logn == 0 %}
-   <div class="main">
-   <h1> Login</h1>
+   <div class="loginMain">
+      <h1>Login</h1>
       <form action="/login" method="POST">
          <input placeholder="Userame" autocomplete="off" type="text" name="name">
          <input placeholder="Password" autocomplete="off" type="password" name="pass">
          <input type="submit" hx-target=".main" name="Login">
-         <p>Don't have an account?</p><button type="button" hx-get="/register" hx-trigger="click" hx-target=".main">Register</button>
-         {% with messages = get_flashed_messages() %}  
-         {% if messages %}  
-               {% for message in messages %}  
-                    <p>{{ message }}</p>  
-               {% endfor %}  
-         {% endif %}  
-         {% endwith %}  
+         <p>Don't have an account?<button class="registerButton" type="button" hx-get="/register" hx-trigger="click"hx-target=".main">Register</button></p>
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+         {% for message in messages %}
+         <p>{{ message }}</p>
+         {% endfor %}
+         {% endif %}
+         {% endwith %}
       </form>
-   {% else %} 
+      {% else %}
       <h1> REGISTER </h1>
       <form action="/register" method="POST">
          <input placeholder="Userame" autocomplete="off" type="text" name="name">
          <input placeholder="Password" autocomplete="off" type="password" name="pass">
          <input type="submit" hx-target=".main" name="Register">
-         {% with messages = get_flashed_messages() %}  
-         {% if messages %}  
-               {% for message in messages %}  
-                    <p>{{ message }}</p>  
-               {% endfor %}  
-         {% endif %}  
-      {% endwith %}  
+         {% with messages = get_flashed_messages() %}
+         {% if messages %}
+         {% for message in messages %}
+         <p>{{ message }}</p>
+         {% endfor %}
+         {% endif %}
+         {% endwith %}
       </form>
-   
-   {% endif %}
-</div>
+
+      {% endif %}
+   </div>
 </body>
 
 </html>

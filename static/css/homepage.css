@@ -127,94 +127,81 @@ h1{
     padding-left: 30px;
 }
 
-/****************************************************************************************************/
-/************************************************ORDER PAGE*******************************************/
+/******************************************************************************************************/
+/**********************************************PROMO DEALS*********************************************/
 /******************************************************************************************************/
 
-.Ordergrid{
+.Choice{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    
+}
+
+.Positioning{
     display: flex;
     flex-direction: column;
-    
-}
-.Orderlist{
-    /*Order blocks*/
-    display:flex;
-    flex-direction: row;
-    flex:auto;
+    justify-content: center;
     background-color: rgba(255, 243, 200, 1);
-    border-radius: 10px;;
-    height: 200px;
-    width: 200px;
-}
-
-.Ordertext{
-
-    position: relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:15px;
-    margin-top: 10px;
-}
-
-#OrderContent{
-    position: relative;
-    top: 20px;
-
-}
-
-
-#Noorders{
- 
-    position: relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:50px;
-}
-
-#Dontdisplay{
-    color: transparent;
-}
-
-.Hide{
-
-    color: transparent;
-}
-
-
-.FinishButton{
-    position: relative;
-    left: 420px;
-    top: 40px;
-    
-}
-
-input[type=text], select {
-    position:relative;
-    top: 9px;
-    left: 10px;
-    width: 89%;
-}
-
-.InputTextColor{
-    position: relative;
-    background-color: rgba(255, 243, 200, 1);
-    border: none;
-    height: 40px;
-    width: 200px;
     border-radius: 10px;
+    height: 300px;
+    width: 700px;
+
 }
 
+.orderform{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
-input[type=submit] {
-    position: relative;
+#Deliver{
+    order: 1;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
+    height: 30px;
+    width: 100px;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
-}   
+    font-size: 17px;
+}
 
 
+#Instore{
+    order: 2;
+    background-color: rgba(248, 87, 87, 1);
+    color: white;
+    border:none;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px;
 
+}
+
+/******************************************************************************************************/
+/*******************************************BARS AT THE BOTTOM*****************************************/
+/******************************************************************************************************/
+
+.Bottomlines{
+    display: flex;
+    flex-direction: column;
+    padding-top: 135px;
+    
+}
+
+#bottombar1{
+    order: 1;
+    width: 100%;
+    height: 17px;
+    background-color: #FA5F5F;
+}
+
+#bottombar2{
+    order: 2;
+    width: 100%;
+    height: 17px;
+    background-color: #72BF6B;
+}

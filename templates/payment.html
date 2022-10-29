@@ -1,10 +1,57 @@
 <html>
     <head>
         <title>Payment</title>
-        <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+        <link href="../static/css/payment.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
-        Payment complete
-        <button class="payment" onclick="location.href='/orderstatus'" type="button">Done</button>
+
+        <div class="TopPart">
+            <h1> <div class="Mariologo"> MARIO </div> <div class="andsymbol"> & </div> <div class= "Luigilogo"> LUIGI'S </div> PIZZERIA </h1>
+
+            
+            
+
+            <div class="Loginbutton">
+
+                <a href="login.html"> <!--replace this link with a link to login page-->
+                    <button id="login"> LOGIN </button>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="Menubar">
+            <div class="Redbar">
+                <div class="Redbaroptions">
+
+                    <!--link to take order page-->
+                    <a href="pizzas.html">
+                        <button id="Order"> ORDER</button>
+                    </a>
+                    <!--link to order page-->
+                    <a href="status.html">
+                        <button id="Check"> CHECK STATUS</button>
+                    </a>
+                </div>    
+            </div>    
+        </div>    
+        <div class="Greenbar"></div> 
+        
+        <div class="paymentdiplaything">
+
+            <div id="payment">
+            </div>
+
+            <p id="text">Payment complete. You're order will be ready soon.</p>
+            <button id="Done" class="payment" onclick="location.href='/orderstatus'" type="button">DONE</button>
+
+        </div>
+
+        <div id="bottombar2"></div>
+        <div id="bottombar1"></div>
+
+
+        
     </body>
 </html>
