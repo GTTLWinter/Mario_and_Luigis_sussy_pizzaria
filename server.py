@@ -216,7 +216,7 @@ def orderstatus():
                 writeorder.write(order[session["name"]][index] + ",")
         writeorder.write(str(price[session["name"]]) + "," + "\n")
     order[session["name"]] = []
-    price[session["name"]] = []
+    price[session["name"]] = 0
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 
