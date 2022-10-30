@@ -2,8 +2,45 @@
     <head>
         <title>Status Updates</title>
         <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+        <link href="../static/css/status.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
+
+        <div class="LogoandLogin">
+            <div class="LogoContainer">
+                <h1> 
+                    <div class="Mariologo"> MARIO </div> 
+                    <div class="andsymbol"> & </div> 
+                    <div class= "Luigilogo"> LUIGI'S </div> 
+                    PIZZERIA 
+                
+                </h1>
+            </div>
+
+            <div class="Loginbutton">
+                <a href="login.html"> 
+                    <button id="login"> LOGIN </button>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="Menubar">
+            <div class="Redbar">
+
+                <a href="homepage.html">
+                    <button id="HOME"onclick="location.href='/'" type="button">HOME</button>
+                </a>
+                <!--link to SMT page-->
+                <a href="https://www.google.com">
+                    <button id="Check"> INSERT SOMETHING</button>
+                </a>
+
+            </div>
+            <div class="Greenbar"></div>
+        </div>
+
         <script src="https://unpkg.com/htmx.org@1.8.2"></script>
         <div id="divID">
             <p>Your order has been confirmed. <br>Order number: {{ Ordernumber[session.name] }}</p>
@@ -19,6 +56,11 @@
         </div>
         </div>
         <button class="payment" onclick="location.href='/cookorders'" type="button">cookorders</button>
+
+        <div class="Bottomlines">
+            <div id="bottombar1"></div>
+            <div id="bottombar2"></div>
+        </div>
     </body>
     
 
