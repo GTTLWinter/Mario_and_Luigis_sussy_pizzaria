@@ -49,7 +49,7 @@ ft = {}
 ingredients = ["Normal", "Italian", "Philladelphia", "Tomato sauce", "Pesto", "White Garlic", "Marinara Sauce", 
     "Pepperoni", "Ham", "Mushrooms", "Pineapple", "Olives", "Onions", "Corn", "Sausage", "Bacon", "Chicken", 
     "Spinach", "Basel", "Beef", "Pork"]
-prices = [2, 4.19, 5.49, 2, 3.19, 4.49, 5.49, 1.10, 1.20, 1.30, 1.15, 1.15, 1.3, 1.2, 1.9, 2, 2, 0.89, 0.89, 3, 2.85]
+prices = [2.00, 4.19, 5.49, 2.00, 3.19, 4.49, 5.49, 1.10, 1.20, 1.30, 1.15, 1.15, 1.30, 1.20, 1.90, 2.00, 2.00, 0.89, 0.89, 3.00, 2.85]
 CustomPizza = {}
 
 app = Flask(__name__)

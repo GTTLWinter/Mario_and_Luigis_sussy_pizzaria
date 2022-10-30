@@ -28,11 +28,11 @@ body {
 #cart2 {
   float: right;
   top: 172.4px;
-  margin-bottom: 24px;
   margin: 24px;
-  background-color: #ffe585;
+  margin-bottom: 24px;
   border-radius: 10px;
   width: 90%;
+  background-color: #ffe585;
 }
 
 button {
@@ -59,6 +59,11 @@ button {
   float: right;
   margin: 30px;
   font-size: large;
+}
+
+.clearButton {
+  background-color: rgb(255, 52, 52);
+  border-color: rgb(149, 14, 14);
 }
 
 a {
@@ -181,7 +186,7 @@ img {
   border-radius: 10px;
 }
 
-h1 {
+.cartTitle {
   margin-left: 20%;
 }
 
@@ -235,7 +240,7 @@ h4 {
   width: 100%;
 }
 
-table {
+.cartTable {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -258,4 +263,34 @@ th {
   padding-bottom: 10px;
   text-align: center;
   font-size: larger;
+}
+
+.custPizza {
+  background-color: #ffe585;
+  border-radius: 10px;
+  margin: 24px;
+  padding: 24px;
+  padding-bottom: 0px;
+  top: 172.4px;
+  width: calc(60% - 24px) !important;
+}
+
+input {
+  accent-color: rgb(80, 192, 69);
+}
+
+.toppings {
+  width: 200px;
+}
+
+.custPizzaButtons {
+  float: right;
+  width: 100%;
+}
+
+.marioCookImg {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin-right: 50px;
 }
