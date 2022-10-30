@@ -12,14 +12,17 @@
             <tr><th>Order Number</th> <th>Order</th> <th>Price</th></tr>
         {% for order in porder %}
         <tr><th>{{order[2]}}</th>
-        {% for item in order %}
+       <td>{% for item in order %}
         {% if item == " " %}
         {% elif item == session.name %}
         {% elif item == order[2] %}
+        {% elif item == order[-2] %}
         {% else %}
-        <td>{{item}}</td>
+        {{item}}
         {% endif %}
         {% endfor %}
+        </td>
+        <th>{{order[-2]}}</th>
         </tr>
         {% endfor %}
         {% endif %}
