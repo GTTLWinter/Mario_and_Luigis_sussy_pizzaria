@@ -1,3 +1,4 @@
+import re
 import time
 from flask import Flask, render_template, request, redirect, flash, session, Response
 import csv
@@ -126,8 +127,11 @@ def index():
 def payment():
     return render_template("payment.html")
 
-@app.route('/cart')
+@app.route('/cart', methods=['GET', 'POST'])
 def cart():
+    if request.method == "POST":
+        order[session["name"]] = []
+        price[session["name"]] = 0
     return render_template('cart.html', Order = order, Price = price[session["name"]], Dicktionary = dicktionary)
 
 @app.route('/status', methods = ['POST'])
@@ -282,7 +286,18 @@ def testing():
 
 @app.route('/account', methods=['GET'])
 def acc():
-    return render_template('account.html', anon = anon)
+    pastorders = {}
+    pastorders[session["name"]] = []
+    with open("orders.csv") as readdata:
+        reader = csv.reader(readdata)
+        for row in reversed(list(reader)):
+            if len(pastorders[session["name"]]) == 5:
+                continue
+            else:
+                if row[1] == session["name"]:
+                    pastorders[session["name"]].append(row)
+    print(pastorders)
+    return render_template('account.html', anon = anon, porder = pastorders[session["name"]])
 
 @app.route('/hpage', methods=['GET'])
 def homepage():
@@ -339,13 +354,10 @@ def Custpizza():
             if ingredients[ingr] in CustomPizza[session["name"]]["toppings"]:
                 CustomPizza[session["name"]]["toppings"].remove(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] -= prices[ingr]
-
                 return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
             else:
                 CustomPizza[session["name"]]["toppings"].append(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] += prices[ingr]
-
-                
                 return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
         elif ingr > 2:
             CustomPizza[session["name"]]["price"] -= prices[ingredients.index(CustomPizza[session["name"]]["sauce"])]

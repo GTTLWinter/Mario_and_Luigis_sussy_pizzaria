@@ -86,6 +86,7 @@
                 <td class="price totalPrice">Total: {{ Price }}</td>
             </tr>
         </table>
+        <button class="payButton" hx-post="/cart" hx-trigger="click" hx-target="#cart2" hx-swap="outerHTML" type="button">Clear cart</button>
         <button class="payButton" onclick="location.href='/payment'" type="button">Pay</button>
         {% endif %}
     </div>
