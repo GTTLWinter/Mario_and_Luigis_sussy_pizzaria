@@ -90,14 +90,14 @@
                     </div>    
                     
                         <tr class="Hide"> 
-                            <th>{{ order[1] }}</th>
-                            <th>{{ order[2] }}</th>
+                            <th>{{ order[1] }}</th> <!--prints username-->
+                            <th>{{ order[2] }}</th> <!--prints order number-->>
                             <th>
                                 {% for item in Pizzas %}
                                     {% if item[0] == order[2] %}
-                                        {% for thing in item %}
-                                            {% if thing != order[2] %}
-                                                {{ thing }}<br>
+                                        {% for thing in item %} <!--select order number & pizza-->
+                                            {% if thing != order[2] %} <!--check items and compares with order-->
+                                                {{ thing }}<br> <!--nam3 of pizza-->
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -108,7 +108,7 @@
                                     {% if item[0] == order[2] %}
                                         {% for thing in item %}
                                             {% if thing != order[2] %}
-                                                {{ Dicktionary[thing][2] }}<br>
+                                                {{ Dicktionary[thing][2] }}<br> <!--print ingredients-->
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -140,7 +140,6 @@
         
         
         </div>
-
 
     </body>
 </html>
