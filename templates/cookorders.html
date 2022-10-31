@@ -8,57 +8,10 @@
 
     <body>
 
-        <div class="LogoandLogin">
-            <div class="LogoContainer">
-                <h1> 
-                    <div class="Mariologo"> MARIO </div> 
-                    <div class="andsymbol"> & </div> 
-                    <div class= "Luigilogo"> LUIGI'S </div> 
-                    PIZZERIA 
-                
-                </h1>
-            </div>
-
-            <div class="Loginbutton">
-                <a href="login.html"> 
-                    <button id="login"> LOGIN </button>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="Menubar">
-            <div class="Redbar">
-
-                <a href="homepage.html">
-                    <button id="HOME"onclick="location.href='/'" type="button">HOME</button>
-                </a>
-                <!--link to SMT page-->
-                <a href="https://www.google.com">
-                    <button id="Check"> ORDER TRACKING</button>
-                </a>
-
-
-            </div>
-            <div class="Greenbar">
-                <a href="pizzas.html">
-                    <button id="HOME"> PIZZAS</button>
-                </a>
-
-                <a href="drinks.html">
-                    <button id="Check"> DRINKS</button>
-                </a>
-
-                <a href="desserts.html">
-                    <button id="Check"> DESERT</button>
-                </a>
-
-            </div>
-        </div>
 
 
         <!--This is the set of code that diplays the orders-->
-        <div #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
+        <div id="Block" #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
 
            <div id="Dontdisplay">
              {% if AllOrders == [] %}
@@ -68,68 +21,70 @@
 
             <div id="Dontdisplay">
                 {% else %}
-            </div> 
-
-                <table>
-                    <div class="Ordergrid">
-                        <div class="Orderlist">
-                            <div class="Ordertext">
-                            <p id="OrderContent">     
-                                    Ordered By:</br>
-                                    Ordernumber: </br>
-                                    Pizzas: </br>
-                                    Ingredients: </br>
-                                    Time left: </br>
-                                </p>
-                            </div>
-                        </div>
-                    </div>    
+            </div>   
 
                     <div id="Dontdisplay">
                         {% for order in AllOrders %}
                     </div>    
+                        
+                    <div id="OrderBlock">
+                        <div id="IndividualBlock">
+                           <p id="Username"> Customer Name: {{ order[1] }}</p><!--prints username-->
+                           <p id="OrderNumber"> Order Number: {{ order[2] }}</p><!--prints order number-->
                     
-                        <tr class="Hide"> 
-                            <th>{{ order[1] }}</th> <!--prints username-->
-                            <th>{{ order[2] }}</th> <!--prints order number-->>
-                            <th>
+                            
+                            <div id="HIDE">
                                 {% for item in Pizzas %}
-                                    {% if item[0] == order[2] %}
-                                        {% for thing in item %} <!--select order number & pizza-->
-                                            {% if thing != order[2] %} <!--check items and compares with order-->
-                                                {{ thing }}<br> <!--nam3 of pizza-->
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endfor %}
-                            </th>
-                            <th>
-                                {% for item in Pizzas %}
-                                    {% if item[0] == order[2] %}
-                                        {% for thing in item %}
-                                            {% if thing != order[2] %}
-                                                {{ Dicktionary[thing][2] }}<br> <!--print ingredients-->
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                {% endfor %}
-                            </th>
-                            <th>
+                                {% if item[0] == order[2] %}
+                                {% for thing in item %} <!--select order number & pizza-->
+                                {% if thing != order[2] %} <!--check items and compares with order-->
+                            </div>
+                           
+                            
+                                                
+                            <p id="PizzaName">{{ thing }}</p> <!--name of pizza-->
 
-                            </th>
-                        </tr>
+                            <div id="HIDE">
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            
+                            <div id="HIDE">
+                                {% for item in Pizzas %}
+                                {% if item[0] == order[2] %}
+                                {% for thing in item %}
+                                {% if thing != order[2] %}
+                            </div>
+
+                              <br> <p id="Ingredients">Ingredients: {{ Dicktionary[thing][2] }}</p><!--print ingredients-->
+
+                            <div id="HIDE">
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>  
+                    </div>
+                            
+                        
+
+                            
+                        
                  <div id="Dontdisplay">     
                     {% endfor %}
                 </div>    
 
-                </table>
+            
 
                 <div class="FinishButton">
                     <form action="/cooking">
                         <div class="InputTextColor">
                             <input type="text" name="ON" value= {{ order[2] }}>
                         </div>
-                        <input type="submit" value="Done">   
+                        <input type="submit" value="DONE">   
                     </form>
                 </div>
 
