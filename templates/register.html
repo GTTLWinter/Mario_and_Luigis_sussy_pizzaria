@@ -13,14 +13,14 @@
 <body>
    <div class="loginMain pizzaItem">
       <h1>Register</h1>
-      <form action="/register" method="POST">
+      <form hx-post="/register" hx-target="#cart" hx-swap="innerHTML">
          <input placeholder="Username" autocomplete="off" type="text" name="name" class="textField">
          <br>
          <input placeholder="Password" autocomplete="off" type="password" name="pass" class="textField">
          <br>
-         <input type="submit" hx-target=".main" name="Register" class="submitButton">
-         <p class="accountorno">Already have an account?<button class="registerButton" type="button"
-               onclick="location.href='/login'">Login</button></p>
+         <input type="submit" name="Register" class="submitButton">
+         <p class="accountorno">Already have an account?<button class="registerButton" type="button" 
+            hx-get="/login" hx-trigger="click" hx-target="#cart" hx-swap="innerHTML">Login</button></p>
          {% with messages = get_flashed_messages() %}
          {% if messages %}
          {% for message in messages %}

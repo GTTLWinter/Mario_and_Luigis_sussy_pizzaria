@@ -26,17 +26,17 @@
         <div class="linkBar space_between">
             <div>
                 <a href="/">Home</a>
-                <a hx-trigger="click" href="/ordertracker">Track your order</a>
+                <a hx-trigger="click" hx-get="/ordertracker" hx-trigger="click" hx-target="#cart">Track your order</a>
             </div>
             <div>
                 {% if anon[session.name] == 1 %}
-                <a class="login" href="/login">Login</a>
+                <a class="login" hx-get="/login" hx-trigger="click" hx-target="#cart">Login</a>
                 {% else %}
                 {% if session.name %}
                 <a class="login" hx-get="/account" hx-trigger="click" hx-target="#cart">Account</a>
                 <a class="login" href="/logout">Sign out</a>
                 {% else %}
-                <a class="login" href="/login">Login</a>
+                <a class="login" hx-get="/login" hx-trigger="click" hx-target="#cart">Login</a>
                 {% endif %}
                 {% endif %}
             </div>
