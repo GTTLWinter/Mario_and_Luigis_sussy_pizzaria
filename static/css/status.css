@@ -74,6 +74,7 @@ h1{
 .Menubar{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     
 }
 
@@ -133,12 +134,12 @@ h1{
 /*******************************************STATUS IN CENTER*****************************************/
 /******************************************************************************************************/
 
-.contentblock{
+.main{
     display: flex;
-    flex-direction:column;
+    flex-direction:row;
     justify-content: center;
     vertical-align: middle;
-    padding-top: 70px;
+    padding: 10px;
 
     
 }
@@ -147,8 +148,8 @@ h1{
     order: 1;
     display: flex;
     background-color: rgba(255, 243, 200, 1);
-    border-radius: 10px;;
-    height: 300px;
+    border-radius: 10px;
+    height: 400px;
     width: 700px;
     flex-direction:row;
     justify-content: center;
@@ -156,9 +157,14 @@ h1{
 
 #text{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
+
+#center{
+    justify-content: center;
+}
+
 
 
 

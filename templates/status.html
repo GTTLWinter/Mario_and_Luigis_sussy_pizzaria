@@ -9,62 +9,20 @@
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
 
     <body>
-        <div class="LogoandLogin">
-            <div class="LogoContainer">
-                <h1> 
-                    <div class="Mariologo"> MARIO </div> 
-                    <div class="andsymbol"> & </div> 
-                    <div class= "Luigilogo"> LUIGI'S </div> 
-                    PIZZERIA 
-                
-                </h1>
-            </div>
-
-            <div class="Loginbutton">
-                <a href="login.html"> 
-                    <button id="login"> LOGIN </button>
-                </a>
-            </div>
-
-        </div>
-
-
-
-        <div class="Menubar">
-            <div class="Redbar">
-
-                <a href="homepage.html">
-                    <button onclick="location.href='/'" type="button" id="HOME">HOME</button>
-                </a>
-
-                <!--link to SMT page-->
-                <a href="ordertracker.html">
-                    <button id="Ordersearch"> ORDER SEARCH</button>
-                </a>
-
-            </div>
-
-            <div class="Greenbar">
-                    <button class="payment" onclick="location.href='/cookorders'" type="Cookorders" id="cookorders">COOKORDERS</button>
-                </div>
-            
-            </div>
-        </div>
-
-
         
-        <div class="çontentblock">
+        <div class="main">
             
             <div id="divID">
                 <div id="text">
-                    <p>Your order has been confirmed. <br>Order number: {{ Ordernumber[session.name] }}</p>
+                    <p>Your order has been confirmed. </p> <br>
+                    <p>Order number: {{ Ordernumber[session.name] }}</p> <br>
                     <div id="here" hx-get="/timerupdate" hx-target="body" hx-trigger="every 1s">
-                    {% if Status == 0 %}
-                        Pizza is still in the oven for another {{ Timer }}.
+                    {% if Status == 0 %}  
+                    <p id="center">Pizza is still in the oven for another {{ Timer }}.</p> <br>
                     {% elif Status == 1 %}
-                        Pizza is being prepared for pick up.
+                    </p id=center> Pizza is being prepared for pick up. </p> <br>
                     {% else %}
-                        Pizza is ready for take off.
+                    </p id=center>Pizza is ready for take off.</p> <br>
                     {% endif %}
                 </div>
             </div>
@@ -73,12 +31,13 @@
 
         </div>
         
-
+<!--
         <div class="Bottomlines">
             <div id="bottombar1"></div>
             <div id="bottombar2"></div>
         </div>
     </body>
     
+-->
 
 </html>
