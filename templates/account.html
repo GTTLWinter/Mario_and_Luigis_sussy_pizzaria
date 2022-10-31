@@ -1,9 +1,12 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="../static/css/style.css" type="text/css">
-    </head>
-    <body>
-        <div id="cart2">
+
+<head>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+</head>
+
+<body>
+    <div id="cart2">
         {% if anon[session.name] == 1 %}
         No account homie
         {% else %}
@@ -65,5 +68,6 @@
         {% endif %}
     </table>
     </div>
-    </body>
+</body>
+
 </html>

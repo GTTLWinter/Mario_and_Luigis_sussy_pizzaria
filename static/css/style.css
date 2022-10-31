@@ -66,6 +66,20 @@ button {
   border-color: rgb(149, 14, 14);
 }
 
+.submitButton {
+  float: left;
+  cursor: pointer;
+  background-color: rgb(80, 192, 69);
+  color: white;
+  border: outset rgb(35, 118, 28) 2px;
+  border-radius: 5px;
+}
+
+.registerButton {
+  float: none;
+  margin-left: 10px;
+}
+
 a {
   float: left;
   cursor: pointer;
@@ -209,15 +223,14 @@ h4 {
   margin: 20px;
 }
 
-.registerButton {
-  float: none;
-  margin-left: 10px;
-}
-
 .loginMain {
-  top: 98px;
+  top: 117.2px;
   position: relative;
   margin: 20px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
 }
 
 .dessertImg {
@@ -272,7 +285,6 @@ th {
   padding: 24px;
   padding-bottom: 0px;
   top: 172.4px;
-  width: calc(60% - 24px) !important;
 }
 
 input {
@@ -285,7 +297,7 @@ input {
 
 .custPizzaButtons {
   float: right;
-  width: 100%;
+  width: 400px;
 }
 
 .marioCookImg {
@@ -293,4 +305,31 @@ input {
   height: 300px;
   object-fit: contain;
   margin-right: 50px;
+}
+
+.emptySpace {
+  height: 24px;
+  bottom: 0px;
+}
+
+.noYPadding {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.textField {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accountorno {
+  margin-top: 40px;
+}
+
+.trackScreen {
+  position: relative;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
 }
