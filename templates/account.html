@@ -4,11 +4,29 @@
     </head>
     <body>
         <div id="cart2">
-        {% if anon == 1 %}
+        {% if anon[session.name] == 1 %}
         No account homie
         {% else %}
-        {{session.name}}
+        <h1>Hello, <strong>{{session.name}}</strong>!</h1>
+        <table>
+            <tr><th>Order Number</th> <th>Order</th> <th>Price</th></tr>
+        {% for order in porder %}
+        <tr><th>{{order[2]}}</th>
+       <td>{% for item in order %}
+        {% if item == " " %}
+        {% elif item == session.name %}
+        {% elif item == order[2] %}
+        {% elif item == order[-2] %}
+        {% else %}
+        {{item}}
         {% endif %}
+        {% endfor %}
+        </td>
+        <th>{{order[-2]}}</th>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
     </div>
     </body>
 </html>
