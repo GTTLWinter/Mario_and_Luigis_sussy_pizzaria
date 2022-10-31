@@ -26,7 +26,7 @@
         <div class="linkBar space_between">
             <div>
                 <a href="/">Home</a>
-                <a hx-trigger="click" hx-target=".main" hx-swap="outerHTML" hx-get="/ordertracker">Track your order</a>
+                <a hx-trigger="click" href="/ordertracker">Track your order</a>
             </div>
             <div>
                 {% if anon[session.name] == 1 %}

@@ -152,6 +152,24 @@ def indexupdates():
     time.sleep(0.1)
     return render_template("index.html", Order = order, Timer = timer, Status = status)
 
+@app.route('/changep', methods=['POST', 'GET'])
+def ChangeP():
+    if request.method == "POST":
+        password = request.form.get("pass")
+        passwords[usernames.index(session["name"])] = password
+        f = open("userinfo.csv", "w")
+        f.truncate()
+        f.close()
+        with open('userinfo.csv', 'a', newline='') as f:
+                writer = csv.writer(f)
+                print(len(usernames))
+                for row in range(len(usernames)):
+                    userpass = [str(usernames[row]), str(passwords[row])]
+                    print(userpass)
+                    writer.writerow(userpass)
+        return redirect('/')
+    return render_template("changep.html")
+
 @app.route('/register', methods=["POST", "GET"])
 def register():
     global anon
@@ -284,7 +302,7 @@ def testing():
             counter += 1
     return redirect('cookorders')
 
-@app.route('/account', methods=['GET'])
+@app.route('/account', methods=['GET', 'POST'])
 def acc():
     pastorders = {}
     pastorders[session["name"]] = []
@@ -297,7 +315,39 @@ def acc():
                 if row[1] == session["name"]:
                     pastorders[session["name"]].append(row)
     print(pastorders)
-    return render_template('account.html', anon = anon, porder = pastorders[session["name"]])
+    if request.method == "POST":
+        k = int(str(request.args.keys()).replace("dict_keys(['", "").replace("'])", ""))
+        print(pastorders[session["name"]][k])
+        if "Custom" in pastorders[session["name"]][k]:
+                c = pastorders[session["name"]][k].index("Custom")
+                CustomPizza[session["name"]] = {"crust": pastorders[session["name"]][k][c+2], "sauce": pastorders[session["name"]][k][c+3], "toppings": pastorders[session["name"]][k][c+4:c+int(pastorders[session["name"]][k][c+1])+1], "price": pastorders[session["name"]][k][c+int(pastorders[session["name"]][k][c+1])+1]}
+                Custom = ["Custom", 3 + len(CustomPizza[session["name"]]["toppings"]), CustomPizza[session["name"]]["crust"], CustomPizza[session["name"]]["sauce"], str(CustomPizza[session["name"]]["toppings"]).replace("[", "").replace("]", "").replace("'",""), round(float(CustomPizza[session["name"]]["price"]), 2)]
+                print(Custom)
+                order[session["name"]].append(Custom)
+                price[session["name"]] += Custom[len(Custom) - 1]
+                CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
+        for item in pastorders[session["name"]][k]:
+            if item in ingredients:
+                continue
+            elif item == '':
+                continue
+            elif item.isdigit():
+                continue
+            elif "." in item:
+                continue
+            elif item == session["name"]:
+                continue
+            elif item == "Custom":
+                continue
+            elif item == "Tomatosauce":
+                continue
+            elif item == pastorders[session["name"]][k][-1]:
+                continue
+            else:
+                order[session["name"]].append(item)
+                price[session["name"]] += dicktionary[item][1]
+        return redirect('/cart')
+    return render_template('account.html', anon = anon, porder = pastorders[session["name"]], Dictionary = dicktionary)
 
 @app.route('/hpage', methods=['GET'])
 def homepage():
