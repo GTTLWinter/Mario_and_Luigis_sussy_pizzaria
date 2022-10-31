@@ -165,7 +165,17 @@ h1{
     justify-content: center;
 }
 
-
+#DONE{
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    height: 35px;
+    width: 75px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 22px;
+    justify-content: end;
+}
 
 
 
