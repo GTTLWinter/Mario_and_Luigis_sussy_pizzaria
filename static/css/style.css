@@ -96,7 +96,7 @@ a {
   z-index: 1;
 }
 
-.logo {
+.logo { /*white bar where logo sits on*/
   /* MARIO & LUIGI’S PIZZERIA */
   position: fixed;
   width: 100%;
@@ -136,7 +136,7 @@ a {
   font-family: 'Chela One';
 }
 
-.linkBar {
+.linkBar { /*linkBar is the red bar with home, order tracker and login button*/
   position: fixed;
   top: 62px;
   width: 100%;
@@ -164,7 +164,7 @@ a {
   align-items: center;
 }
 
-.menuBar {
+.menuBar { /*menu bar for me is the pizza, drinks and desserts bar*/
   position: absolute;
   width: 100%;
   top: 117.2px;
