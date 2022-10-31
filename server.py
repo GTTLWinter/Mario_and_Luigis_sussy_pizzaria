@@ -178,7 +178,7 @@ def register():
         password = request.form.get("pass")
         if username in usernames:
             flash("This username has already been taken")
-            return redirect('/register')
+            return render_template("register.html")
         else:
             session["name"] = username
             userpass = [str(username), str(password)]
@@ -190,8 +190,12 @@ def register():
                 writer = csv.writer(f)
                 writer.writerow(userpass)
             readinfo()
-            return redirect('/')
+            return redirect('/rel')
     return render_template("register.html")
+
+@app.route("/rel", methods=['GET'])
+def Rel():
+    return render_template('rel.html')
 
 @app.route("/login", methods=["POST", "GET"])
 def login(): 
@@ -206,7 +210,7 @@ def login():
                 order[session["name"]] = []
                 price[session["name"]] = 0
                 print(order)
-                return redirect('/')
+                return redirect('/rel')
             else:
                 flash("Wrong password!")
                 return redirect("/login")
