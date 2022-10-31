@@ -1,65 +1,22 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Mario's Pizzeria - Order Tracker</title>
-        <link rel="stylesheet" href="../static/css/ordertracker.css">
-        <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
-    </head>
-    <body>
 
-        <div class="LogoandLogin">
-            <div class="LogoContainer">
-                <h1> 
-                    <div class="Mariologo"> MARIO </div> 
-                    <div class="andsymbol"> & </div> 
-                    <div class= "Luigilogo"> LUIGI'S </div> 
-                    PIZZERIA 
-                
-                </h1>
-            </div>
+<head>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
+        rel="stylesheet">
+</head>
 
-            <div class="Loginbutton">
-                <a href="login.html"> 
-                    <button id="login"> LOGIN </button>
-                </a>
-            </div>
+<body>
+    <div class="main pizzaItem trackScreen">
+        <h2>Want to see how far along your order is?</h2>
+        <form id="form" action="ordertrack">
+            <label id="OrderNumb" for="ordernumber">Insert the order number here:</label><br>
+            <input type="text" name="ordernumber" value="" required><br><br>
+            <input type="submit" value="Track order" class="submitButton registerButton">
+        </form>
+    </div>
+</body>
 
-        </div>
-
-        <div class="Menubar">
-            <div class="Redbar">
-
-                <a href="homepage.html">
-                    <button id="HOME"onclick="location.href='/'" type="button">HOME</button>
-                </a>
-                <!--link to SMT page-->
-                <a href="https://www.google.com">
-                    <button id="Check"> INSERT SOMETHING</button>
-                </a>
-
-            </div>
-            <div class="Greenbar"></div>
-        </div>
-
-
-        <div class="Trackingblock">
-            <div class="CenterPositioning">
-                <form id="form" action="ordertrack">
-                    <label id= "OrderNumb" for="ordernumber">Insert order number here:</label><br>
-                        <input type="text" name="ordernumber" value="" required><br><br>
-                        <input type="submit" value="Submit">
-                </form>
-            </div>    
-        </div>
- 
-
-        
-        <div class="Bottomlines">
-            <div id="bottombar1"></div>
-            <div id="bottombar2"></div>
-        </div>
-
-
-
-        
-    </body>
 </html>
