@@ -140,6 +140,12 @@ h1{
     
 }
 
+.AlignInCenter{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .Verticalposition{
     order: 1;
     display: flex;
@@ -221,6 +227,12 @@ h1{
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 17px;
 
+}
+
+.PROMOS{
+    order:2;
+    display: flex;
+    flex-direction: row;
 }
 
 /******************************************************************************************************/

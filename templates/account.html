@@ -6,68 +6,75 @@
 </head>
 
 <body>
-    <div id="cart2">
+    <div id="cart2" class="custPizza">
         {% if anon[session.name] == 1 %}
         No account homie
         {% else %}
         <h1>Hello, <strong>{{session.name}}</strong>!</h1>
         <div id="empty"></div>
-        <button type="button" hx-get="/changep" hx-trigger="click" hx-target="#empty" hx-swap="innerHTML">Change password</button>
-        <table>    
-            <tr><th>Order Number</th> <th>Order</th> <th>Price</th></tr>
-        {% for order in porder %}
-        <tr><th>{{order[2]}}</th>
-        <td>{%for item in order%}
-            {%if item == "Normal"%}   
-            {% elif item == "Italian"%}
-            {% elif item == "Philladelphia"%}
-            {% elif item == "Tomatosauce"%}
-            {% elif item == "Pesto"%}               
-            {%elif item == "Italian"%}   
-            {%elif item == "White Garlic"%}
-            {% elif item == "Italian"%}
-            {%elif item == "Marinara sauce"%}
-            {%elif item == "Pepperoni"%}
-            {% elif item == "Ham"%} 
-            {% elif item == "Mushrooms"%}
-            {%elif item == "Pineapple"%}  
-            {%elif item == "Olives"%}
-            {%elif item == "Corn"%}   
-            {% elif item == "Sausage"%}   
-            {% elif item == "Bacon"%}   
-            {%elif item == "Chicken"%}   
-            {%elif item == "Spinach"%}   
-            {%elif item == "Basel"%}   
-            {%elif item == "Beef"%}
-            {%elif item == "Pork"%}
-            {%elif item == " "%}
-            {%elif item == session["name"]%}
-            {%elif item == order[2]%}
-            {%elif item == order[-2]%}
-            {%elif item in Dictionary%}
-            {% if Dictionary[item][0] != "Drink"%}
-            {{Dictionary[item][0]}}
-            {% else %}
-            {{Dictionary[item][2]}}
+        <button type="button" hx-get="/changep" hx-trigger="click" hx-target="#empty" hx-swap="innerHTML" class="submitButton payButton">Change
+            password</button>
+        <table class="cartTable">
+            <tr>
+                <th>Order Number</th>
+                <th>Order</th>
+                <th>Price</th>
+            </tr>
+            {% for order in porder %}
+            <tr>
+                <th>{{order[2]}}</th>
+                <td>{%for item in order%}
+                    {%if item == "Normal"%}
+                    {% elif item == "Italian"%}
+                    {% elif item == "Philladelphia"%}
+                    {% elif item == "Tomatosauce"%}
+                    {% elif item == "Pesto"%}
+                    {%elif item == "Italian"%}
+                    {%elif item == "White Garlic"%}
+                    {% elif item == "Italian"%}
+                    {%elif item == "Marinara sauce"%}
+                    {%elif item == "Pepperoni"%}
+                    {% elif item == "Ham"%}
+                    {% elif item == "Mushrooms"%}
+                    {%elif item == "Pineapple"%}
+                    {%elif item == "Olives"%}
+                    {%elif item == "Corn"%}
+                    {% elif item == "Sausage"%}
+                    {% elif item == "Bacon"%}
+                    {%elif item == "Chicken"%}
+                    {%elif item == "Spinach"%}
+                    {%elif item == "Basel"%}
+                    {%elif item == "Beef"%}
+                    {%elif item == "Pork"%}
+                    {%elif item == " "%}
+                    {%elif item == session["name"]%}
+                    {%elif item == order[2]%}
+                    {%elif item == order[-2]%}
+                    {%elif item in Dictionary%}
+                    {% if Dictionary[item][0] != "Drink"%}
+                    {{Dictionary[item][0]}}
+                    {% else %}
+                    {{Dictionary[item][2]}}
+                    {% endif %}
+                    {%elif "Custom" in order%}
+                    {% if item == order[order.index("Custom")+1]%}
+                    {% elif item == order[1+order.index("Custom")+order[order.index("Custom")+1]|int]%}
+                    {%else%}
+                    {{item}}
+                    {% endif %}
+                    {%else%}
+                    {{item}}
+                    {% endif %}
+                    {% endfor %}
+                </td>
+                <th>{{order[-2]}}</th>
+                <td><button type="button" hx-trigger="click" hx-post="/account?{{porder.index(order)}}"
+                        hx-target="#cart2" hx-swap="outerHTML">Reorder</button> </td>
+            </tr>
+            {% endfor %}
             {% endif %}
-            {%elif "Custom" in order%}
-            {% if item == order[order.index("Custom")+1]%}
-            {% elif item == order[1+order.index("Custom")+order[order.index("Custom")+1]|int]%}
-            {%else%}   
-            {{item}}
-            {% endif %}
-            {%else%}
-            {{item}}
-                {% endif %} 
-                {% endfor %}
-        </td>
-        <th>{{order[-2]}}</th>
-        <td><button type="button" hx-trigger="click" hx-post="/account?{{porder.index(order)}}" hx-target="#cart2" hx-swap="outerHTML">Reorder</button> </td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </table>
-    <button type="button" hx-get="/cart" hx-target="#cart2" hx-swap="outerHTML" hx-trigger="click">Cart</button>
+        </table>
+        <button type="button" hx-get="/cart" hx-target="#cart2" hx-swap="outerHTML" hx-trigger="click" class="payButton">Cart</button>
     </div>
 </body>
 
