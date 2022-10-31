@@ -1,0 +1,20 @@
+/*trackedCSS*/
+
+.Trackingblock{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    padding-top: 70px;
+    
+}    
+
+.centerpositioning{
+    display: flex;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 300px;
+    width: 800px;
+    flex-direction:column;
+    justify-content: center;
+    
+}
