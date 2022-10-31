@@ -18,7 +18,7 @@
          <br>
          <input placeholder="Password" autocomplete="off" type="password" name="pass" class="textField">
          <br>
-         <input type="submit" hx-target=".main" name="Login" class="submitButton">
+         <input type="submit" hx-target=".main" name="Login" class="submitButton" value="Log in">
          <p class="accountorno">Don't have an account?<button class="registerButton" type="button"
             hx-get="/register" hx-trigger="click" hx-target="#cart" hx-swap="innerHTML">Register</button></p>
          {% with messages = get_flashed_messages() %}
