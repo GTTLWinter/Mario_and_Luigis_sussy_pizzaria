@@ -131,6 +131,13 @@ h1{
 /**********************************************PROMO DEALS*********************************************/
 /******************************************************************************************************/
 
+#Choose{
+    order: 1;
+    justify-content: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 20px;
+}
+
 .Choice{
     display: flex;
     flex-direction:row;
@@ -139,6 +146,7 @@ h1{
 }
 
 .Positioning{
+    order: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,11 +154,10 @@ h1{
     border-radius: 10px;
     height: 300px;
     width: 700px;
-
 }
 
 .orderform{
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: center;
 }
@@ -160,11 +167,11 @@ h1{
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
-    height: 30px;
+    height: 50px;
     width: 100px;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 
@@ -173,9 +180,17 @@ h1{
     background-color: rgba(248, 87, 87, 1);
     color: white;
     border:none;
-    height: 30px;
+    height: 50px;
     width: 100px;
     border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 20px;
+
+}
+
+.spacing{
+    padding-left: 20px;
+    padding-right: 20px;
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 17px;
 

@@ -10,6 +10,7 @@ body{
 .LogoandLogin{
     display: flex;
     flex-direction: row;
+    justify-content: start;
 }
 
 .LogoContainer{
@@ -52,7 +53,6 @@ h1{
         color: rgba(248, 87, 87, 1);
         float: left;
         clear: none;
-        margin-left: 10px;
     }
     .andsymbol{
         float: left;
@@ -70,37 +70,26 @@ h1{
 /******************************************************************************************************/
 /*********************************************MENU BAR LINES*******************************************/
 /******************************************************************************************************/
-
+ 
 .Menubar{
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: -1.5em
+    
 }
 
 .Redbar{
+    order: 1;
+    display: inline-flex;
+    flex-direction: row;
     order: 1;
     background-color: rgba(248, 87, 87, 1);
     width: 100%;
     height: 35px;
     border: none;
-
-    display:flex;
-    flex: row;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.Greenbar{
-    order:2;
-    background-color:rgba(114, 191, 107, 1);
-    width: 100%;
-    height: 30px;
-    border: none;
 }
 
 #HOME{
-    flex: 1;
+    order: 1;
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 18px;
     text-align:center;
@@ -109,8 +98,29 @@ h1{
     background-color: transparent;
 }
 
-#Check{
-    flex:2;
+#Ordersearch{
+    order: 2;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+
+.Greenbar{
+    order:2;
+    display: inline-flex;
+    background-color:rgba(114, 191, 107, 1);
+    width: 100%;
+    height: 35px;
+    border: none;
+}
+
+
+#cookorders{
+    order: 1;
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 18px;
     text-align:center;
@@ -122,6 +132,37 @@ h1{
 /******************************************************************************************************/
 /*******************************************STATUS IN CENTER*****************************************/
 /******************************************************************************************************/
+
+.contentblock{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    vertical-align: middle;
+    padding-top: 70px;
+
+    
+}
+
+#divID{
+    order: 1;
+    display: flex;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;;
+    height: 300px;
+    width: 700px;
+    flex-direction:row;
+    justify-content: center;
+}
+
+#text{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+
 
 
 

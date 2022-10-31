@@ -131,10 +131,10 @@ h1{
 
 .centerpositioning{
     display: flex;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
     border-radius: 10px;;
     height: 300px;
-    width: 700px;
+    width: 800px;
     flex-direction:column;
     justify-content: center;
     
@@ -157,6 +157,7 @@ input[type=text], select{
 #OrderNumb{
     order: 1;
     text-align:center;
+    padding-right: 10px;;
 
 }   
 

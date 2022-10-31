@@ -14,6 +14,9 @@
                 <th>Price</th>
             </tr>
             {% for s in Order %}
+            {% if s == "Custom" %}
+            {% for a in range(Order.index(s), Order.index(Order.index(s) + 1))%}
+            
                 <tr>
                     <th>{{ Dicktionary[s][0] }}</th>
                     <th>{{ Dicktionary[s][2] }}</th>

@@ -37,6 +37,8 @@
             </div>    
         </div>    
         <div class="Greenbar"></div> 
+
+        
         
         <div class="paymentdisplaything">
 
@@ -44,12 +46,36 @@
 
                 <form id="paymentdetails">
 
+                    <p id="tittle"> Payment method</p><br>
 
+                    <img src="PayPal-Logo.png" alt="paypal" width="10px">
+                    <img src="Visa-Mastercard.png" alt="VisaMastercard" height="10px">
 
-                    <!--<p id="text">Payment complete. You're order will be ready soon.</p> -->
+                    <div class="Name">
+                        <label id= "Name">Name on card:</label>
+                        <input id="inputlength" type="text" name="ordernumber" value="" required><br>
+                    </div>
 
-                    
-                    <button id="Done" class="payment" onclick="location.href='/orderstatus'" type="button">PAY</button>
+                    <div class="Number">
+                        <label id= "CardNumber">Card number:</label>
+                        <input id="inputlength" type="text" name="ordernumber" value="" required><br>
+                    </div>
+
+                   <div class="CVVandEXP"> 
+                        <div class="CVV">
+                            <label id= "Code">CVV:</label>
+                            <input id="inputlength2" type="text" name="ordernumber" value="" required><br>
+                        </div>
+
+                        <div class="Expiration">
+                            <label id= "Expiration">Expiration:</label>
+                            <input id="inputlength3" type="text" name="ordernumber" value="" required><br>
+                        </div>
+                    </div>
+                        
+                    <div class="buttonposition">
+                        <button id="Done" onclick="location.href='/orderstatus'" type="button">PAY</button>
+                    </div>
                 </form>
 
             </div>
