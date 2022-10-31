@@ -142,6 +142,24 @@ h1{
 
     }    
 
+    .PaymentIcons{
+        display: flex;
+        flex-direction: row;
+    }
+
+    #Paypal{
+        order: 1;
+        width: 80px;
+        height: 50px;
+    }
+
+    #VisaMasterCard{
+        order: 2;
+        padding-left: 80px;
+        height: 20px;
+        width: 80px;
+    }
+
     .positioning{
         order: 1;
         display: flex;
