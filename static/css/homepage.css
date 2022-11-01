@@ -172,9 +172,9 @@ h1{
 }
 #Choose{
     order: 1;
-    justify-content: center;
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 20px;
+    font-size: 25px;
+    margin-top: -50px;
 }
 
 
@@ -189,7 +189,7 @@ h1{
 #Deliver{
     order: 2;
     display: flex;
-    flex-direction: r;
+    flex-direction: row;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
@@ -207,16 +207,25 @@ h1{
     order:1;
     text-align: start;
     padding-right: 20px;
+    
 }
 
-#label{
-    order:2;
+#label1{
+    order:1;
     vertical-align: middle;
+    padding-left: 30px;
+    margin-top: 12px;
 }
 
+.StoreButton{
+display: flex;
+flex-direction: row;
+}
 
 #Instore{
     order: 2;
+    display: flex;
+    flex-direction: row;
     background-color: rgba(248, 87, 87, 1);
     color: white;
     border:none;
@@ -224,14 +233,18 @@ h1{
     width: 200px;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
+    text-align: center;
+    padding-right: 10px;
     font-size: 20px;
-    vertical-align: middle;
+
 }
 
 #label2{
-justify-content: center;
-vertical-align: middle;
-    
+    order:2;
+    vertical-align: middle;
+    padding-left: 30px;
+    margin-top: 12px;
+
 }
 
 
@@ -258,19 +271,28 @@ vertical-align: middle;
 #promo1{
     width: 265px;
     height: 210px;
-    padding: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
 }
 
 #promo2{
     width: 265px;
     height: 210px;
-    padding: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
 }
 
 #promo3{
     width: 265px;
     height: 210px;
-    padding: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
 }
 
 
