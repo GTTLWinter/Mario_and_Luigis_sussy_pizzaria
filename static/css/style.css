@@ -224,7 +224,6 @@ h4 {
 }
 
 .loginMain {
-  top: 117.2px;
   position: relative;
   margin: 20px;
   width: 400px;
@@ -261,6 +260,7 @@ h4 {
 
 .price {
   text-align: right;
+  vertical-align: top;
   /* min-width: 80px; */
 }
 
@@ -270,6 +270,7 @@ h4 {
 
 th {
   text-align: left;
+  vertical-align: top;
 }
 
 .cartHeader {
