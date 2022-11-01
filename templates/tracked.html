@@ -1,7 +1,6 @@
 <html>
     <head>
         <title>Mario's Pizzaria</title>
-        <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
         <link href="../static/css/tracked.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
 
@@ -19,21 +18,86 @@
                         <th>Description</th>
                         <th>Price</th>
                     </tr>
-                    {% for s in Order %}
-                    {% if s == "Custom" %}
-                    {% for a in range(Order.index(s), Order.index(Order.index(s) + 1))%}
-                    
-                        <tr>
-                            <th>{{ Dicktionary[s][0] }}</th>
-                            <th>{{ Dicktionary[s][2] }}</th>
-                            <th class="price">{{ Dicktionary[s][1] }}</th>
-                        </tr>
-                    {% endfor %}
+                    {% for item in Order %}
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Total: {{ Price }}</th>
+                        
+                        <th>
+                            {%if item in Dicktionary%}
+                            {% if Dicktionary[item][0] != "Drink" %}
+                                {% if Dicktionary[item][0] != "Dessert" %}
+                                    {{Dicktionary[item][0]}}
+                                {% else %}
+                                    {{Dicktionary[item][2]}}
+                                {% endif %}
+                            {% else %}
+                            {{Dicktionary[item][2]}}
+                            {% endif %}
+                            {% elif item == "Custom" %}
+                            Custom
+                            {% else %}
+                            {% endif %}
+                        </th>
+                        <th>
+                            {%if item == "Normal"%}
+                            Normal,
+                            {% elif item == "Italian"%}
+                            Italian,
+                            {% elif item == "Philladelphia"%}
+                            Phillladelphia, 
+                            {% elif item == "Tomatosauce"%}
+                            Tomato Sauce, 
+                            {% elif item == "Pesto"%}
+                            Pesto, 
+                            {%elif item == "Italian"%}
+                            Italian, 
+                            {%elif item == "White Garlic"%}
+                            White Garlic, 
+                            {%elif item == "Marinara sauce"%}
+                            Marinara sauce,
+                            {%elif item == "Pepperoni"%}
+                            Pepperoni, 
+                            {% elif item == "Ham"%}
+                            Ham, 
+                            {% elif item == "Mushrooms"%}
+                            Mushrooms, 
+                            {%elif item == "Pineapple"%}
+                            Pineapple, 
+                            {%elif item == "Olives"%}
+                            Olives, 
+                            {%elif item == "Corn"%}
+                            Corn, 
+                            {% elif item == "Sausage"%}
+                            Sausage, 
+                            {% elif item == "Bacon"%}
+                            Bacon, 
+                            {%elif item == "Chicken"%}
+                            Chicken,
+                            {%elif item == "Spinach"%}
+                            Spinach, 
+                            {%elif item == "Basel"%}
+                            Basel, 
+                            {%elif item == "Beef"%}
+                            Beef, 
+                            {%elif item == "Pork"%}
+                            Pork, 
+                            {%elif item == " "%}
+                            {%elif item == session["name"]%}
+                            {% elif item in Dicktionary%}
+                            {% if Dicktionary[item][0] != "Drink" %}
+                                {% if Dicktionary[item][0] != "Dessert" %}
+                                    {{Dicktionary[item][2]}}
+                                {% else %}
+                                {% endif %}
+                            {% else %}
+                            {% endif %}
+                            {% endif %}
+                        </th>
+                        {% if "." in item%}
+                        <th>{{item}}</th>
+                        {% endif %}
                     </tr>
+                    {% endfor %}
+                    <tr><td></td><td></td><th>Total: {{ Price }}</th></th></tr>
                 </table>
             </div>    
         </div>    
