@@ -11,7 +11,7 @@
 <body>
     <div class="pizzaItem trackScreen">
         <h2>Want to see how far along your order is?</h2>
-        <form id="form" action="ordertrack">
+        <form id="form" hx-post="/ordertrack" hx-target="#cart" hx-swap="innerHTML">
             <label id="OrderNumb" for="ordernumber">Insert the order number here:</label><br>
             <input type="text" name="ordernumber" value="" required><br><br>
             <input type="submit" value="Track order" class="submitButton registerButton">

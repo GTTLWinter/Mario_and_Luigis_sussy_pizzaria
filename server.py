@@ -250,22 +250,21 @@ def orderstatus():
 def ordertracker():
     return render_template("ordertracker.html")
 
-@app.route('/ordertrack')
+@app.route('/ordertrack', methods=['POST'])
 def ordertrack():
     global ordernumber
-    tracked = []
-    orderask = request.args['ordernumber']
-    with open("orders.csv") as orders:
-        reader = csv.reader(orders)
-        for row in reader:
-            if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
-                for index in range(3, (len(row) - 2)):
-                    tracked.append(row[index])
-                print(tracked)
-                total = row[len(row)-2]
-                return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
-        if len(tracked) == 0:
-            flash("No order found.")
+    tracked = {session["name"] : []}
+    if request.method == "POST":
+        orderask = request.form.get('ordernumber')
+        with open("orders.csv", 'r') as orders:
+            reader = csv.reader(orders)
+            for row in reader:
+                if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
+                    for index in range(3, (len(row) - 2)):
+                        tracked[session["name"]].append(row[index])
+                    print(tracked)
+                    total = {session["name"] : row[len(row)-2]}
+                    return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked[session["name"]], Price = total[session["name"]])
     return redirect('/ordertracker')
 
 @app.route('/cookorders')
