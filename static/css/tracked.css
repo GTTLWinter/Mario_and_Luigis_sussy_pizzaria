@@ -16,5 +16,7 @@
     width: 800px;
     flex-direction:column;
     justify-content: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 17px
     
 }
