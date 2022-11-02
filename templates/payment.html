@@ -43,7 +43,7 @@
 
         
         
-        <div class="main">
+        <div id="cart2">
 
             <div class="positioning">
 
@@ -81,7 +81,7 @@
                     </div>
                         
                     <div class="buttonposition">
-                        <button id="Done" onclick="location.href='/orderstatus'" type="button">PAY</button>
+                        <button id="Done" hx-get="/orderstatus" hx-trigger="click" hx-target="#cart2" hx-swap="outerHTML" type="button">PAY</button>
                     </div>
                 </form>
 

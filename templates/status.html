@@ -7,16 +7,16 @@
     </head>
 
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
-
+<div id="all">
     <body>
         
-        <div class="main">
+        <div id="cart2">
             
             <div id="divID">
                 <div id="text">
                     <p>Your order has been confirmed. </p> <br>
                     <p>Order number: {{ Ordernumber[session.name] }}</p> <br>
-                    <div id="here" hx-get="/timerupdate" hx-target="body" hx-trigger="every 1s">
+                    <div id="here" hx-get="/timerupdate" hx-target="#all" hx-trigger="every 1s">
                     {% if Status == 0 %}  
                     <p id="center">Pizza is still in the oven for another {{ Timer }}.</p> <br>
                     {% elif Status == 1 %}
@@ -33,6 +33,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
        
 

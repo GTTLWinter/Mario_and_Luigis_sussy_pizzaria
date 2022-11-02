@@ -11,7 +11,7 @@
 
 
         <!--This is the set of code that diplays the orders-->
-        <div id="Block" #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
+        <div id="Block"  hx-get="/cookorders" hx-target="Block" hx-trigger="every 1s">
 
            <div id="Dontdisplay">
              {% if AllOrders == [] %}
@@ -38,13 +38,27 @@
                                 {% if item[0] == order[2] %}
                                 {% for thing in item %} <!--select order number & pizza-->
                                 {% if thing != order[2] %} <!--check items and compares with order-->
+                                {% if Dicktionary[thing][0] != "Drink" %}
+                                {% if Dicktionary[thing][0] != "Dessert" %}
                             </div>
-                           
-                            
-                                                
-                            <p id="PizzaName">{{ thing }}</p> <!--name of pizza-->
+                                                                           
+                            <p id="PizzaName">{{ Dicktionary[thing][0] }}</p> <!--name of pizza-->
 
                             <div id="HIDE">
+                                {% else %}
+                            </div>
+
+                              <br> <p id="PizzaName">{{ Dicktionary[thing][2] }}</p><!--name of dessert-->
+
+                            <div id="HIDE">
+                                {% endif %}
+                                {% else %}
+                            </div>
+
+                              <br> <p id="PizzaName">{{ Dicktionary[thing][2] }}</p><!--name of drink-->
+
+                            <div id="HIDE">
+                                {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% endif %}
@@ -56,11 +70,15 @@
                                 {% if item[0] == order[2] %}
                                 {% for thing in item %}
                                 {% if thing != order[2] %}
+                                {% if Dicktionary[thing][0] != "Drink" %}
+                                {% if Dicktionary[thing][0] != "Dessert" %}
                             </div>
 
                               <br> <p id="Ingredients">Ingredients: {{ Dicktionary[thing][2] }}</p><!--print ingredients-->
 
                             <div id="HIDE">
+                                {% endif %}
+                                {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% endif %}
@@ -70,23 +88,9 @@
                     </div>
                             
                         
-
-                            
-                        
                  <div id="Dontdisplay">     
                     {% endfor %}
                 </div>    
-
-            
-
-                <div class="FinishButton">
-                    <form action="/cooking">
-                        <div class="InputTextColor">
-                            <input type="text" name="ON" value= {{ order[2] }}>
-                        </div>
-                        <input type="submit" value="DONE">   
-                    </form>
-                </div>
 
                 <div id="Dontdisplay">    
                  {% endif %}

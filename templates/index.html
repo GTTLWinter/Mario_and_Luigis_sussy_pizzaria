@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-{% if ft[session.name] == 0 %}
-<div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
-{% endif %}
-
-<head>
+    <head>
     <title>Mario & Luigi's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
     <link
         href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
         rel="stylesheet">
     <link href="../static/css/tracked.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/payment.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/status.css" type="text/css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../static/mario-icon-28.jpg">
+    <link rel="stylesheet" href="../static/css/cookorders.css" type="text/css">
     <!--Script used for AJAX(dynamic) refresh-->
     <script src="https://unpkg.com/htmx.org@1.8.2"></script>
 </head>
+{% if ft[session.name] == 0 %}
+<div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
+{% endif %}
 
 <body>
     <div class="navbar">
@@ -59,5 +61,4 @@
     <div class="redBottomBar"></div>
     <div class="greenBottomBar"></div>
 </body>
-
 </html>

@@ -1,3 +1,5 @@
 __pycache__
 venv
 flask_session
+.gitignore
+testing get.py
