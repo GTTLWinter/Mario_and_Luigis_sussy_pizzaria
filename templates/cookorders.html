@@ -11,7 +11,7 @@
 
 
         <!--This is the set of code that diplays the orders-->
-        <div id="Block" #id="here" hx-get="/cookorders" hx-target="body" hx-trigger="every 1s">
+        <div id="Block"  hx-get="/cookorders" hx-target="Block" hx-trigger="every 1s">
 
            <div id="Dontdisplay">
              {% if AllOrders == [] %}
