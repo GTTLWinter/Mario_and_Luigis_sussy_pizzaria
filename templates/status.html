@@ -18,8 +18,10 @@
                     <p>Order number: {{ Ordernumber[session.name] }}</p> <br>
                     <div id="here" hx-get="/timerupdate" hx-target="#all" hx-trigger="every 1s">
                     {% if Status == 0 %}  
+                    <p id="center">Pizza is being prepared.</p> <br>
+                    {% elif Status == 1 %}  
                     <p id="center">Pizza is still in the oven for another {{ Timer }}.</p> <br>
-                    {% elif Status == 1 %}
+                    {% elif Status == 2 %}
                     </p id=center> Pizza is being prepared for pick up. </p> <br>
                     {% else %}
                     </p id=center>Pizza is ready for take off.</p> <br>
