@@ -29,7 +29,7 @@
                     
                     <div class="HomeButton">
                         <a>
-                            <button id="DONE" onclick="location.href='/hpage'" type="button">DONE</button>
+                            <button id="DONE" hx-get="/cart" hx-trigger="click" hx-target="#all" hx-swap="outerHTML" type="button">DONE</button>
                         </a>
                     </div>
                 </div>
