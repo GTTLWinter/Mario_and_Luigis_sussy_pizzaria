@@ -344,6 +344,8 @@ def acc():
                 continue
             elif item == "Custom":
                 continue
+            elif item == "Done":
+                continue
             elif item == "Tomatosauce":
                 continue
             elif item == pastorders[session["name"]][k][-1]:

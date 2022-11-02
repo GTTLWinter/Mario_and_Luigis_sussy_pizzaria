@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+{% if session.name == "Pizza"%}
+<div id="start" hx-trigger="load" hx-get="/cookorders" hx-target="body" hx-swap="outerHTML"></div>
+{% endif %}
 {% if ft[session.name] == 0 %}
 <div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
 {% endif %}
