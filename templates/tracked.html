@@ -94,6 +94,8 @@
                         </th>
                         {% if "." in item%}
                         <th>{{item}}</th>
+                        {% elif item in Dicktionary%}
+                        <th>{{Dicktionary[item][1]}}</th>
                         {% endif %}
                     </tr>
                     {% endfor %}
