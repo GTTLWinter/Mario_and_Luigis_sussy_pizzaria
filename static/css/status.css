@@ -1,3 +1,5 @@
+/*STATUS PAGE*/
+
 /*Order tracker CSS*/
 body{
     margin: 0;
@@ -8,6 +10,7 @@ body{
 .LogoandLogin{
     display: flex;
     flex-direction: row;
+    justify-content: start;
 }
 
 .LogoContainer{
@@ -50,7 +53,6 @@ h1{
         color: rgba(248, 87, 87, 1);
         float: left;
         clear: none;
-        margin-left: 10px;
     }
     .andsymbol{
         float: left;
@@ -68,117 +70,116 @@ h1{
 /******************************************************************************************************/
 /*********************************************MENU BAR LINES*******************************************/
 /******************************************************************************************************/
-
+ 
 .Menubar{
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: -1.5em
+    justify-content: center;
+    
 }
 
 .Redbar{
+    order: 1;
+    display: inline-flex;
+    flex-direction: row;
     order: 1;
     background-color: rgba(248, 87, 87, 1);
     width: 100%;
     height: 35px;
     border: none;
-
-    display:flex;
-    flex: row;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.Greenbar{
-    order:2;
-    background-color:rgba(114, 191, 107, 1);
-    width: 100%;
-    height: 30px;
-    border: none;
 }
 
 #HOME{
-    flex: 1;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 18px;
-    text-align:center;
-    color: white;
-    border: none;
-    background-color: transparent;
-}
-
-#Check{
-    flex:2;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 18px;
-    text-align:center;
-    color: white;
-    border: none;
-    background-color: transparent;
-}
-
-/******************************************************************************************************/
-/*********************************************ORDER TRACKING*******************************************/
-/******************************************************************************************************/
-
-.Trackingblock{
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    padding-top: 70px;
-    
-}    
-
-.centerpositioning{
-    display: flex;
-    background-color: #ffe585;
-    border-radius: 10px;;
-    height: 300px;
-    width: 800px;
-    flex-direction:column;
-    justify-content: center;
-    
-}
-
-#form{
     order: 1;
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-    
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    color: white;
+    border: none;
+    background-color: transparent;
 }
 
-input[type=text], select{
+#Ordersearch{
     order: 2;
-    height: 30px;
-
-   }
-
-#OrderNumb{
-    order: 1;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
     text-align:center;
-    padding-right: 10px;;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
 
-}   
+
+.Greenbar{
+    order:2;
+    display: inline-flex;
+    background-color:rgba(114, 191, 107, 1);
+    width: 100%;
+    height: 35px;
+    border: none;
+}
 
 
-input[type=submit]{
-    order: 3;
+#cookorders{
+    order: 1;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 18px;
+    text-align:center;
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+/******************************************************************************************************/
+/*******************************************STATUS IN CENTER*****************************************/
+/******************************************************************************************************/
+
+.main{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    vertical-align: middle;
+    padding: 10px;
+
+    
+}
+
+#divID{
+    order: 1;
+    display: flex;
+    background-color: rgba(255, 243, 200, 1);
+    border-radius: 10px;
+
+    flex-direction:row;
+    justify-content: center;
+}
+
+#text{
+    
+    justify-content: center;
+}
+
+#center{
+    justify-content: center;
+}
+
+#DONE{
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
-    height: 30px;
-    width: 70px;
+    height: 35px;
+    width: 75px;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
+    font-size: 22px;
+    justify-content: end;
 }
 
-#OrderNumb{
-    font-family: 'Chau Philomene One', sans-serif;
-    color:black;
-    text-align: center;
-}
+
+
+
+
+
 
 /******************************************************************************************************/
 /*******************************************BARS AT THE BOTTOM*****************************************/

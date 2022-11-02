@@ -7,32 +7,20 @@
    <link
       href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
       rel="stylesheet">
+   <script src="https://unpkg.com/htmx.org@1.8.2"></script>
 </head>
-<script src="https://unpkg.com/htmx.org@1.8.2"></script>
 
 <body>
-   <div class="navbar">
-      <div class="logo">
-         <div class="Mariologo">MARIO</div>
-         <div class="andsymbol">&</div>
-         <div class="Luigilogo">LUIGI'S</div>
-         PIZZERIA
-      </div>
-      <div class="linkBar">
-         <div>
-            <a href="/">Home</a>
-            <a href="/cart">Cart</a>
-            <a href="/ordertracker">Order search</a>
-         </div>
-      </div>
-   </div>
-   <div class="loginMain">
+   <div class="loginMain pizzaItem">
       <h1>Login</h1>
-      <form action="/login" method="POST">
-         <input placeholder="Userame" autocomplete="off" type="text" name="name">
-         <input placeholder="Password" autocomplete="off" type="password" name="pass">
-         <input type="submit" hx-target=".main" name="Login">
-         <p>Don't have an account?<button class="registerButton" type="button" onclick="location.href='/register'">Register</button></p>
+      <form hx-post="/login" hx-target="#cart" hx-swap="innerHTML">
+         <input placeholder="Username" autocomplete="off" type="text" name="name" class="textField">
+         <br>
+         <input placeholder="Password" autocomplete="off" type="password" name="pass" class="textField">
+         <br>
+         <input type="submit" hx-target=".main" name="Login" class="submitButton" value="Log in">
+         <p class="accountorno">Don't have an account?<button class="registerButton" type="button"
+            hx-get="/register" hx-trigger="click" hx-target="#cart" hx-swap="innerHTML">Register</button></p>
          {% with messages = get_flashed_messages() %}
          {% if messages %}
          {% for message in messages %}

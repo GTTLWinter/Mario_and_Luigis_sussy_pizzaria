@@ -6,182 +6,61 @@ body{
     padding-top: 10px;
 }
 
-.LogoandLogin{
-    display: flex;
-    flex-direction: row;
-}
-
-.LogoContainer{
-    flex: 1;
-    order: 1;
-}
-
-.Loginbutton{
-    order: 2;  
-}
-
-#login{
-    background-color: rgba(114, 191, 107, 1);
-    color: white;
-    width: 70px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
-
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 20px;
-}
-
-h1{
-    /* MARIO & LUIGI’S PIZZERIA */
-
-    width: 438px;
-    height: 59px;
-    
-    font-family: 'Chela One';
-    font-style: normal;
-    font-size: 25px;
-    line-height: 42px;
-    letter-spacing:1px;
-    
-    color: black;
-    }
-    
-    .Mariologo{
-        color: rgba(248, 87, 87, 1);
-        float: left;
-        clear: none;
-        margin-left: 10px;
-    }
-    .andsymbol{
-        float: left;
-        clear: none;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .Luigilogo{
-        color: rgba(114, 191, 107, 1);
-        float: left;
-        clear: none;
-        margin-right: 10px;
-    }
-    
-/******************************************************************************************************/
-/*********************************************MENU BAR LINES*******************************************/
-/******************************************************************************************************/
-
-.Menubar{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: -1.5em
-}
-
-.Redbar{
-    order: 1;
-    background-color: rgba(248, 87, 87, 1);
-    width: 100%;
-    height: 30px;
-    border: none;
-
-    display:flex;
-    flex: row;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.Greenbar{
-    order:2;
-    order: 2;
-    background-color: rgba(114, 191, 107, 1);
-    width: 100%;
-    height: 30px;
-    border: none;
-
-
-    display:flex;
-    flex: row;
-    text-align: center;
-    vertical-align: middle;
-}
-
-#HOME{
-    flex: 1;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 18px;
-    text-align:center;
-    color: white;
-    border: none;
-    background-color: transparent;
-    padding-left: 10px;
-}
-
-#Check{
-    flex:2;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 18px;
-    text-align:center;
-    color: white;
-    border: none;
-    background-color: transparent;
-    padding-left: 30px;
-}
-
 /****************************************************************************************************/
-/************************************************ORDER PAGE*******************************************/
-/******************************************************************************************************/
+/****************************************************************************************************/
+/****************************************************************************************************/
 
-.Ordergrid{
-    display: flex;
-    flex-direction: column;
-    
-}
-.Orderlist{
-    /*Order blocks*/
+#Block{
     display:flex;
     flex-direction: row;
-    flex:auto;
+    flex-flow: wrap;
+    width: 100%;
+}
+
+#OrderBlock{
+    width: 20%;
+    height:30%;
+    border-radius: 10px;
     background-color: rgba(255, 243, 200, 1);
-    border-radius: 10px;;
-    height: 200px;
-    width: 200px;
-}
-
-.Ordertext{
-
-    position: relative;
+    display:flex;
+    flex-direction: column;
+    margin:10px;
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:15px;
-    margin-top: 10px;
 }
 
-#OrderContent{
-    position: relative;
-    top: 20px;
-
+#Username{
+    order:1;
+    padding-left: 7px;
 }
 
+#OrderNumber{
+    order:2;
+    padding-left: 7px;
+}
 
-#Noorders{
- 
-    position: relative;
-    font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
-    color: black;
-    margin-left:50px;
+#PizzaName{
+    order:3;
+    padding-left: 7px;
+}
+
+#Ingredients{
+    order:4;
+    padding-left: 7px;
+
 }
 
 #Dontdisplay{
     color: transparent;
+
 }
 
-.Hide{
 
-    color: transparent;
+
+#HIDE{
+    color:transparent;
+    position: relative;
+    bottom: 80%;
 }
-
 
 .FinishButton{
     position: relative;
@@ -191,29 +70,32 @@ h1{
 }
 
 input[type=text], select {
-    position:relative;
     top: 9px;
     left: 10px;
     width: 89%;
+    height: 25px;
+    justify-content: center;
+    vertical-align: middle;
+
+    
 }
 
 .InputTextColor{
-    position: relative;
     background-color: rgba(255, 243, 200, 1);
     border: none;
-    height: 40px;
+    height: 43px;
     width: 200px;
     border-radius: 10px;
 }
 
 
 input[type=submit] {
-    position: relative;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
+    font-size: 20px;
 }   
 
 

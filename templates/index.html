@@ -3,14 +3,20 @@
 {% if ft[session.name] == 0 %}
 <div id="start" hx-trigger="load" hx-get="/hpage" hx-target="body" hx-swap="outerHTML"></div>
 {% endif %}
+
 <head>
     <title>Mario & Luigi's Pizzeria</title>
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One&family=Chela+One&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <link href="../static/css/tracked.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/payment.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/status.css" type="text/css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../static/mario-icon-28.jpg">
+    <!--Script used for AJAX(dynamic) refresh-->
+    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
 </head>
-<!--Script used for AJAX(dynamic) refresh-->
-<script src="https://unpkg.com/htmx.org@1.8.2"></script>
 
 <body>
     <div class="navbar">
@@ -23,17 +29,17 @@
         <div class="linkBar space_between">
             <div>
                 <a href="/">Home</a>
-                <a hx-trigger="click" hx-target=".main" hx-swap="outerHTML" hx-get="/ordertracker">Order search</a>
+                <a hx-trigger="click" hx-get="/ordertracker" hx-trigger="click" hx-target="#cart">Track your order</a>
             </div>
             <div>
                 {% if anon[session.name] == 1 %}
-                <a class="login" href="/login">Login</a>
+                <a class="login" hx-get="/login" hx-trigger="click" hx-target="#cart">Login</a>
                 {% else %}
                 {% if session.name %}
                 <a class="login" hx-get="/account" hx-trigger="click" hx-target="#cart">Account</a>
                 <a class="login" href="/logout">Sign out</a>
                 {% else %}
-                <a class="login" href="/login">Login</a>
+                <a class="login" hx-get="/login" hx-trigger="click" hx-target="#cart">Login</a>
                 {% endif %}
                 {% endif %}
             </div>

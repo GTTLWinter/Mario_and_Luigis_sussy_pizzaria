@@ -1,3 +1,4 @@
+import re
 import time
 from flask import Flask, render_template, request, redirect, flash, session, Response
 import csv
@@ -48,7 +49,7 @@ ft = {}
 ingredients = ["Normal", "Italian", "Philladelphia", "Tomato sauce", "Pesto", "White Garlic", "Marinara Sauce", 
     "Pepperoni", "Ham", "Mushrooms", "Pineapple", "Olives", "Onions", "Corn", "Sausage", "Bacon", "Chicken", 
     "Spinach", "Basel", "Beef", "Pork"]
-prices = [2, 4.19, 5.49, 2, 3.19, 4.49, 5.49, 1.10, 1.20, 1.30, 1.15, 1.15, 1.3, 1.2, 1.9, 2, 2, 0.89, 0.89, 3, 2.85]
+prices = [2.00, 4.19, 5.49, 2.00, 3.19, 4.49, 5.49, 1.10, 1.20, 1.30, 1.15, 1.15, 1.30, 1.20, 1.90, 2.00, 2.00, 0.89, 0.89, 3.00, 2.85]
 CustomPizza = {}
 
 app = Flask(__name__)
@@ -118,7 +119,6 @@ def index():
         CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
         if session["name"] not in ft:
             ft[session["name"]] = 0
-        ft[session["name"]] = 0
         print(order)
     elif session["name"] in usernames:
         if session["name"] in order:
@@ -146,8 +146,11 @@ def index():
 def payment():
     return render_template("payment.html")
 
-@app.route('/cart')
+@app.route('/cart', methods=['GET', 'POST'])
 def cart():
+    if request.method == "POST":
+        order[session["name"]] = []
+        price[session["name"]] = 0
     return render_template('cart.html', Order = order, Price = price[session["name"]], Dicktionary = dicktionary)
 
 @app.route('/status', methods = ['POST'])
@@ -168,6 +171,24 @@ def indexupdates():
     time.sleep(0.1)
     return render_template("index.html", Order = order, Timer = timer, Status = status)
 
+@app.route('/changep', methods=['POST', 'GET'])
+def ChangeP():
+    if request.method == "POST":
+        password = request.form.get("pass")
+        passwords[usernames.index(session["name"])] = password
+        f = open("userinfo.csv", "w")
+        f.truncate()
+        f.close()
+        with open('userinfo.csv', 'a', newline='') as f:
+                writer = csv.writer(f)
+                print(len(usernames))
+                for row in range(len(usernames)):
+                    userpass = [str(usernames[row]), str(passwords[row])]
+                    print(userpass)
+                    writer.writerow(userpass)
+        return redirect('/')
+    return render_template("changep.html")
+
 @app.route('/register', methods=["POST", "GET"])
 def register():
     global anon
@@ -176,7 +197,7 @@ def register():
         password = request.form.get("pass")
         if username in usernames:
             flash("This username has already been taken")
-            return redirect('/register')
+            return render_template("register.html")
         else:
             session["name"] = username
             userpass = [str(username), str(password)]
@@ -188,8 +209,12 @@ def register():
                 writer = csv.writer(f)
                 writer.writerow(userpass)
             readinfo()
-            return redirect('/')
+            return redirect('/rel')
     return render_template("register.html")
+
+@app.route("/rel", methods=['GET'])
+def Rel():
+    return render_template('rel.html')
 
 @app.route("/login", methods=["POST", "GET"])
 def login(): 
@@ -204,7 +229,7 @@ def login():
                 order[session["name"]] = []
                 price[session["name"]] = 0
                 print(order)
-                return redirect('/')
+                return redirect('/rel')
             else:
                 flash("Wrong password!")
                 return redirect("/login")
@@ -236,7 +261,7 @@ def orderstatus():
                 writeorder.write(order[session["name"]][index] + ",")
         writeorder.write(str(price[session["name"]]) + "," + "\n")
     order[session["name"]] = []
-    price[session["name"]] = []
+    price[session["name"]] = 0
     return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
 
 
@@ -244,22 +269,21 @@ def orderstatus():
 def ordertracker():
     return render_template("ordertracker.html")
 
-@app.route('/ordertrack')
+@app.route('/ordertrack', methods=['POST'])
 def ordertrack():
     global ordernumber
-    tracked = []
-    orderask = request.args['ordernumber']
-    with open("orders.csv") as orders:
-        reader = csv.reader(orders)
-        for row in reader:
-            if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
-                for index in range(3, (len(row) - 2)):
-                    tracked.append(row[index])
-                print(tracked)
-                total = row[len(row)-2]
-                return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked, Price = total)
-        if len(tracked) == 0:
-            flash("No order found.")
+    tracked = {session["name"] : []}
+    if request.method == "POST":
+        orderask = request.form.get('ordernumber')
+        with open("orders.csv", 'r') as orders:
+            reader = csv.reader(orders)
+            for row in reader:
+                if orderask == row[2] or (str(orderask) + str(.0)) == row[2]:
+                    for index in range(3, (len(row) - 2)):
+                        tracked[session["name"]].append(row[index])
+                    print(tracked)
+                    total = {session["name"] : row[len(row)-2]}
+                    return render_template("tracked.html", Dicktionary = dicktionary, Ordernumber = orderask, Order = tracked[session["name"]], Price = total[session["name"]])
     return redirect('/ordertracker')
 
 @app.route('/cookorders')
@@ -284,9 +308,52 @@ def testing():
             counter += 1
     return redirect('cookorders')
 
-@app.route('/account', methods=['GET'])
+@app.route('/account', methods=['GET', 'POST'])
 def acc():
-    return render_template('account.html', anon = anon)
+    pastorders = {}
+    pastorders[session["name"]] = []
+    with open("orders.csv") as readdata:
+        reader = csv.reader(readdata)
+        for row in reversed(list(reader)):
+            if len(pastorders[session["name"]]) == 5:
+                continue
+            else:
+                if row[1] == session["name"]:
+                    pastorders[session["name"]].append(row)
+    print(pastorders)
+    if request.method == "POST":
+        k = int(str(request.args.keys()).replace("dict_keys(['", "").replace("'])", ""))
+        print(pastorders[session["name"]][k])
+        if "Custom" in pastorders[session["name"]][k]:
+                c = pastorders[session["name"]][k].index("Custom")
+                CustomPizza[session["name"]] = {"crust": pastorders[session["name"]][k][c+2], "sauce": pastorders[session["name"]][k][c+3], "toppings": pastorders[session["name"]][k][c+4:c+int(pastorders[session["name"]][k][c+1])+1], "price": pastorders[session["name"]][k][c+int(pastorders[session["name"]][k][c+1])+1]}
+                Custom = ["Custom", 3 + len(CustomPizza[session["name"]]["toppings"]), CustomPizza[session["name"]]["crust"], CustomPizza[session["name"]]["sauce"], str(CustomPizza[session["name"]]["toppings"]).replace("[", "").replace("]", "").replace("'",""), round(float(CustomPizza[session["name"]]["price"]), 2)]
+                print(Custom)
+                order[session["name"]].append(Custom)
+                price[session["name"]] += Custom[len(Custom) - 1]
+                CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
+        for item in pastorders[session["name"]][k]:
+            if item in ingredients:
+                continue
+            elif item == '':
+                continue
+            elif item.isdigit():
+                continue
+            elif "." in item:
+                continue
+            elif item == session["name"]:
+                continue
+            elif item == "Custom":
+                continue
+            elif item == "Tomatosauce":
+                continue
+            elif item == pastorders[session["name"]][k][-1]:
+                continue
+            else:
+                order[session["name"]].append(item)
+                price[session["name"]] += dicktionary[item][1]
+        return redirect('/cart')
+    return render_template('account.html', anon = anon, porder = pastorders[session["name"]], Dictionary = dicktionary)
 
 @app.route('/hpage', methods=['GET'])
 def homepage():
@@ -343,13 +410,10 @@ def Custpizza():
             if ingredients[ingr] in CustomPizza[session["name"]]["toppings"]:
                 CustomPizza[session["name"]]["toppings"].remove(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] -= prices[ingr]
-
                 return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
             else:
                 CustomPizza[session["name"]]["toppings"].append(ingredients[ingr])
                 CustomPizza[session["name"]]["price"] += prices[ingr]
-
-                
                 return render_template('custprice.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
         elif ingr > 2:
             CustomPizza[session["name"]]["price"] -= prices[ingredients.index(CustomPizza[session["name"]]["sauce"])]

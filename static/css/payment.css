@@ -4,11 +4,41 @@
 /************************************************************TOP PART**************************************************************/
 /**********************************************************************************************************************************/
 
+body{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+.LogoandLogin{
+    display: flex;
+    flex-direction: row;
+}
+
+.LogoContainer{
+    flex: 1;
+    order: 1;
+}
+
+.Loginbutton{
+    order: 2;  
+}
+
+#login{
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 20px;
+}
 
 h1{
     /* MARIO & LUIGI’S PIZZERIA */
-    
-    position: relative;
+
     width: 438px;
     height: 59px;
     
@@ -40,27 +70,6 @@ h1{
         margin-right: 10px;
     }
     
-    /* Logint/logout button*/
-    
-    .Loginbutton{
-        position: relative;
-        left: 1160px;
-        bottom: 70px;
-        color:white;
-    
-    }
-    
-    #login{
-        background-color: rgba(114, 191, 107, 1);
-        color: white;
-        width: 70px;
-        height: 30px;
-        border-radius: 10px;
-        border: none;
-    
-        font-family: 'Chau Philomene One', sans-serif;
-        font-size: 20px;
-    }
     
     /**********************************************************************************************************************************/
     /***************************************************************MENU BAR***********************************************************/
@@ -125,48 +134,124 @@ h1{
     /****************************************************PAYMENT THING IN THE CENTER**************************************************/
     /**********************************************************************************************************************************/
     
-    #payment{
-    
-        position: relative;
-        bottom: -80px;
-        left: 275px;
+    .main{
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        padding-top: 20px;
+
+    }    
+
+    .PaymentIcons{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #Paypal{
+        order: 1;
+        width: 80px;
+        height: 50px;
+    }
+
+    #VisaMasterCard{
+        order: 2;
+        height: 20px;
+        width: 80px;
+    }
+
+    .positioning{
+        order: 1;
+        display: flex;
         background-color: rgba(255, 243, 200, 1);
         border-radius: 10px;;
-        height: 300px;
-        width: 700px;
-    
+
+        flex-direction:column;
+        justify-content: center;
     }
-    
+
+    #paymentdetails{
+        order: 1;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        font-family: 'Chau Philomene One', sans-serif;
+        padding: 50px;
+        
+    }
+
     #text{
-        position: relative;
-        bottom: 7em;
-        text-align: center;
+        color:black;
         font-family: 'Chau Philomene One', sans-serif;
-        font-size: 25px;
-    
-    
-        
     }
+
+    #tittle{
+        font-size: 27px;;
+    }
+
+    input[id=inputlength]{
+    width: 500px;
+    height: 25px;
     
+    }
+
+    input[id=inputlength2]{
+    width: 180px;
+    height: 25px;
+    }    
+
+    input[id=inputlength3]{
+    width: 180px;
+    height: 25px;
+    }
+
+    .Name{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Number{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .CVVandEXP{
+        display:flex;
+        flex-direction: row;
+    }
+
+    .CVV{
+        display: flex;
+        flex-direction: column;
+        padding-right: 70px;
+    }
+
+    .Expiration{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttonposition{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+
     #Done{
-        position:relative;
-        width: 70px;
-        height: 30px;
-        left: 47.5%;
-        border:none;
-        border-radius: 10px;
-    
-        color: white;
-        background-color: rgba(114, 191, 107, 1);
-        
-        font-family: 'Chau Philomene One', sans-serif;
-        font-size: 20px;
-        text-align:center;
-    
-        bottom: 5em;
-    
+    order:1;
+    background-color: rgba(114, 191, 107, 1);
+    color: white;
+    border:none;
+    height: 35px;
+    width: 75px;
+    border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 22px;
+    justify-content: end;
     }
+
+
     
+
     /**********************************************************************************************************************************/
     /************************************************************BOTTOM BAR IN CENTER**************************************************/
     /**********************************************************************************************************************************/

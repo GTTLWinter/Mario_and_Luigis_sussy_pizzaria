@@ -28,11 +28,11 @@ body {
 #cart2 {
   float: right;
   top: 172.4px;
-  margin-bottom: 24px;
   margin: 24px;
-  background-color: #ffe585;
+  margin-bottom: 24px;
   border-radius: 10px;
   width: 90%;
+  background-color: #ffe585;
 }
 
 button {
@@ -61,6 +61,25 @@ button {
   font-size: large;
 }
 
+.clearButton {
+  background-color: rgb(255, 52, 52);
+  border-color: rgb(149, 14, 14);
+}
+
+.submitButton {
+  float: left;
+  cursor: pointer;
+  background-color: rgb(80, 192, 69);
+  color: white;
+  border: outset rgb(35, 118, 28) 2px;
+  border-radius: 5px;
+}
+
+.registerButton {
+  float: none;
+  margin-left: 10px;
+}
+
 a {
   float: left;
   cursor: pointer;
@@ -77,7 +96,7 @@ a {
   z-index: 1;
 }
 
-.logo {
+.logo { /*white bar where logo sits on*/
   /* MARIO & LUIGI’S PIZZERIA */
   position: fixed;
   width: 100%;
@@ -117,7 +136,7 @@ a {
   font-family: 'Chela One';
 }
 
-.linkBar {
+.linkBar { /*linkBar is the red bar with home, order tracker and login button*/
   position: fixed;
   top: 62px;
   width: 100%;
@@ -145,7 +164,7 @@ a {
   align-items: center;
 }
 
-.menuBar {
+.menuBar { /*menu bar for me is the pizza, drinks and desserts bar*/
   position: absolute;
   width: 100%;
   top: 117.2px;
@@ -181,7 +200,7 @@ img {
   border-radius: 10px;
 }
 
-h1 {
+.cartTitle {
   margin-left: 20%;
 }
 
@@ -204,15 +223,13 @@ h4 {
   margin: 20px;
 }
 
-.registerButton {
-  float: none;
-  margin-left: 10px;
-}
-
 .loginMain {
-  top: 98px;
   position: relative;
   margin: 20px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
 }
 
 .dessertImg {
@@ -235,7 +252,7 @@ h4 {
   width: 100%;
 }
 
-table {
+.cartTable {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -243,6 +260,7 @@ table {
 
 .price {
   text-align: right;
+  vertical-align: top;
   /* min-width: 80px; */
 }
 
@@ -252,6 +270,7 @@ table {
 
 th {
   text-align: left;
+  vertical-align: top;
 }
 
 .cartHeader {
@@ -259,3 +278,60 @@ th {
   text-align: center;
   font-size: larger;
 }
+
+.custPizza {
+  background-color: #ffe585;
+  border-radius: 10px;
+  margin: 24px;
+  padding: 24px;
+  padding-bottom: 0px;
+  top: 172.4px;
+}
+
+input {
+  accent-color: rgb(80, 192, 69);
+}
+
+.toppings {
+  width: 200px;
+}
+
+.custPizzaButtons {
+  float: right;
+  width: 400px;
+}
+
+.marioCookImg {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin-right: 50px;
+}
+
+.emptySpace {
+  height: 24px;
+  bottom: 0px;
+}
+
+.noYPadding {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.textField {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accountorno {
+  margin-top: 40px;
+}
+
+.trackScreen {
+  position: relative;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+

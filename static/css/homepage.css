@@ -128,58 +128,175 @@ h1{
 }
 
 /******************************************************************************************************/
-/**********************************************PROMO DEALS*********************************************/
+/****************************************************BLOCK*********************************************/
 /******************************************************************************************************/
 
-.Choice{
+.Vertical1{
+    display: flex;
+    justify-content: center;
+}
+
+.Horizontalposition{
+    order:1;
     display: flex;
     flex-direction:row;
     justify-content: center;
+    padding-top: 20px;
     
 }
 
-.Positioning{
+.AlignInCenter{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.Verticalposition2{
+    order: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 20px;
     background-color: rgba(255, 243, 200, 1);
     border-radius: 10px;
-    height: 300px;
-    width: 700px;
-
+    height: 200px;
+    width: 65%;
+    margin-top: 90px;
 }
 
-.orderform{
+.center{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#Choose{
+    order: 1;
+    font-family: 'Chau Philomene One', sans-serif;
+    font-size: 25px;
+    margin-top: -50px;
+}
+
+
+.options{
+    order:2;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
+
 #Deliver{
-    order: 1;
+    order: 2;
+    display: flex;
+    flex-direction: row;
     background-color: rgba(114, 191, 107, 1);
     color: white;
     border:none;
-    height: 30px;
-    width: 100px;
+    height: 50px;
+    width: 200px;
     border-radius: 10px;
     font-family: 'Chau Philomene One', sans-serif;
-    font-size: 17px;
+    text-align: center;
+    padding-right: 10px;
+    font-size: 20px;
+    vertical-align: middle;
 }
 
+#DeliverIcon{
+    order:1;
+    text-align: start;
+    padding-right: 20px;
+    
+}
+
+#label1{
+    order:1;
+    vertical-align: middle;
+    padding-left: 30px;
+    margin-top: 12px;
+}
+
+.StoreButton{
+display: flex;
+flex-direction: row;
+}
 
 #Instore{
     order: 2;
+    display: flex;
+    flex-direction: row;
     background-color: rgba(248, 87, 87, 1);
     color: white;
     border:none;
-    height: 30px;
-    width: 100px;
+    height: 50px;
+    width: 200px;
     border-radius: 10px;
+    font-family: 'Chau Philomene One', sans-serif;
+    text-align: center;
+    padding-right: 10px;
+    font-size: 20px;
+
+}
+
+#label2{
+    order:2;
+    vertical-align: middle;
+    padding-left: 30px;
+    margin-top: 12px;
+
+}
+
+
+.spacing{
+    padding-left: 20px;
+    padding-right: 20px;
     font-family: 'Chau Philomene One', sans-serif;
     font-size: 17px;
 
 }
+
+.PROMOS{
+    order:2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.images{
+    padding-top: 20px;
+}
+
+#promo1{
+    width: 265px;
+    height: 210px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
+}
+
+#promo2{
+    width: 265px;
+    height: 210px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+#promo3{
+    width: 265px;
+    height: 210px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:rgba(255, 243, 200, 1);
+}
+
+
 
 /******************************************************************************************************/
 /*******************************************BARS AT THE BOTTOM*****************************************/
