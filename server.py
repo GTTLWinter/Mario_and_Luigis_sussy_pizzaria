@@ -67,12 +67,14 @@ def readinfo():
             print(passwords)
 
 def readOrders():
-    global order, allOrders, pizzas, pizzas2
+    global order, allOrders, pizzas, pizzas2, templist
     pizzas = []
     allOrders = []
+    templist = []
     with open("orders.csv") as orders:
         reader = csv.reader(orders)
         for row in reader:
+            templist.append(row)
             if row[0] != "Done":
                 pizzas2 = []
                 allOrders.append(row)
@@ -293,20 +295,27 @@ def cook():
     readOrders()
     return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, order = order[session["name"]], Dicktionary = dicktionary, Pizzas = pizzas)
 
-@app.route('/cooking')
+@app.route('/cooking', methods=['POST'])
 def testing():
-    global counter
+    global counter, templist
     counter = 0
-    df = pd.read_csv("orders.csv")
-    tempordernumber = request.args['ON']
-    print(tempordernumber)
-    with open("orders.csv", "r") as datafile:
-        reader = csv.reader(datafile)
-        for row in reader:
-            if row[2] == tempordernumber:
-                df.loc[(counter - 1), 'Done'] = "Done"
-                df.to_csv("orders.csv", index=False)
-            counter += 1
+    if request.method == 'POST':
+        tempordernumber = int(str(request.args.keys()).replace("dict_keys(['", "").replace("'])", ""))
+        print("\n" + str(tempordernumber))
+        f = open("orders.csv", "w")
+        f.truncate()
+        f.close()
+        for item in templist:
+            print(item[2])
+            if item[2] == str(tempordernumber):
+                print("Ok")
+                item[0] = "Done"
+                break
+        with open("orders.csv", "a", newline="") as filezar:
+            writer = csv.writer(filezar)
+            for whatever_U_Wanna_Name_It in range(0, len(templist)):
+                writer.writerow(templist[whatever_U_Wanna_Name_It])
+        print(templist)
     return redirect('cookorders')
 
 @app.route('/account', methods=['GET', 'POST'])
