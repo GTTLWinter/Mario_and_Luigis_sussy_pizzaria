@@ -125,6 +125,8 @@ def index():
     elif session["name"] in usernames:
         if session["name"] in order:
             None
+        elif session["name"] == "Pizza":
+            return redirect('/cookorders')
         else:
             anon[session["name"]] = 2
             order[session["name"]] = []
