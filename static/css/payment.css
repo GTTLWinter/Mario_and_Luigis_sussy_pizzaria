@@ -164,8 +164,7 @@ h1{
         display: flex;
         background-color: rgba(255, 243, 200, 1);
         border-radius: 10px;;
-        height: 450px;
-        width: 700px;
+
         flex-direction:column;
         justify-content: center;
     }

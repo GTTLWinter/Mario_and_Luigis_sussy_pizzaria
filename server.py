@@ -99,7 +99,6 @@ def index():
         CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
         if session["name"] not in ft:
             ft[session["name"]] = 0
-        ft[session["name"]] = 0
         print(order)
     elif session["name"] in usernames:
         if session["name"] in order:

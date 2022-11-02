@@ -149,15 +149,13 @@ h1{
     display: flex;
     background-color: rgba(255, 243, 200, 1);
     border-radius: 10px;
-    height: 400px;
-    width: 700px;
+
     flex-direction:row;
     justify-content: center;
 }
 
 #text{
-    display: flex;
-    flex-direction: column;
+    
     justify-content: center;
 }
 
