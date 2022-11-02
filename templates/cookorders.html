@@ -33,15 +33,18 @@
                            <p id="OrderNumber"> Order Number: {{ order[2] }}</p><!--prints order number-->
                     
                             
-                            <div id="HIDE">
+                            <div id="HIDE"> 
                                 {% for item in Pizzas %}
                                 {% if item[0] == order[2] %}
                                 {% for thing in item %} <!--select order number & pizza-->
-                                {% if thing != order[2] %} <!--check items and compares with order-->
+                                {% if thing != order[2] %}
+                                {% if thing == "Custom"%} <!--check items and compares with order-->
+                                <p id="PizzaName">Custom</p> <!--name of pizza-->
+                                {% elif thing in Dicktionary %}
                                 {% if Dicktionary[thing][0] != "Drink" %}
                                 {% if Dicktionary[thing][0] != "Dessert" %}
-                            </div>
-                                                                           
+                           
+                             </div>                                              
                             <p id="PizzaName">{{ Dicktionary[thing][0] }}</p> <!--name of pizza-->
 
                             <div id="HIDE">
@@ -51,6 +54,7 @@
                               <br> <p id="PizzaName">{{ Dicktionary[thing][2] }}</p><!--name of dessert-->
 
                             <div id="HIDE">
+                               
                                 {% endif %}
                                 {% else %}
                             </div>
@@ -58,6 +62,8 @@
                               <br> <p id="PizzaName">{{ Dicktionary[thing][2] }}</p><!--name of drink-->
 
                             <div id="HIDE">
+                                {% endif %} 
+                                {% else %} 
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
@@ -70,6 +76,51 @@
                                 {% if item[0] == order[2] %}
                                 {% for thing in item %}
                                 {% if thing != order[2] %}
+                                {% if thing == "Custom"%}
+                                <p id="Ingredients">Ingredients:</p>
+                                {% elif thing == "Normal"%}
+                                Normal,
+                                {% elif thing == "Italian"%}
+                                Italian,
+                                {% elif thing == "Philladelphia"%}
+                                Phillladelphia, 
+                                {% elif thing == "Tomatosauce"%}
+                                Tomato Sauce, 
+                                {% elif thing == "Pesto"%}
+                                Pesto, 
+                                {%elif thing == "Italian"%}
+                                Italian, 
+                                {%elif thing == "White Garlic"%}
+                                White Garlic, 
+                                {%elif thing == "Marinara sauce"%}
+                                Marinara sauce,
+                                {%elif thing == "Pepperoni"%}
+                                Pepperoni, 
+                                {% elif thing == "Ham"%}
+                                Ham, 
+                                {% elif thing == "Mushrooms"%}
+                                Mushrooms, 
+                                {%elif thing == "Pineapple"%}
+                                Pineapple, 
+                                {%elif thing == "Olives"%}
+                                Olives, 
+                                {%elif thing == "Corn"%}
+                                Corn, 
+                                {% elif thing == "Sausage"%}
+                                Sausage, 
+                                {% elif thing == "Bacon"%}
+                                Bacon, 
+                                {%elif thing == "Chicken"%}
+                                Chicken,
+                                {%elif thing == "Spinach"%}
+                                Spinach, 
+                                {%elif thing == "Basel"%}
+                                Basel, 
+                                {%elif thing == "Beef"%}
+                                Beef, 
+                                {%elif thing == "Pork"%}
+                                Pork, 
+                                {% elif thing in Dicktionary %}
                                 {% if Dicktionary[thing][0] != "Drink" %}
                                 {% if Dicktionary[thing][0] != "Dessert" %}
                             </div>
@@ -78,6 +129,8 @@
 
                             <div id="HIDE">
                                 {% endif %}
+                                {% endif %}
+                                {% else %}
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
