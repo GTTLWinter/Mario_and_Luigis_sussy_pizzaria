@@ -66,6 +66,25 @@ def readinfo():
             print(usernames)
             print(passwords)
 
+def readOrders():
+    global order, allOrders, pizzas, pizzas2
+    pizzas = []
+    allOrders = []
+    with open("orders.csv") as orders:
+        reader = csv.reader(orders)
+        for row in reader:
+            if row[0] != "Done":
+                pizzas2 = []
+                allOrders.append(row)
+                for index in range(2, len(row)):
+                    if row[index] != "":
+                        pizzas2.append(row[index])
+                pizzas.append(pizzas2)
+        for index in range(0, len(pizzas)):
+            pizzas[index].pop()
+        print(allOrders)
+        print(pizzas)
+
 def removeItem(item):
     global order, price
     for index in range(0, len(order[session["name"]])):
@@ -87,6 +106,7 @@ def adddelItem():
             print(price)
 
 readinfo()
+readOrders()
 
 @app.route('/')
 def index():
@@ -268,23 +288,7 @@ def ordertrack():
 
 @app.route('/cookorders')
 def cook():
-    global order, allOrders, pizzas, pizzas2
-    pizzas = []
-    allOrders = []
-    with open("orders.csv") as orders:
-        reader = csv.reader(orders)
-        for row in reader:
-            if row[0] != "Done":
-                pizzas2 = []
-                allOrders.append(row)
-                for index in range(2, len(row)):
-                    if row[index] != "":
-                        pizzas2.append(row[index])
-                pizzas.append(pizzas2)
-        for index in range(0, len(pizzas)):
-            pizzas[index].pop()
-        print(allOrders)
-        print(pizzas)
+    readOrders()
 
     return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, order = order[session["name"]], Dicktionary = dicktionary, Pizzas = pizzas)
 
@@ -420,3 +424,7 @@ def Custpizza():
             return render_template('custprice.html', Price = CustomPizza[session["name"]]["price"])
     CustomPizza[session["name"]] = {"crust": ingredients[0], "sauce": ingredients[3], "toppings": [], "price": 4}
     return render_template('custpizza.html', Price = round(float(CustomPizza[session["name"]]["price"]), 2))
+
+@app.route('/testinGet', methods=['GET'])
+def getting():
+    return pizzas
