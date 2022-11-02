@@ -291,7 +291,6 @@ def ordertrack():
 @app.route('/cookorders')
 def cook():
     readOrders()
-
     return render_template('cookorders.html', Length = len(order[session["name"]]), AllOrders = allOrders, order = order[session["name"]], Dicktionary = dicktionary, Pizzas = pizzas)
 
 @app.route('/cooking')
