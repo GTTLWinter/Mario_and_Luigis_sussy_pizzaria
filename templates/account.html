@@ -25,6 +25,7 @@
                 <th>{{order[2]}}</th>
                 <td>{%for item in order%}
                     {%if item == "Normal"%}
+                    {% elif item == "Done"%}
                     {% elif item == "Italian"%}
                     {% elif item == "Philladelphia"%}
                     {% elif item == "Tomatosauce"%}
