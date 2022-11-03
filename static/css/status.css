@@ -147,7 +147,7 @@ h1{
 #divID{
     order: 1;
     display: flex;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
     border-radius: 10px;
 
     flex-direction:row;
