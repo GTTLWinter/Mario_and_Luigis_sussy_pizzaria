@@ -113,8 +113,7 @@ readOrders()
 @app.route('/')
 def index():
     global order, anon, ft
-    if session["name"] == "Pizza":
-            return redirect('/cookorders')
+   
     if not session.get("name"):
         session["name"] = randrange(1000)
         anon[session["name"]] = 1
@@ -124,6 +123,9 @@ def index():
         if session["name"] not in ft:
             ft[session["name"]] = 0
         print(order)
+        
+    elif session["name"] == "Pizza":
+        return redirect('/cookorders')
     elif session["name"] in usernames:
         if session["name"] in order:
             None
@@ -159,16 +161,16 @@ def cart():
 
 @app.route('/status', methods = ['POST'])
 def statusupdate():
-    global timer, status
-    poopybutthole = request.get_json()
-    timer = poopybutthole["timer"]
-    status = poopybutthole["status"]
-    print(poopybutthole)
-    return redirect("/")
+    data = request.get_json()
+    for item in data:
+        if globals()[item] != 3:
+            globals()[item] = data[item]
+    print(data)
+    return render_template("rel.html")
 
 @app.route('/timerupdate', methods = ['GET'])
 def timerupdate():
-    return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
+    return render_template("status.html", Status = globals()["Status" + str(ordernumber[session["name"]])], Timer = globals()["Timer" + str(ordernumber[session["name"]])], Ordernumber = ordernumber[session["name"]])
 
 @app.route('/indexupdate')
 def indexupdates():
@@ -255,6 +257,8 @@ def orderstatus():
     username = session["name"]
     ordernumber[session["name"]] = randrange(99999999)
     print(ordernumber)
+    globals()["Status" + str(ordernumber[session["name"]])] = 0
+    globals()["Timer" + str(ordernumber[session["name"]])] = 480
     with open("orders.csv", "a")as writeorder:
         writeorder.write("," + str(username) + "," + str(ordernumber[session["name"]]) + ",")
         for index in range(0, len(order[session["name"]])):
@@ -266,7 +270,7 @@ def orderstatus():
         writeorder.write(str(price[session["name"]]) + "," + "\n")
     order[session["name"]] = []
     price[session["name"]] = 0
-    return render_template("status.html", Status = status, Timer = timer, Ordernumber = ordernumber)
+    return render_template("status.html", Status = globals()["Status" + str(ordernumber[session["name"]])], Timer = globals()["Timer" + str(ordernumber[session["name"]])], Ordernumber = ordernumber[session["name"]])
 
 
 @app.route('/ordertracker')
@@ -301,21 +305,19 @@ def testing():
     counter = 0
     if request.method == 'POST':
         tempordernumber = int(str(request.args.keys()).replace("dict_keys(['", "").replace("'])", ""))
-        print("\n" + str(tempordernumber))
         f = open("orders.csv", "w")
         f.truncate()
         f.close()
         for item in templist:
-            print(item[2])
             if item[2] == str(tempordernumber):
-                print("Ok")
                 item[0] = "Done"
                 break
         with open("orders.csv", "a", newline="") as filezar:
             writer = csv.writer(filezar)
             for whatever_U_Wanna_Name_It in range(0, len(templist)):
                 writer.writerow(templist[whatever_U_Wanna_Name_It])
-        print(templist)
+        globals()["Status" + str(ordernumber[session["name"]])] = 3
+        print(globals()["Status" + str(ordernumber[session["name"]])])
     return redirect('cookorders')
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -437,4 +439,5 @@ def Custpizza():
 
 @app.route('/testinGet', methods=['GET'])
 def getting():
+    readOrders()
     return pizzas

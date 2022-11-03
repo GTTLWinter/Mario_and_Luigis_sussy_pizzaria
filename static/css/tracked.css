@@ -11,7 +11,7 @@
     display: flex;
     background-color: #ffe585;
     border-radius: 10px;;
-    height: 300px;
+    height: fit-content;
     width: 80%;
     flex-direction:column;
     justify-content: center;
