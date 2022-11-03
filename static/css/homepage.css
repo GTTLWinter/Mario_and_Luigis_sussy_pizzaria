@@ -227,12 +227,26 @@ h1 {
     vertical-align: middle;
 }
 
-#DeliverIcon {
+#DeliveryIcon {
     order: 1;
     text-align: start;
     padding-right: 20px;
+    height: 40px;
+    vertical-align: middle;
+   
 
 }
+
+#StoreIcon {
+    order: 2;
+    text-align: start;
+    padding-right: 20px;
+    height: 40px;
+    vertical-align: middle;
+    
+
+}
+
 
 #label1 {
     order: 1;
