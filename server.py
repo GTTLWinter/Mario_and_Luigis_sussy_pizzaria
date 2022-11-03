@@ -113,6 +113,8 @@ readOrders()
 @app.route('/')
 def index():
     global order, anon, ft
+    if session["name"] == "Pizza":
+            return redirect('/cookorders')
     if not session.get("name"):
         session["name"] = randrange(1000)
         anon[session["name"]] = 1
@@ -125,8 +127,6 @@ def index():
     elif session["name"] in usernames:
         if session["name"] in order:
             None
-        elif session["name"] == "Pizza":
-            return redirect('/cookorders')
         else:
             anon[session["name"]] = 2
             order[session["name"]] = []
