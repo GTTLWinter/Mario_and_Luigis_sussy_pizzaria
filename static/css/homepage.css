@@ -181,7 +181,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
     border-radius: 10px;
     height: 200px;
     width: 65%;
@@ -310,7 +310,7 @@ h1 {
     height: 210px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
 }
 
 #promo2 {
@@ -318,7 +318,7 @@ h1 {
     height: 210px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
@@ -329,7 +329,7 @@ h1 {
     height: 210px;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(255, 243, 200, 1);
+    background-color: #ffe585;
 }
 
 
